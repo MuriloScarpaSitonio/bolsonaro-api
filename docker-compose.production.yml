@@ -1,0 +1,80 @@
+version: "3.7"
+
+services:
+  django:
+    container_name: django
+    build:
+      context: ./django
+      dockerfile: Dockerfile.production
+    volumes:
+      - django_static_volume:/app/django/static
+    expose:
+      - 8000
+    env_file:
+      - ./django/.env
+    command: gunicorn bolsonaro_api.wsgi:application --bind 0.0.0.0:8000
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres:13-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+
+  react:
+    container_name: react
+    build:
+      context: ./react
+      dockerfile: Dockerfile
+    volumes:
+      - react_static_volume:/app/react/build/static
+    expose:
+      - 3000
+    env_file:
+      - ./react/.env
+    command: serve -s build -l 3000
+    depends_on:
+      - django
+
+  nginx:
+    container_name: nginx
+    restart: always
+    build: ./nginx
+    volumes:
+      - django_static_volume:/app/django/django_files/static
+      - react_static_volume:/app/react/react_files/static
+    ports:
+      - 80:80
+    depends_on:
+      - react
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - 6379:6379
+
+  celery:
+    container_name: celery
+    restart: always
+    build: ./django
+    entrypoint: []
+    env_file:
+      - ./django/.env
+    command: celery --app=bolsonaro_api worker --loglevel=INFO --beat
+    volumes:
+      - django_static_volume:/app/django/static
+    depends_on:
+      - redis
+      - django
+      - postgres
+
+volumes:
+  postgres_data:
+  django_static_volume:
+  react_static_volume:

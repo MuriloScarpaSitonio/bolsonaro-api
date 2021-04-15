@@ -1,0 +1,12 @@
+.img.sm {
+    width: 300px;
+    height: 300px;
+}
+
+.img.home {
+  mix-blend-mode: luminosity;
+}
+
+.img.home:hover {
+  mix-blend-mode: normal;
+}

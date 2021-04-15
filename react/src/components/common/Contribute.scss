@@ -1,0 +1,38 @@
+@import '../../styles/_themes';
+
+
+li {
+  margin-top: 10px;
+}
+
+.contribute > * {
+  @include themed() {
+    color: t($text-color)
+  }
+}
+
+.nav-item.nav-link.active {
+  border-bottom: none;
+  
+  @include themed() {
+    color: t($text-color);
+    border-top-color: t($text-secondary-color);
+    border-left-color: t($text-secondary-color);
+    border-right-color: t($text-secondary-color);
+    background:  t($background-input-color);
+  }
+}
+
+a[role=tab] {
+  @include themed() {
+    color: t($text-color);
+    border-bottom-color: t($text-secondary-color);
+    background:  t($background-input-color);
+  }
+}
+
+a[role=tab]:hover {
+  @include themed() {
+    color: t($custom-link-color)
+  }
+}

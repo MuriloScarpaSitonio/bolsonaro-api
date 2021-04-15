@@ -1,0 +1,128 @@
+<style>
+    .submit-row {
+        justify-content: space-between
+    }
+
+    .float-left {
+        float: left;
+        margin: 0;
+    }
+
+    .submit-row .decline-button {
+        display: block;
+        background: #ba2121;
+        border-radius: 4px;
+        padding: 10px 15px;
+        line-height: 15px;
+        color: #fff;
+    }
+
+    .submit-row .decline-button:focus,
+    .submit-row .decline-button:hover,
+    .submit-row .decline-button:active {
+        background: #a41515;
+    }
+
+    .submit-row .decline-button-outlined {
+        display: block;
+        border: 1px solid #ba2121;
+        background: #f8f8f8;
+        border-radius: 4px;
+        padding: 10px 15px;
+        line-height: 15px;
+        color: #ba2121;
+    }
+
+    .submit-row .decline-button-outlined:focus,
+    .submit-row .decline-button-outlined:hover,
+    .submit-row .decline-button-outlined:active {
+        background: #ba2121;
+        color: #f8f8f8;
+    }
+
+    .submit-row .decline-button-outlined:after {
+        content: "\23F7";
+        margin-left: 10px;
+        margin-right: 0px;
+        display: inline-block;
+    }
+
+    .show:after {
+        transform: rotate(180deg);
+    }
+
+    .accordion {
+        transition: 0.4s;
+    }
+
+    .additional-infos {
+        margin-left: 25px;
+        margin-bottom: 10px;
+        overflow: hidden;
+        display: none;
+    }
+
+    .float-right {
+        float: right;
+        margin: 0;
+    }
+
+    .submit-row .accept-button {
+        display: block;
+        background: #198754;
+        border-radius: 4px;
+        padding: 10px 15px;
+        line-height: 15px;
+        color: #fff;
+    }
+
+    .submit-row .accept-button:focus,
+    .submit-row .accept-button:hover,
+    .submit-row .accept-button:active {
+        background: #157347;
+    }
+</style>
+
+{% extends 'admin/change_form.html' %}
+
+{% block submit_buttons_bottom %}
+<div class="submit-row">
+    <div class="float-left">
+        <a class="decline-button-outlined accordion" type="button">DECLINAR SUGESTÃO</a>
+    </div>
+    <div class="float-right">
+        <input class="accept-button" type="submit" name="accept-suggestion" value="ACEITAR SUGESTÃO">
+    </div>
+</div>
+
+<div class="additional-infos">
+    <fieldset class="module aligned">
+        <div class="form-row">
+            <label for="decline-reasons">Motivos da rejeição:</label>
+            <textarea
+                placeholder="Se achar necessário, forneça informações dos motivos que levaram a rejeição da sugestão"
+                id="decline-reasons" name="decline-reasons" class="vLargeTextField" rows="5"></textarea>
+        </div>
+        <div class="submit-row" style="margin-top: 10px;">
+            <div class="float-right">
+                <input class="decline-button" type="submit" name="decline-suggestion" value="DECLINAR">
+            </div>
+        </div>
+    </fieldset>
+</div>
+{{ block.super }}
+
+<script>
+    document.getElementsByClassName("accordion")[0].addEventListener("click", function () {
+        var panel = document.getElementsByClassName("additional-infos")[0]
+        if (panel.style.display === "block") {
+            panel.style.display = "none"
+            this.classList.remove("show")
+        } else {
+            panel.style.display = "block"
+            this.classList.add("show")
+        }
+    })
+
+</script>
+{% endblock %}

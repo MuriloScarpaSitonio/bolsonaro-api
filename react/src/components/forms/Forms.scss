@@ -1,0 +1,35 @@
+@import '../../styles/_themes';
+
+
+.error__message {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.8em;
+  color: $error--color;
+}
+
+.submission-error .modal-content {
+  border: 2px solid $error--color;
+  box-shadow: 0 0 0 0.5rem $error--shadow--color;
+}
+
+label {
+  @include themed() {
+    color: t($text-color)
+  }
+}
+
+input.form-control, textarea.form-control {
+  @extend label;
+  @include themed() {
+    background:  t($background-input-color)
+  }
+}
+
+select.form-control, .form-control::placeholder {
+  @extend input.form-control;
+  @include themed() {
+    color: t($custom-link-color)
+  }
+}
+

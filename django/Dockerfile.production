@@ -1,0 +1,15 @@
+FROM python:3.9-alpine
+
+RUN apk add --update --no-cache postgresql-client jpeg-dev
+RUN apk add --update --no-cache --virtual .tmp-build-deps \ 
+    gcc libc-dev linux-headers postgresql-dev musl-dev zlib zlib-dev
+
+WORKDIR /app/django
+COPY . .
+RUN pip install -r requirements/production.txt
+RUN apk del .tmp-build-deps
+
+COPY ./entrypoint.sh /app/django/entrypoint.sh
+
+RUN chmod +x /app/django/entrypoint.sh
+ENTRYPOINT ["/app/django/entrypoint.sh"]

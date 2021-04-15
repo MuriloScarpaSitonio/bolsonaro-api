@@ -1,0 +1,48 @@
+@import '../../styles/_themes';
+@import '../../styles/_fonts';
+
+
+.entities__list {
+  font-family: $font-family-primary;
+  font-style: italic;
+}
+
+.entities__list .quotes,
+.entities__list .actions {
+  text-align: left;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+
+  @include themed() {
+    border-left: t($border-left);
+    background:  t($background-secondary-color)
+  }
+}
+
+.entities__list .quotes:before {
+  content: "\201C";
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+
+  @include themed() {
+    color: t($text-secondary-color)
+  }
+}
+
+.entities__list .quotes footer,
+.entities__list .actions footer {
+  margin: 0;
+  padding: 0;
+
+  @include themed() {
+    color: t($custom-link-color)
+  }
+}
+
+.entities__list .quotes p,
+.entities__list .actions p {
+  display: inline;
+  font-size: 1.2em;
+}

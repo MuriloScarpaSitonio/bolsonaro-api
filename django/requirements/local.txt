@@ -1,0 +1,13 @@
+-r base.txt
+
+bandit==1.7.0
+black==20.8b1
+factory-boy==3.2.0
+mypy==0.812
+pylint-django==2.4.2
+pylint-runner==0.6.0
+pytest-cov==2.11.1
+pytest-django==4.1.0
+pytest-mock==3.5.1
+pytest-sugar==0.9.4
+pytest-xdist==2.2.1

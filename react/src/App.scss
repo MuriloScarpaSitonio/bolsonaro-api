@@ -1,0 +1,47 @@
+@import './styles/_themes';
+@import './styles/_fonts';
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-secondary;
+  
+  @include themed() {
+    color: t($title-color)
+  }
+} 
+
+p {
+  font-family: $font-family-primary;
+
+  @include themed() {
+    color: t($text-color)
+  }
+}
+
+hr, .nav-tabs {
+  @include themed() {
+    border-color: t($text-secondary-color)
+  }
+}
+
+.base {
+  height: 100%;
+  width: 100%;
+  
+  @include themed() {
+    background-color: t($background-color)
+  }
+}
+
+
+
+@media (min-width: 1200px) {
+  .container {
+    @include themed() {
+      max-width: 750px;
+      background-color: t($background-color)
+    }
+  }
+}
+
+@import "~bootstrap/scss/bootstrap.scss";

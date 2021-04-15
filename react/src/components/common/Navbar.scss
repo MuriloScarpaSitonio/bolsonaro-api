@@ -1,0 +1,134 @@
+@import '../../styles/_themes';
+
+
+.custom-navbar {
+  transition: transform 0.5s ease-in-out;
+  
+  @include themed() {
+    background-color: t($background-color);
+    border-bottom: t($border)
+  }
+}
+
+.overlay {
+  position: fixed;
+  height: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out, height 0.4s ease-in-out;
+  -webkit-transition: opacity 0.4s ease-in-out, height 0.4s ease-in-out;
+
+  @include themed() {
+    background-color: t($background-color)
+  }
+}
+
+.custom-navbar__icon {	
+	@include themed() {
+		color: t($custom-link-color)
+	  }
+}
+
+.custom-navbar__icon:hover {
+  @include themed() {
+		color: t($text-color)
+	  }
+}
+
+
+#custom-navbar__input-group {
+  width: 90%;
+}
+
+#custom-navbar__search-input {
+  width: 45%;
+}
+
+#custom-navbar__search-icon {
+  @include themed() {
+    font-size: 17px;
+  }
+}
+
+#custom-navbar__search-button {
+  @include themed() {
+    margin-left: -190px;
+  }
+}
+
+#custom-navbar__form-container {
+  width: 100%;
+  text-align: center;
+}
+
+#toggler {
+  border: none;
+  outline: none;
+}
+
+
+@media (max-width: 768px) {
+  #custom-navbar__search-input {
+    @include themed() {
+      width: 20%;
+    }
+  }
+}
+
+
+@media (max-width: 571px) {
+  #custom-navbar__search-input {
+    @include themed() {
+      width: 5%;
+    }
+  }
+
+  #custom-navbar__search-icon, #custom-navbar__search-button {
+    @include themed() {
+      display: none
+    }
+  }
+
+  #custom-navbar__form-container {
+    @include themed() {
+      margin-left: -20px;
+      width: 100%;
+    }
+  }
+
+  .navbar .collapsing {
+    @include themed() {
+      position: absolute !important;
+      z-index: 3;
+      width: 100%;
+      top: 75px;
+    }
+  }
+
+  .navbar .collapse.show {
+    @include themed() {
+      display: block;
+      position: absolute;
+      z-index: 3;
+      width: 100%;
+      top: 75px;
+    }
+  }
+
+  .navbar.open {
+    @include themed() {
+      transform: translate(0, 0)
+    }
+  }
+
+  .overlay.open {
+    @include themed() {
+      height: 100%;
+      opacity: 1;
+    }
+  }
+
+}

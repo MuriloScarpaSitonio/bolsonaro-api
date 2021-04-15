@@ -1,0 +1,1147 @@
+[
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "24/12/2020",
+    "description": "Nomeação de criacionista para presidência da CAPES.",
+    "source": "https://g1.globo.com/educacao/noticia/2020/01/30/novo-presidente-da-capes-diz-que-vai-priorizar-solucoes-de-problemas-nacionais-em-sua-gestao.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Coronavírus"],
+    "date": "15/11/2020",
+    "description": "Passeio, sem máscara e com aglomeração, pela Zona Norte do Rio.",
+    "source": "https://g1.globo.com/rj/rio-de-janeiro/eleicoes/2020/noticia/2020/11/15/bolsonaro-chega-para-votar-na-vila-militar-no-rio.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Ação ocorreu em meio a pandemia de coronavírus."
+  },
+  {
+    "tags": ["Anvisa"],
+    "date": "12/11/2020",
+    "description": "Indicação de um tenente-coronel parar cargo de diretor da Anvisa.",
+    "source": "https://g1.globo.com/politica/noticia/2020/11/12/bolsonaro-indica-tenente-coronel-para-cargo-de-diretor-da-anvisa.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Mais uma indicação técnica sendo tratada politicamente."
+  },
+  {
+    "tags": ["Anticiência", "Coronavírus"],
+    "date": "10/11/2020",
+    "description": "A suspensão dos testes da vacina CoronaVac.",
+    "source": "https://g1.globo.com/politica/noticia/2020/11/10/mais-uma-que-jair-bolsonaro-ganha-diz-o-presidente-ao-comentar-suspensao-de-testes-da-vacina-coronavac.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Ao interferir politicamente nos testes, Bolsonaro evoca seu perfil anticientífico e só contribui para o prolongamento da produção de uma vacina eficaz."
+  },
+  {
+    "tags": ["Ministério do Meio Ambiente"],
+    "date": "10/11/2020",
+    "description": "Associação entre ONGs e crimes ambientais no plano estratégico do Conselho da Amazônia.",
+    "source": "https://veja.abril.com.br/blog/matheus-leitao/plano-estrategico-do-conselho-da-amazonia-associa-ongs-a-crimes-ambientais/",
+    "date_is_estimated": false,
+    "additional_infos": "Proposta de regulação das ONGs está inserido em categoria sobre ampliação da presença do Estado para reduzir crimes ambientais."
+  },
+  {
+    "tags": ["Coronavírus"],
+    "date": "09/11/2020",
+    "description": "Aglomeração, em meio a pandemia de coronavírus, na formatura dos agentes da Polícia Rodoviária Federal.",
+    "source": "https://g1.globo.com/sc/santa-catarina/noticia/2020/11/09/vigilancia-sanitaria-de-florianopolis-vai-investigar-aglomeracoes-em-evento-com-a-presenca-de-bolsonaro.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "A Vigilância Sanitária abriu investigação."
+  },
+  {
+    "tags": ["Coronavírus"],
+    "date": "31/10/2020",
+    "description": "Passeio, sem máscara, pelo litoral paulista.",
+    "source": "https://g1.globo.com/sp/santos-regiao/noticia/2020/10/31/bolsonaro-faz-passeio-de-moto-e-conversa-com-populacao-no-litoral-paulista.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Ação ocorreu em meio a pandemia de coronavírus."
+  },
+  {
+    "tags": ["Ministério da Economia", "Ministério da Saúde"],
+    "date": "28/10/2020",
+    "description": "Inclusão de unidades básicas do SUS em programa de privatização.",
+    "source": "https://g1.globo.com/politica/noticia/2020/10/28/ministerio-da-saude-pediu-inclusao-de-unidades-basicas-em-programa-de-privatizacao-diz-economia.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Depois, o presidente revogou a medida."
+  },
+  {
+    "tags": ["Coronavírus"],
+    "date": "25/10/2020",
+    "description": "Sem máscara, Bolsonaro causa aglomeração ao visitar uma feira no DF.",
+    "source": "https://g1.globo.com/economia/noticia/2020/10/25/bolsonaro-se-irrita-ao-ser-abordado-sobre-preco-alto-do-arroz.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Ação ocorreu em meio a pandemia de coronavírus."
+  },
+  {
+    "tags": [
+      "Ministério da Ciência, Tecnologia e Inovações",
+      "Ministério do Meio Ambiente"
+    ],
+    "date": "22/10/2020",
+    "description": "Recolhimento de brigadas de incêndios florestais.",
+    "source": "https://g1.globo.com/natureza/noticia/2020/10/22/ibama-determina-recolhimento-de-brigadas-de-combate-a-incendios.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Decisão ocorreu em meio a seca histórica no Pantanal. O ibama alegou \"indisponibilidade financeira\"."
+  },
+  {
+    "tags": ["Coronavírus"],
+    "date": "20/09/2020",
+    "description": "Sem máscara, Bolsonaro vai a churrasco com aglomeração.",
+    "source": "https://g1.globo.com/politica/noticia/2020/09/20/sem-mascara-bolsonaro-vai-a-churrasco-com-aglomeracao-em-brasilia.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Ato contraria recomendações de autoridades sanitárias para que as pessoas mantenham distanciamento social e usem máscara a fim de tentar conter o contágio do novo coronavírus."
+  },
+  {
+    "tags": ["Ministério da Cultura"],
+    "date": "15/09/2020",
+    "description": "Nomeação de dentista para o cargo de chefe do Centro Técnico Audiovisual.",
+    "source": "https://g1.globo.com/rj/rio-de-janeiro/noticia/2020/10/29/justica-anula-nomeacao-de-dentista-para-cargo-de-chefia-em-orgao-da-cultura-no-governo-federal.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Depois, justiça anulou a nomeação."
+  },
+  {
+    "tags": ["Ministério da Economia"],
+    "date": "01/08/2020",
+    "description": "A tentativa de implementação do Renda Brasil, mesmo após críticas ferrenhas ao Bolsa Família.",
+    "source": "https://www.agazeta.com.br/es/politica/de-critico-a-defensor-do-bolsa-familia-veja-frases-de-bolsonaro-0820",
+    "date_is_estimated": true,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Anticiência", "Coronavírus", "Ministério da Saúde"],
+    "date": "03/07/2020",
+    "description": "Veto ao uso obrigatório de máscaras, em meio a pandemia de coronavírus.",
+    "source": "https://g1.globo.com/politica/noticia/2020/07/03/bolsonaro-sanciona-com-vetos-lei-que-obriga-uso-de-mascaras-em-locais-publicos-pelo-pais.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "O presidente vetou a obrigatoriedade de máscaras em órgãos e entidades públicas, estabelecimentos comerciais, industriais, templos religiosos e demais locais fechados em que haja reunião de pessoas."
+  },
+  {
+    "tags": ["Coronavírus"],
+    "date": "08/05/2020",
+    "description": "A divulgação, apenas obrigatória, dos primeiros testes de coronovírus.",
+    "source": "https://g1.globo.com/sp/sao-paulo/noticia/2020/05/08/justica-manda-uniao-cumprir-decisao-que-obrigou-jair-bolsonaro-a-entregar-exames-medicos.ghtml",
+    "date_is_estimated": true,
+    "additional_infos": "Presidente se recusou a mostrar os testes, embora afirmasse que os resultados tinham sido negativos. Ainda sem apresentá-los, ele causou aglomeração."
+  },
+  {
+    "tags": ["Antidemocracia", "Coronavírus"],
+    "date": "03/05/2020",
+    "description": "Participação em manifestações antidemocráticas.",
+    "source": "https://g1.globo.com/politica/noticia/2020/05/03/politicos-reagem-a-nova-participacao-de-bolsonaro-em-ato-antidemocratico.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Manifestações geraram aglomeração em meio a pandemia de coronavírus."
+  },
+  {
+    "tags": ["Censura", "Ministério da Educação"],
+    "date": "28/04/2020",
+    "description": "O incentivo a filmagem dos professores em sala de aula.",
+    "source": "https://istoe.com.br/ministro-da-educacao-diz-que-filmar-professores-em-aula-e-direito-dos-alunos/",
+    "date_is_estimated": false,
+    "additional_infos": "Declaração foi feita pelo então ministro da educação logo após o presidente ter compartilhado vídeo nas redes sociais em que aluna questiona professora acerca de críticas contra o governo Bolsonaro, o movimento Escola Sem Partido e Olavo de Carvalho."
+  },
+  {
+    "tags": ["Desinformação"],
+    "date": "01/04/2020",
+    "description": "Publicação de vídeo fake sobre desabastecimento na Ceasa-MG.",
+    "source": "https://g1.globo.com/politica/noticia/2020/04/01/bolsonaro-se-desculpa-por-ter-publicado-video-fake-sobre-desabastecimento-na-ceasa-mg.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Depois, o presidente desculpou-se."
+  },
+  {
+    "tags": ["Anticiência", "Coronavírus"],
+    "date": "24/03/2020",
+    "description": "Pronunciamento atacando o isolamento social durante a pandemia de coronavírus.",
+    "source": "https://g1.globo.com/politica/noticia/2020/03/24/bolsonaro-pede-na-tv-volta-a-normalidade-e-fim-do-confinamento-em-massa.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério do Meio Ambiente"],
+    "date": "26/02/2020",
+    "description": "Demissão de funcionários do alto escalão que atuam no combate às mudanças climáticas.",
+    "source": "https://g1.globo.com/natureza/noticia/2020/02/28/ministerio-do-meio-ambiente-demite-principais-autoridades-de-combate-a-mudanca-climatica.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Desinformação", "Falta de decoro", "Transparência"],
+    "date": "25/02/2020",
+    "description": "Compartilhamento de vídeo convocando a população para ato contra o Congresso Nacional e o STF.",
+    "source": "https://oglobo.globo.com/brasil/apos-compartilhar-video-sobre-ato-contra-congresso-bolsonaro-diz-que-mensagens-trocadas-no-celular-sao-de-cunho-pessoal-2-24272441",
+    "date_is_estimated": false,
+    "additional_infos": "Primeiro o presidente negou, mas depois assumiu."
+  },
+  {
+    "tags": ["Incra"],
+    "date": "20/02/2020",
+    "description": "Extinção de programas de incentivo a assentados, quilombolas e comunidades extrativistas.",
+    "source": "http://www.in.gov.br/web/dou/-/decreto-n-10.252-de-20-de-fevereiro-de-2020-244585036",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério do Meio Ambiente"],
+    "date": "11/02/2020",
+    "description": "Exclusão de parte de sociedade civil da Comissão Nacional de Biodiversidade.",
+    "source": "http://www.in.gov.br/web/dou/-/decreto-n-10.235-de-11-de-fevereiro-de-2020-242820163",
+    "date_is_estimated": false,
+    "additional_infos": "A medida remove conselheiros representantes de trabalhadores, pescadores e comunidades indígenas. Representantes da Confederação Nacional da Agricultura e da Confederação Nacional da Indústria foram mantidos como integrantes da comissão."
+  },
+  {
+    "tags": ["Funai", "Ibama", "Ministério do Meio Ambiente"],
+    "date": "11/02/2020",
+    "description": "Exclusão de sociedade civil e órgãos ambientais do Conselho Nacional da Amazônia Legal.",
+    "source": "https://noticias.uol.com.br/colunas/rubens-valente/2020/04/18/conselho-amazonia-mourao.htm",
+    "date_is_estimated": false,
+    "additional_infos": "O decreto exclui o Ministério do Meio Ambiente, Governadores, Ibama, Funai e passa a contar com 19 militares das Forças Armadas e 4 delegados da Polícia Federal."
+  },
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "06/02/2020",
+    "description": "Exclusão da sociedade civil do Conselho Permanente para o Reconhecimento de Saberes e Competências.",
+    "source": "https://www.in.gov.br/en/web/dou/-/portaria-n-207-de-6-de-fevereiro-de-2020-242078551",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério do Meio Ambiente"],
+    "date": "05/02/2020",
+    "description": "Exclusão de sociedade civil de conselho do Fundo Nacional do Meio Ambiente.",
+    "source": "https://www.in.gov.br/en/web/dou/-/decreto-n-10.224-de-5-de-fevereiro-de-2020-241828488",
+    "date_is_estimated": false,
+    "additional_infos": "O conselho fica com 6 cadeiras, todas pertencentes à representantes federais."
+  },
+  {
+    "tags": ["Ministério da Agricultura", "Ministério do Meio Ambiente"],
+    "date": "05/02/2020",
+    "description": "Projeto que prevê regulamentação de atividades extrativistas, agropecuárias e de geração de energia em terras indígenas.",
+    "source": "https://www.em.com.br/app/noticia/internacional/2020/02/05/interna_internacional,1119826/bolsonaro-envia-ao-congresso-projeto-de-lei-que-preve-mineracao-em-ter.shtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["ICMBio"],
+    "date": "04/02/2020",
+    "description": "Liberação de pesca esportiva em unidades de conservação, terras indígenas e quilombos.",
+    "source": "https://www.in.gov.br/en/web/dou/-/portaria-n-91-de-4-de-fevereiro-de-2020-241574956",
+    "date_is_estimated": false,
+    "additional_infos": "Ficam permitidas também atividades em reservas extrativistas, florestas nacionais e reservas de desenvolvimento sustentável."
+  },
+  {
+    "tags": ["Censura"],
+    "date": "03/02/2020",
+    "description": "Quebra do princípio da impessoalidade por parte do Secom.",
+    "source": "https://www1.folha.uol.com.br/ilustrada/2020/02/governo-ataca-a-ativista-anti-brasil-petra-costa-no-twitter.shtml",
+    "date_is_estimated": false,
+    "additional_infos": "Órgão atacou a cineasta Petra Costa, indicada ao Oscar de melhor documentário por ‘Democracia em Vertigem’."
+  },
+  {
+    "tags": [
+      "Ministério da Mulher, Família e Direitos Humanos",
+      "Ministério da Saúde"
+    ],
+    "date": "03/02/2020",
+    "description": "Realização de campanha que promove a abstinência sexual entre jovens.",
+    "source": "https://www.poder360.com.br/governo/ministra-damares-lanca-campanha-para-evitar-gravidez-na-adolescencia/",
+    "date_is_estimated": false,
+    "additional_infos": "A política com o logo ‘tudo tem seu tempo’, estimula o adiamento das relações sexuais e ocorre no mesmo período em que que o Ministério da Saúde interrompe a distribuição da caderneta do adolescente nas unidades básicas de saúde, documento com informações sobre puberdade e sexo seguro."
+  },
+  {
+    "tags": ["Funai", "Ministério da Justiça e Segurança Pública"],
+    "date": "03/02/2020",
+    "description": "Nomeação de ex-missionário evangélico para cargo de coordenador geral de índios isolados da Funai.",
+    "source": "https://www.in.gov.br/en/web/dou/-/portaria-n-151-de-3-de-fevereiro-de-2020-241582173",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Censura"],
+    "date": "21/01/2020",
+    "description": "Denúncia de Glenn Greenwald sem prévia investigação.",
+    "source": "https://download.uol.com.br/files/2020/01/919532689_20200121-denuncia-mpf-scooping.pdf",
+    "date_is_estimated": false,
+    "additional_infos": "Decisão contrariu o STF e, posteriormente, enviou carta à ONU confirmando a ausência de crimes do jornalista."
+  },
+  {
+    "tags": ["Ministério da Cultura"],
+    "date": "16/01/2020",
+    "description": "As referências ao nazismo do Secretário nacional da Cultura.",
+    "source": "https://g1.globo.com/politica/noticia/2020/01/17/secretario-nacional-da-cultura-roberto-alvim-faz-discurso-sobre-artes-semelhante-ao-de-ministro-da-propaganda-de-hitler.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Corrupção"],
+    "date": "15/01/2020",
+    "description": "Suposto recebimento de propina, pelo chefe da Secom, de emissoras contratadas pelo governo por meio de empresa em que é sócio.",
+    "source": "https://www1.folha.uol.com.br/poder/2020/01/chefe-da-secom-recebe-dinheiro-de-emissoras-e-agencias-contratadas-pelo-governo-bolsonaro.shtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Mulher, Família e Direitos Humanos"],
+    "date": "14/01/2020",
+    "description": "O novo Regimento Interno da Comissão Especial sobre Mortos e Desaparecidos Políticos.",
+    "source": "https://www.in.gov.br/en/web/dou/-/resolucao-n-4-de-14-de-janeiro-de-2020-238315255",
+    "date_is_estimated": false,
+    "additional_infos": "Na nova redação, o art. 2 do regimento prevê que a composição dos sete membros da Comissão será designada por escolha do Presidente da República, sendo quatro pertencentes a órgãos pré-estabelecidos e três de livre escolha. A nova regra elimina a obrigatoriedade anterior de que entre os escolhidos estejam pessoas \"de reconhecida atuação na temática, objeto de sua atuação e com compromisso com a defesa de princípios fundamentais da pessoa humana\"."
+  },
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "09/01/2020",
+    "description": "Retirada do tema \"violência contra a mulher\" dos editais dos livros do MEC.",
+    "source": "https://www1.folha.uol.com.br/educacao/2019/01/gestao-bolsonaro-retira-violencia-contra-mulher-e-quilombo-de-edital-de-livros.shtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Mulher, Família e Direitos Humanos"],
+    "date": "09/01/2020",
+    "description": "Críticas da ministra da Mulher, Família e Direitos Humanos, Damares Alves, sobre o fato de que a igreja teria perdido espaço nas escolas para a ciência.",
+    "source": "https://www.youtube.com/watch?v=ImgJ5c6-ock",
+    "date_is_estimated": true,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "02/01/2020",
+    "description": "Extinção de secretaria do MEC responsável por ações de diversidade e inclusão.",
+    "source": "https://www1.folha.uol.com.br/educacao/2019/01/velez-desmonta-secretaria-de-diversidade-e-cria-nova-subpasta-de-alfabetizacao.shtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério do Meio Ambiente"],
+    "date": "01/01/2020",
+    "description": "Desmonte ao processo de cobrança de multas ambientais.",
+    "source": "https://g1.globo.com/natureza/noticia/2020/10/22/partidos-entram-com-acao-no-stf-contra-decreto-de-bolsonaro-que-desmontou-processo-de-cobranca-de-multas-ambientais.ghtml",
+    "date_is_estimated": true,
+    "additional_infos": "Dos mais de 7 mil processos a serem julgados desde 2019, aconteceram apenas 5 audiências."
+  },
+  {
+    "tags": ["Ministério do Meio Ambiente"],
+    "date": "01/01/2020",
+    "description": "A paralisação de R$ 2,9 bilhões em recursos do Fundo Amazônia.",
+    "source": "https://g1.globo.com/natureza/noticia/2020/10/26/fundo-amazonia-tem-r-29-bilhoes-em-conta-parados-apos-paralisacao-pelo-governo-bolsonaro-alerta-rede-de-organizacoes.ghtml",
+    "date_is_estimated": true,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Censura"],
+    "date": "31/12/2019",
+    "description": "Os 116 ataques a imprensa em 2019.",
+    "source": "https://fenaj.org.br/ano-se-encerra-com-116-ataques-de-bolsonaro-a-imprensa/",
+    "date_is_estimated": true,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Censura"],
+    "date": "23/12/2019",
+    "description": "O sigilo de todos os relatórios de monitoramento de redes sociais do Planalto.",
+    "source": "https://politica.estadao.com.br/blogs/fausto-macedo/governo-bolsonaro-usa-lei-de-direitos-autorais-para-colocar-relatorios-de-redes-sociais-sob-sigilo/",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Defesa"],
+    "date": "23/12/2019",
+    "description": "Perdão da pena de agentes de segurança pública condenados por crimes culposos no exercício da profissão.",
+    "source": "https://g1.globo.com/politica/noticia/2019/12/23/bolsonaro-assina-indulto-de-natal-com-perdao-da-pena-de-policiais-condenados-por-crimes-culposos.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Censura"],
+    "date": "13/12/2019",
+    "description": "Pressão de servidores da ABIN contra agentes brasileiros na COP-25.",
+    "source": "https://politica.estadao.com.br/noticias/geral,governo-escalou-abin-em-evento-climatico-da-onu,70003471332",
+    "date_is_estimated": false,
+    "additional_infos": "Ação sem precedentes tinha o objetivo de  \"captar as críticas ao governo Bolsonaro\" para \"defender os interesses do País\"."
+  },
+  {
+    "tags": ["Incra"],
+    "date": "10/12/2019",
+    "description": "Edição de medida provisória que estimula a grilagem.",
+    "source": "https://g1.globo.com/economia/agronegocios/noticia/2019/12/12/especialistas-temem-que-mp-da-regularizacao-fundiaria-de-brecha-para-legalizar-grileiros-na-amazonia.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "A medida aumenta a área das terras para as quais o suposto proprietário pode declarar sua posse sem a necessidade de vistoria prévia do Incra. A MP também unifica as legislações sobre o tema, amplia a gratuidade no processo de regularização fundiária e permite que o agricultor utilize o imóvel como garantia de pagamento desse processo. Ambientalistas criticam a medida, pois promove a anistia de ‘quem praticou crime de invasão de terra pública’, facilitando a grilagem. Por meio de nota, o Ministério Público Federal afirma que a MP é inconstitucional, regulariza o desmatamento ilegal."
+  },
+  {
+    "tags": ["Ministério da Cultura"],
+    "date": "02/12/2019",
+    "description": "Nomeação de presidente olavista à Biblioteca Nacional.",
+    "source": "https://www1.folha.uol.com.br/ilustrada/2019/12/governo-bolsonaro-nomeia-novos-presidentes-para-funarte-e-biblioteca-nacional.shtml",
+    "date_is_estimated": false,
+    "additional_infos": "Rafael Nogueira afirma que 'Olavo de Carvalho nos ajuda a pensar com liberdade' e associou Caetano Veloso, Gabriel Pensador e Legião Urbana ao analfabetismo."
+  },
+  {
+    "tags": ["Ministério da Cultura"],
+    "date": "02/12/2019",
+    "description": "Nomeação de presidente conspiracionista para a Fundação Nacional de Artes.",
+    "source": "https://g1.globo.com/pop-arte/noticia/2019/12/02/dante-mantovani-novo-presidente-da-funarte-e-maestro-e-disse-que-rock-leva-ao-aborto-e-ao-satanismo.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Temos inúmeras declarações insanas, mas destaco: 'O rock ativa a droga que ativa o sexo que ativa a indústria do aborto. A indústria do aborto por sua vez alimenta uma coisa muito mais pesada que é o satanismo\"."
+  },
+  {
+    "tags": ["Censura"],
+    "date": "28/11/2019",
+    "description": "Exclusão do jornal Folha de São Paulo do edital do pregão eletrônico do governo federal.",
+    "source": "https://exame.com/brasil/bolsonaro-cancela-assinaturas-da-folha-e-ameaca-anunciantes/",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério do Meio Ambiente"],
+    "date": "28/11/2019",
+    "description": "Exclusão da participação da sociedade civil da Comissão Executiva para Controle do Desmatamento Ilegal e Recuperação da Vegetação Nativa (Conaveg).",
+    "source": "https://www.in.gov.br/en/web/dou/-/decreto-n-10.142-de-28-de-novembro-de-2019-230458693",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério do Turismo"],
+    "date": "27/11/2019",
+    "description": "A nomeação de Sérgio Camargo à presidência da Fundação Palmares.",
+    "source": "https://entretenimento.uol.com.br/noticias/redacao/2019/11/27/novo-presidente-da-fundacao-palmares-nega-racismo-e-ataca-negros-famosos.htm",
+    "date_is_estimated": false,
+    "additional_infos": "Camargo, militante bolsonarista, tem postagens afirmando que ‘sente vergonha e asco da negrada militante’ e que não haveria racismo verdadeiro no Brasil."
+  },
+  {
+    "tags": ["Ministério da Mulher, Família e Direitos Humanos"],
+    "date": "26/11/2019",
+    "description": "As 36 violações do governo federal ao Plano Nacional de Direitos Humanos.",
+    "source": "https://epoca.globo.com/sociedade/acoes-do-governo-bolsonaro-violaram-direitos-humanos-aponta-mapeamento-24151190",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Falta de decoro"],
+    "date": "20/11/2019",
+    "description": "A ausência de cerimônia para celebrar o dia da Consciência Negra.",
+    "source": "https://www1.folha.uol.com.br/poder/2019/11/planalto-ignora-consciencia-negra-e-bolsonaro-se-nega-a-comentar-destruicao-de-placa.shtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": [
+      "Ministério da Educação",
+      "Ministério da Mulher, Família e Direitos Humanos"
+    ],
+    "date": "19/11/2019",
+    "description": "Criação de canal para recebimento de denúncias sobre conteúdos \"contra a moral, a religião e a ética da família\" em ambientes escolares.",
+    "source": "https://g1.globo.com/jornal-nacional/noticia/2019/11/20/governo-cria-canal-para-denuncias-sobre-ocorrencias-em-escolas.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Proposta é vista como uma violação da autonomia institucional e pode impactar nos repasses da União para munícipios que não se alinharem ideologicamente com o governo."
+  },
+  {
+    "tags": ["Ministério da Justiça e Segurança Pública"],
+    "date": "19/11/2019",
+    "description": "Exclusão da sociedade civil do Conselho Nacional de Políticas sobre Drogas.",
+    "source": "http://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/D9926.htm",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ibama"],
+    "date": "14/11/2019",
+    "description": "Flexibilização de norma sobre multas para quem compra madeira ilegal.",
+    "source": "https://climainfo.org.br/2019/11/22/governo-flexibiliza-norma-sobre-multas-para-quem-compra-madeira-ilegal/",
+    "date_is_estimated": false,
+    "additional_infos": "O documento assinado pelo presidente do Ibama, retira a possibilidade de aplicação de multas para empresas que compram madeiras acompanhadas de Documento de Origem Florestal fraudulentos e que estavam sujeitas a multas e outras punições até então."
+  },
+  {
+    "tags": ["Ministério da Cidadania", "Ministério do Turismo"],
+    "date": "06/11/2019",
+    "description": "Transferência de diversas áreas da cultura do Ministério da Cidadania para o Ministério do Turismo.",
+    "source": "https://www.in.gov.br/en/web/dou/-/decreto-n-10.107-de-6-de-novembro-de-2019-226515233",
+    "date_is_estimated": false,
+    "additional_infos": "A mudança é vista como \"revanchismo\" do governo federal em relação à classe artística. Especialistas também afirmam que a medida pode dificultar a captação de recursos para a área cultural, além de lançar dúvidas sobre questões orçamentárias para o órgão."
+  },
+  {
+    "tags": ["Ministério da Agricultura", "Ministério do Meio Ambiente"],
+    "date": "05/11/2019",
+    "description": "Revogação do decreto que impedia expansão do plantio de cana-de-açúcar na Amazônia e em Terras Indígenas.",
+    "source": "http://www.planalto.gov.br/ccivil_03/_Ato2019-2022/2019/Decreto/D10084.htm",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Censura", "Ministério da Cidadania"],
+    "date": "04/11/2019",
+    "description": "Exoneração do presidente da Funarte.",
+    "source": "https://www.metropoles.com/brasil/apos-nove-meses-presidente-da-funarte-e-exonerado-do-cargo",
+    "date_is_estimated": false,
+    "additional_infos": "Após críticas do presidente as falas e Roberto Alvim sobre Fernanda Montenegro."
+  },
+  {
+    "tags": ["Procuradoria Geral da República"],
+    "date": "29/10/2019",
+    "description": "Pedido de arquivamento de ação para indenização de indígenas pela construção de Itaipu durante a ditadura militar.",
+    "source": "https://www1.folha.uol.com.br/poder/2019/10/stf-arquiva-pedido-de-indenizacao-para-indios-atingidos-pela-ditadura.shtml",
+    "date_is_estimated": false,
+    "additional_infos": "Ressalte-se que o número de sobreviventes diretamente afetados à época da construção da usina se limita a 12 pessoas."
+  },
+  {
+    "tags": ["Falta de decoro", "STF"],
+    "date": "28/10/2019",
+    "description": "Publicação de vídeo satirizando o STF, OAB e outros.",
+    "source": "https://g1.globo.com/politica/noticia/2019/10/29/bolsonaro-pede-desculpas-ao-stf-e-diz-que-video-com-leao-e-hienas-foi-um-erro.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Depois, o presidente desculpou-se."
+  },
+  {
+    "tags": ["Ministério do Meio Ambiente"],
+    "date": "22/10/2019",
+    "description": "A demora de 41 para acionar o Plano Nacional de Contingência sobre vazamento de óleo no Nordeste.",
+    "source": "https://sustentabilidade.estadao.com.br/noticias/geral,salles-so-formalizou-plano-41-dias-apos-manchas-aparecerem-no-nordeste,70003059406",
+    "date_is_estimated": false,
+    "additional_infos": "A ação se tratou de uma mera formalidade, considerando que a Marinha já estava atuando, o que, para especialistas da área, é evidência que o governo sequer sabia da existência do plano."
+  },
+  {
+    "tags": ["Incra"],
+    "date": "17/10/2019",
+    "description": "Nomeação de pecuarista para presidência do Instituto Nacional de Colonização e Reforma Agrária (Incra).",
+    "source": "https://g1.globo.com/politica/noticia/2019/10/17/governo-troca-presidencia-do-incra.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Transparência"],
+    "date": "09/10/2019",
+    "description": "O compartilhamento dos dados dos cidadãos entre diversos órgãos do governo.",
+    "source": "http://www.in.gov.br/en/web/dou/-/decreto-n-10.046-de-9-de-outubro-de-2019-221056841",
+    "date_is_estimated": false,
+    "additional_infos": "O sistema prevê não apenas o compartilhamento de dados básicos, mas também de dados biométricos para reconhecimento: impressões digitais, características da face, dos olhos e da voz, bem como o modo de andar. Especialistas veem o decreto com preocupação pela ausência de transparência nas finalidades do compartilhamento dos dados pessoais. As medidas também vão na contramão da Lei Geral de Proteção de Dados (LGPD)."
+  },
+  {
+    "tags": ["Censura", "Ministério da Mulher, Família e Direitos Humanos"],
+    "date": "23/09/2019",
+    "description": "Denúncia, do Ministério Público, de uma reportagem sobre aborto.",
+    "source": "https://www1.folha.uol.com.br/cotidiano/2019/09/revista-faz-reportagem-sobre-aborto-e-e-denunciada-por-damares.shtml",
+    "date_is_estimated": false,
+    "additional_infos": "Segundo a ministra da Mulher, Família e Direitos Humanos, Damares Alves, a reportagem seria \"apologia ao crime\" e um \"absurdo\"."
+  },
+  {
+    "tags": ["Censura", "Ministério da Educação"],
+    "date": "23/09/2019",
+    "description": "Comunicado do MEC sobre ambiente escolar \"sem doutrinação\".",
+    "source": "https://educacao.estadao.com.br/noticias/geral,mec-diz-ter-enviado-oficio-a-secretarias-para-coibir-excessos-em-sala-de-aula,70003022050",
+    "date_is_estimated": false,
+    "additional_infos": "O objetivo, segundo o então ministro da educação, Abraham Weintraub, é o de coibir \"excessos\" de professores."
+  },
+  {
+    "tags": [
+      "Censura",
+      "Ministério das Relações Exteriores",
+      "Ministério do Meio Ambiente"
+    ],
+    "date": "23/09/2019",
+    "description": "Impedimento de discurso presidente do Consórcio Amazônia Legal em evento da ONU.",
+    "source": "https://www.poder360.com.br/internacional/itamaraty-atuou-para-impedir-discurso-de-governador-em-cupula-da-onu/",
+    "date_is_estimated": false,
+    "additional_infos": "Ação se deu após intervenção do ministro das Relações Exteriores, Ernesto Araújo."
+  },
+  {
+    "tags": ["Censura", "Ministério das Relações Exteriores"],
+    "date": "13/09/2019",
+    "description": "Retirada de filme sobre a vida de Chico Buarque de festival internacional.",
+    "source": "https://veja.abril.com.br/mundo/itamaraty-pede-para-tirar-filme-sobre-chico-buarque-de-festival-no-uruguai/",
+    "date_is_estimated": false,
+    "additional_infos": "Diplomacia brasileira solicita que organização do 8º Festival de Cinema do Brasil, ocorrido em Montevidéu, não exiba documentário ‘Chico: Artista Brasileiro’."
+  },
+  {
+    "tags": ["Ministério da Mulher, Família e Direitos Humanos"],
+    "date": "12/09/2019",
+    "description": "Exoneração do único conselheiro representante dos anistiados na Comissão de Anistia",
+    "source": "https://g1.globo.com/politica/blog/matheus-leitao/post/2019/10/18/damares-dispensa-conselheiro-da-comissao-de-anistia-que-representava-os-anistiados.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Conselheiro declarou que há ‘cinismo’ na atuação do órgão e que a orientação dada pela comissão é para que os pedidos sejam negados em massa."
+  },
+  {
+    "tags": ["Anticiência", "Desinformação", "Ministério do Meio Ambiente"],
+    "date": "12/09/2019",
+    "description": "Apoio a Senador negacionista das mudanças climáticas para presidência da Comissão Mista Permanente sobre Mudanças Climáticas.",
+    "source": "https://www.bbc.com/portuguese/brasil-49683893",
+    "date_is_estimated": false,
+    "additional_infos": "Para o senador Zequinha Marinho (PSC-PA), que preside a Comissão, \"a influência humana é muito pequena\"."
+  },
+  {
+    "tags": ["Ibama"],
+    "date": "10/09/2019",
+    "description": "Demissão de superintende do Ibama após dizer que segue ordens para cessar a queima de equipamentos em fiscalização ambiental",
+    "source": "https://www1.folha.uol.com.br/ambiente/2019/09/apos-dizer-que-pararia-queima-de-maquinas-de-garimpo-chefe-do-ibama-no-pa-e-demitido.shtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Censura", "Ministério das Relações Exteriores"],
+    "date": "09/09/2019",
+    "description": "Censura, do Itamaraty, de informações sobre política de gênero até 2024",
+    "source": "https://jamilchade.blogosfera.uol.com.br/2019/09/09/itamaraty-censura-ate-2024-documentos-sobre-sua-postura-relativa-a-genero/",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Censura"],
+    "date": "07/09/2019",
+    "description": "Cancelamento de peça infantil com temática de repressão e ditadura da Caixa Cultural",
+    "source": "https://oglobo.globo.com/cultura/caixa-cultural-cancela-peca-infantil-sobre-repressao-minutos-antes-de-ela-comecar-23938703#:~:text=RIO%20%E2%80%94%20A%20pe%C3%A7a%20infantil%20%22Abrazo,primeira%20apresenta%C3%A7%C3%A3o%20seguida%20de%20debate",
+    "date_is_estimated": false,
+    "additional_infos": "A Caixa Cultural é um programa de centros culturais vinculados à empresa pública Caixa Econômica Federal."
+  },
+  {
+    "tags": ["Ministério da Mulher, Família e Direitos Humanos"],
+    "date": "05/09/2019",
+    "description": "Interferência no  Conselho Nacional dos Direitos da Criança e do Adolescente.",
+    "source": "https://www.in.gov.br/en/web/dou/-/decreto-n-10003-de-4-de-setembro-de-2019-214566589",
+    "date_is_estimated": false,
+    "additional_infos": "Por meio de decreto, presidente destitui representantes eleitos e reduz participação de entidades sociais no conselho."
+  },
+  {
+    "tags": ["Ministério Público Federal"],
+    "date": "05/09/2019",
+    "description": "Indicação para o cargo de procurador-geral da república fora da lista tríplice elaborada pelo MPF.",
+    "source": "https://g1.globo.com/politica/blog/matheus-leitao/post/2019/09/06/entenda-a-polemica-em-torno-da-indicacao-de-augusto-aras-para-a-pgr.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "A escolha de um nome da lista tríplice era uma \"tradição\" respeitada desde 2003, mas Bolsonaro afirma que o perfil desejado para a PGR não deve ser \"radical\" em temas ambientais e indígenas."
+  },
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "03/09/2019",
+    "description": "Projeto de lei para proibir 'ideologia de gênero' nas escolas",
+    "source": "https://www.nsctotal.com.br/noticias/bolsonaro-pede-ao-mec-projeto-de-lei-para-proibir-ideologia-de-genero-nas-escolas",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "02/09/2019",
+    "description": "Corte de bolsas de pós-graduação da Capes.",
+    "source": "https://g1.globo.com/educacao/noticia/2019/09/02/capes-deixa-de-oferecer-5613-bolsas-a-partir-deste-mes-e-preve-economia-de-r-544-milhoes-em-4-anos.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Ao todo, órgão cortou mais de 8 mil bolsas e afirmou que não voltará a oferecê-las nos próximos 4 anos."
+  },
+  {
+    "tags": ["Falta de decoro"],
+    "date": "25/08/2019",
+    "description": "Ofensas à primeira-dama francesa.",
+    "source": "https://g1.globo.com/politica/noticia/2019/08/28/apos-polemica-com-macron-bolsonaro-apaga-comentario-sobre-primeira-dama-da-franca.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Economia"],
+    "date": "20/08/2019",
+    "description": "Exoneração do presidente do Conselho de Controle de Atividades Financeiras (COAF)",
+    "source": "https://www.conjur.com.br/2019-ago-20/ligado-moro-roberto-leonel-deixa-comando-antigo-coaf",
+    "date_is_estimated": false,
+    "additional_infos": "O motivo parece ter sido as críticas feitas pelo então presidente da COAF à decisão do STF que suspendeu investigações baseadas em dados compartilhados pelo órgão, incluindo a do senador Flávio Bolsonaro."
+  },
+  {
+    "tags": ["Censura", "LGBT", "Ministério da Cultura"],
+    "date": "16/08/2019",
+    "description": "O veto a filmes com temática LGBT.",
+    "source": "https://www1.folha.uol.com.br/ilustrada/2019/08/bolsonaro-diz-que-garimpou-e-vetou-filmes-com-tematica-lgbt.shtml",
+    "date_is_estimated": true,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Mulher, Família e Direitos Humanos"],
+    "date": "16/08/2019",
+    "description": "Exclusão de diretrizes do código de respeito aos direitos humanos por empresas que fazem parcerias com o governo.",
+    "source": "https://www.in.gov.br/en/web/dou/-/portaria-n-2.070-de-16-de-agosto-de-2019-211218301",
+    "date_is_estimated": false,
+    "additional_infos": "O código buscava garantir ‘conduta mínima ética, sustentável e respeitosa aos Direitos Humanos’."
+  },
+  {
+    "tags": ["Ministério da Justiça e Segurança Pública"],
+    "date": "15/08/2019",
+    "description": "A suspensão de radares móveis nas rodovias federais",
+    "source": "https://www.in.gov.br/web/dou/-/despachos-do-presidente-da-republica-210740855",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": [
+      "Antidemocracia",
+      "Corrupção",
+      "Ministério da Justiça e Segurança Pública"
+    ],
+    "date": "15/08/2019",
+    "description": "As tentativas de troca do superintendente da polícia federal do Rio de Janeiro",
+    "source": "https://oglobo.globo.com/brasil/bolsonaro-anuncia-durante-entrevista-que-ira-trocar-superintendente-da-pf-no-rio-23879087",
+    "date_is_estimated": true,
+    "additional_infos": "Em claras tentativas de blindar sua família de investigações, Bolsonaro tentou interferir na PF diversas vezes."
+  },
+  {
+    "tags": ["Ministério da Mulher, Família e Direitos Humanos", "Tortura"],
+    "date": "06/08/2019",
+    "description": "Corte de recursos ao Mecanismo Nacional de Prevenção e Combate à Tortura.",
+    "source": "https://www1.folha.uol.com.br/cotidiano/2019/08/apos-exonerar-peritos-ministerio-corta-recursos-de-mecanismo-de-combate-a-tortura.shtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Ciência, Tecnologia e Inovações"],
+    "date": "02/08/2019",
+    "description": "Exoneração do diretor do Inpe.",
+    "source": "https://g1.globo.com/natureza/noticia/2019/08/02/serei-exonerado-diz-diretor-do-inpe.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Medida foi tomada após declaração do diretor sobre as mentiras espalhadas pelo presidente sobre os dados de queimadas na Amazônia divulgadas pelo instituto."
+  },
+  {
+    "tags": ["Falta de decoro", "Ministério do Meio Ambiente"],
+    "date": "29/07/2019",
+    "description": "A intenção de legalizar o garimpo.",
+    "source": "https://exame.com/brasil/nao-tem-nenhum-indicio-forte-que-esse-indio-foi-assassinado-diz-bolsonaro/",
+    "date_is_estimated": true,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Censura"],
+    "date": "27/07/2019",
+    "description": "Ataques ao jornalista Glenn Greenwald.",
+    "source": "https://g1.globo.com/rj/rio-de-janeiro/noticia/2019/07/27/talvez-pegue-uma-cana-aqui-no-brasil-diz-bolsonaro-sobre-glenn-greenwald.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Cidadania"],
+    "date": "18/07/2019",
+    "description": "Transferência do Conselho Superior de Cinema do Ministério da Cidadania para o controle da Casa Civil.",
+    "source": "https://www.metro1.com.br/noticias/cultura/76998,contra-ativismo-direcao-da-ancine-e-transferida-para-brasilia",
+    "date_is_estimated": false,
+    "additional_infos": "Ação reduz a participação de representantes do setor cinematográfico pela metade, de modo que o governo passa a ter a maioria na composição."
+  },
+  {
+    "tags": ["Ibama"],
+    "date": "17/07/2019",
+    "description": "Apoio a madeireiros duas semanas após caminhão do Ibama ser incendiado.",
+    "source": "https://g1.globo.com/ro/cacoal-e-zona-da-mata/noticia/2019/07/17/ministro-visita-ro-e-faz-reuniao-com-madeireiros-duas-semanas-apos-caminhao-do-ibama-ser-incendiado.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Ataque aconteceu perto da Reserva Indígena Roosevelt, no interiro de Rondônia."
+  },
+  {
+    "tags": [
+      "Ministério da Mulher, Família e Direitos Humanos",
+      "Ministério das Relações Exteriores"
+    ],
+    "date": "17/07/2019",
+    "description": "Retirada de menções ao termo LGBT em candidatura ao Conselho de Direitos Humanos da ONU.",
+    "source": "https://www.bbc.com/portuguese/brasil-48805562?ocid=socialflow_twitter",
+    "date_is_estimated": false,
+    "additional_infos": "O ministro Ernesto Araújo ainda diz tratar-se de conceitos 'abstratos'."
+  },
+  {
+    "tags": ["Funai"],
+    "date": "15/07/2019",
+    "description": "Exclusão da Funai dos processos de outorga de uso de recursos hídricos em áreas ao redor de terras indígenas.",
+    "source": "https://www.ana.gov.br/arquivos/resolucoes/2019/0043-2019_Ato_Normativo.pdf?065948",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Mulher, Família e Direitos Humanos"],
+    "date": "11/07/2019",
+    "description": "Remoção de \"tortura\", \"gênero\" e \"migração\" em documento sobre candidatura a um assento no Conselho de Direitos Humanos da ONU.",
+    "source": "https://www.conectas.org/noticias/em-candidatura-ao-conselho-de-direitos-humanos-brasil-omite-mencao-a-tortura-e-migracao",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério das Relações Exteriores"],
+    "date": "11/07/2019",
+    "description": "Possível nomeação de Eduardo Bolsonaro para a embaixada dos EUA.",
+    "source": "https://brasil.elpais.com/brasil/2019/07/12/politica/1562885183_817645.html",
+    "date_is_estimated": true,
+    "additional_infos": "Como foi visto, o filho do presidente não tinhas as competências técnicas necessárias."
+  },
+  {
+    "tags": ["Ministério das Relações Exteriores"],
+    "date": "26/06/2019",
+    "description": "Diretriz da política externa contra aborto e conceito de gênero.",
+    "source": "https://www.camara.leg.br/noticias/567468-ministro-confirma-diretriz-da-politica-externa-contra-conceito-de-genero-e-contra-aborto/",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Funai"],
+    "date": "12/06/2019",
+    "description": "Exoneração do presidente da Funai.",
+    "source": "https://www.dw.com/pt-br/presidente-da-funai-%C3%A9-exonerado/a-49145888",
+    "date_is_estimated": false,
+    "additional_infos": "O subistituto, Marcelo Xavier da Silva, é próximo a bancada ruralista."
+  },
+  {
+    "tags": ["Ministério da Mulher, Família e Direitos Humanos", "Tortura"],
+    "date": "10/06/2019",
+    "description": "Exoneração de todos os peritos do Mecanismo Nacional de Prevenção e Combate à Tortura.",
+    "source": "http://www.planalto.gov.br/ccivil_03/_Ato2019-2022/2019/Decreto/D9831.htm",
+    "date_is_estimated": false,
+    "additional_infos": "Além de prever o preenchimento dos cargos agora por voluntários, já que retira a previsão salarial, abre a possibilidade para a nomeação de novos peritos, que deve ser autorizada pelo presidente."
+  },
+  {
+    "tags": ["Ministério do Meio Ambiente"],
+    "date": "05/06/2019",
+    "description": "Classificação de atividades salineiras como essenciais.",
+    "source": "http://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/D9824.htm",
+    "date_is_estimated": false,
+    "additional_infos": "Decreto permite exploração em Áreas de Preservação Permanente, em especial os mangues do estado."
+  },
+  {
+    "tags": ["Ministério da Mulher, Família e Direitos Humanos"],
+    "date": "05/06/2019",
+    "description": "Lei que prevê internação compulsória de dependentes químicos.",
+    "source": "https://www.in.gov.br/en/web/dou/-/lei-n-13.840-de-5-de-junho-de-2019-155977997",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério do Meio Ambiente"],
+    "date": "28/05/2019",
+    "description": "Redução da sociedade civil no Conselho Nacional do Meio Ambiente.",
+    "source": "http://www.planalto.gov.br/ccivil_03/_Ato2019-2022/2019/Decreto/D9806.htm",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Saúde"],
+    "date": "17/05/2019",
+    "description": "Extinção de órgão administrativo da Secretaria Nacional de Saúde Indígena.",
+    "source": "http://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/D9795.htm",
+    "date_is_estimated": false,
+    "additional_infos": "Decreto foi estabelecido sem qualquer consulta prévia aos povos indígenas."
+  },
+  {
+    "tags": ["LGBT", "Ministério do Turismo"],
+    "date": "14/05/2019",
+    "description": "Decreto excluindo a preocupação com o turismo LGBT.",
+    "source": "https://www.in.gov.br/web/dou/-/decreto-n%c2%ba-9.791-de-14-de-maio-de-2019-98952940",
+    "date_is_estimated": false,
+    "additional_infos": "O documento exclui a estratégia de 'sensibilizar o setor para a inclusão desse grupo no turismo'."
+  },
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "14/05/2019",
+    "description": "Alteração do processo de nomeação de cargos de direção em universidades federais.",
+    "source": "http://www.planalto.gov.br/ccivil_03/_Ato2019-2022/2019/Decreto/D9794.htm",
+    "date_is_estimated": false,
+    "additional_infos": "Decreto tira o poder dos reitores e passa para a Secretaria do Governo, Casa Civil e Ministério da Educação."
+  },
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "14/05/2019",
+    "description": "Abandono do Pacto Universitário pela Promoção do Respeito à Diversidade, Cultura da Paz e Direitos Humanos.",
+    "source": "https://www1.folha.uol.com.br/educacao/2019/05/mec-abandona-pacto-de-direitos-humanos-que-envolve-333-instituicoes-de-ensino-superior.shtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "08/05/2019",
+    "description": "Corte de bolsas de pós graduação.",
+    "source": "https://www1.folha.uol.com.br/educacao/2019/05/gestao-bolsonaro-faz-corte-generalizado-em-bolsas-de-pesquisa-pelo-pais.shtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Saúde"],
+    "date": "03/05/2019",
+    "description": "Proibição do termo 'violência obstétrica'",
+    "source": "https://sei.saude.gov.br/sei/controlador_externo.php?acao=documento_conferir&codigo_verificador=9087621&codigo_crc=1A6F34C4&hash_download=c4c55cd95ede706d0b729845a5d6481d07e735f33d87d40984dd1b39a32d870fe89dcf1014bc76a32d2a28d8f0a2c5ab928ff165c67d8219e35beb1a0adb3258&visualizacao=1&id_orgao_acesso_externo=0",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério do Meio Ambiente"],
+    "date": "02/05/2019",
+    "description": "Redução de 95% do orçamento da política nacional sobre a mudança do clima.",
+    "source": "http://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/D9741.htm",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "26/04/2019",
+    "description": "Suposta 'descentralização' de investimento em faculdades de filosofia e sociologia.",
+    "source": "https://twitter.com/jairbolsonaro/status/1121713534402990081?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1121713534402990081%7Ctwgr%5E&ref_url=https%3A%2F%2Fg1.globo.com%2Feducacao%2Fnoticia%2F2019%2F04%2F26%2Fbolsonaro-diz-que-mec-estuda-descentralizar-investimento-em-cursos-de-filosofia-e-sociologia.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Segundo o presidente, o dinheiro seria colocado em áreas que 'garantam' mais retorno à sociedade."
+  },
+  {
+    "tags": ["Transparência"],
+    "date": "24/04/2019",
+    "description": "Centralização do controle da publicidade de empresas estatais.",
+    "source": "https://oglobo.globo.com/brasil/intervencao-na-publicidade-de-estatais-nao-tem-validade-diz-santos-cruz-23626122",
+    "date_is_estimated": false,
+    "additional_infos": "Todos os conteúdos devem passar por aprovação prévia da Secretaria de Comunicação Social da Presidência da República."
+  },
+  {
+    "tags": ["ICMBio"],
+    "date": "24/04/2019",
+    "description": "Exoneração de diretores do ICMBio.",
+    "source": "https://g1.globo.com/politica/blog/matheus-leitao/post/2019/04/24/diretores-do-icmbio-pedem-exoneracao-do-cargo-apos-saida-de-presidente.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Atualmente, militares ocupam os cargos."
+  },
+  {
+    "tags": ["Transparência"],
+    "date": "21/04/2019",
+    "description": "A classificação de estudos que embasam a reforma da previdência como sigilosos.",
+    "source": "https://www1.folha.uol.com.br/mercado/2019/04/governo-decreta-sigilo-sobre-estudos-que-embasam-reforma-da-previdencia.shtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ibama"],
+    "date": "20/04/2019",
+    "description": "Arquivamento de multas contra plantações de soja em área ilegal.",
+    "source": "https://www1.folha.uol.com.br/ambiente/2019/04/ibama-arquiva-processos-contra-plantacoes-de-soja-em-area-protegida.shtml?origin=folha",
+    "date_is_estimated": false,
+    "additional_infos": "Medida aconteceu sem instrução processual e análise técnica e após reunião com políticos e empresários."
+  },
+  {
+    "tags": ["Ibama"],
+    "date": "18/04/2019",
+    "description": "Exoneração de diretor de planejamento do Ibama.",
+    "source": "https://www.in.gov.br/web/dou/-/decreto-de-17-de-abril-de-2019-72128799",
+    "date_is_estimated": false,
+    "additional_infos": "Atualmente, militar ocupa o cargo."
+  },
+  {
+    "tags": ["Ibama", "ICMBio"],
+    "date": "17/04/2019",
+    "description": "Possível fusão entre ICMBio e Ibama.",
+    "source": "https://g1.globo.com/natureza/noticia/2019/04/17/ministro-do-meio-ambiente-diz-que-fusao-do-icmbio-e-do-ibama-e-hipotese-que-nao-esta-descartada.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["ICMBio"],
+    "date": "16/04/2019",
+    "description": "Demissão do presidente do ICMBio.",
+    "source": "https://g1.globo.com/natureza/noticia/2019/04/16/presidente-do-icmbio-e-exonerado.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Após o ministro, Ricardo Salles, ameaçar abrir processo administrativo contra servidores do instituto que não haviam comparecido a um evento de ruralistas."
+  },
+  {
+    "tags": ["Ibama"],
+    "date": "15/04/2019",
+    "description": "Decreto que impossibilita a destruição de máquinas ilegais em operações do Ibama.",
+    "source": "https://g1.globo.com/politica/noticia/2019/04/15/governo-vai-editar-norma-sobre-destruicao-de-maquinas-em-operacoes-do-ibama-diz-ministro.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Segundo o Greenpeace, a ação  ocorre em cerca de 2% dos casos, quando há impossibilidade de retirar as máquinas do local."
+  },
+  {
+    "tags": ["Censura"],
+    "date": "14/04/2019",
+    "description": "Veto a campanha publicitária do Banco do Brasil.",
+    "source": "https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2019/04/26/bolsonaro-veta-peca-publicitaria-para-o-banco-do-brasil.htm",
+    "date_is_estimated": false,
+    "additional_infos": "Campanha era pautada por diversidade racial e sexual."
+  },
+  {
+    "tags": [
+      "Ministério da Cidadania",
+      "Ministério da Justiça e Segurança Pública",
+      "Ministério da Mulher, Família e Direitos Humanos",
+      "Ministério da Saúde"
+    ],
+    "date": "11/04/2019",
+    "description": "A Nova Política sobre Drogas.",
+    "source": "https://www.in.gov.br/materia/-/asset_publisher/Kujrw0TZC2Mb/content/id/71137357",
+    "date_is_estimated": false,
+    "additional_infos": "Estratégia central de tratamento baseado em abstinência; maior investimento no modelo de comunidades terapêuticas, entidades privadas, em geral, religiosas; 'hospitais psiquiátricos' e outros retrocessos."
+  },
+  {
+    "tags": ["Ministério da Mulher, Família e Direitos Humanos"],
+    "date": "11/04/2019",
+    "description": "Extinção de participação da sociedade civil em mais de 700 comitês, conselhos e grupos de trabalho.",
+    "source": "http://www.in.gov.br/materia/-/asset_publisher/Kujrw0TZC2Mb/content/id/71137350",
+    "date_is_estimated": false,
+    "additional_infos": "Relacionados a temáticas sensíveis para minorias como LGBTs, pessoas com deficiência, indígenas e idosos."
+  },
+  {
+    "tags": ["Ministério do Meio Ambiente"],
+    "date": "11/04/2019",
+    "description": "Criação de núcleos com poder para anular autuações ambientais.",
+    "source": "https://congressoemfoco.uol.com.br/meio-ambiente/decreto-muda-sistema-de-conversao-de-multas-do-ibama-e-cria-conciliacao/",
+    "date_is_estimated": false,
+    "additional_infos": "Medida pode ser considerada inconstitucional."
+  },
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "03/04/2019",
+    "description": "Provável alteração de conteúdos da ditadura militar em livros de história.",
+    "source": "https://valor.globo.com/politica/noticia/2019/04/03/velez-quer-alterar-livros-didaticos-para-resgatar-visao-sobre-golpe.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "O então ministro da Educação, Ricardo Vélez Rodríguez, afirma que os livros didáticos sofrerão alterações 'progressivas' para que os alunos tenham a ideia 'verídica' a respeito do golpe militar de 1964."
+  },
+  {
+    "tags": ["Ibama"],
+    "date": "28/03/2019",
+    "description": "Exoneração de servidor que multou Bolsonaro.",
+    "source": "https://g1.globo.com/natureza/noticia/2019/03/29/ibama-exonera-servidor-que-multou-bolsonaro-por-pesca-irregular.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "Enquanto deputado, Bolsonaro foi multado em R$ 10 mil pela prática de pesca ilegal."
+  },
+  {
+    "tags": ["Ministério da Mulher, Família e Direitos Humanos"],
+    "date": "27/03/2019",
+    "description": "Nomeação de militares para a Comissão de Anistia.",
+    "source": "https://www.in.gov.br/materia/-/asset_publisher/Kujrw0TZC2Mb/content/id/68946407/do2-2019-03-28-portaria-n-378-de-27-de-marco-de-2019-68946184",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Defesa"],
+    "date": "25/03/2019",
+    "description": "Determinação de comemorações, em unidades militares, do golpe de 1964.",
+    "source": "https://www1.folha.uol.com.br/poder/2019/03/bolsonaro-determinou-comemoracoes-devidas-do-golpe-de-1964-diz-porta-voz.shtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "25/03/2019",
+    "description": "Suspensão, até 2021, do exame do nível de alfabetização de crianças.",
+    "source": "https://educacao.estadao.com.br/blogs/blog-renata-cafardo/mec-vai-deixar-de-avaliar-a-alfabetizacao-das-criancas/",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "22/03/2019",
+    "description": "Exclusão da sociedade civil na definição dos critérios sobre os destinos de recursos públicos voltados à educação básica.",
+    "source": "https://www.in.gov.br/materia/-/asset_publisher/Kujrw0TZC2Mb/content/id/68363850",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério do Meio Ambiente"],
+    "date": "02/03/2019",
+    "description": "Liberação recorde de agrotóxicos.",
+    "source": "https://www.greenpeace.org/brasil/blog/tres-meses-de-veneno/?_ga=2.202239825.1740008972.1597190988-415242029.1597190988",
+    "date_is_estimated": false,
+    "additional_infos": "Nos primeiros três meses do governo, 121 novos agrotóxicos foram aprovados e 241 novos pedidos de registro foram aceitos."
+  },
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "25/02/2019",
+    "description": "Pedido de leitura e filmagem de slogan do governo em escolas públicas.",
+    "source": "https://educacao.estadao.com.br/blogs/blog-renata-cafardo/mec-manda-email-para-escolas-pedindo-que-cantem-o-hino-nacional-e-filmem-as-criancas/",
+    "date_is_estimated": false,
+    "additional_infos": "O Ministério da Educação solicitou que o hino nacional seja executado e que alunos, professores e demais funcionários sejam filmados cantando o hino. O conteúdo da mensagem faz expressa menção ao slogan do presidente: 'Brasil acima de tudo, Deus acima de todos'."
+  },
+  {
+    "tags": ["Censura", "Ibama"],
+    "date": "25/02/2019",
+    "description": "Exoneração de mais de 75% dos superintendentes regionais do Ibama.",
+    "source": "https://noticias.uol.com.br/meio-ambiente/ultimas-noticias/redacao/2019/02/28/ministro-do-meio-ambiente-exonera-20-superintendentes-do-ibama.htm",
+    "date_is_estimated": false,
+    "additional_infos": "O ministro Ricardo Salles exonerou 21 dos 27 superintendentes, , em sua maioria provenientes das regiões Norte e Nordeste."
+  },
+  {
+    "tags": ["Ministério da Mulher, Família e Direitos Humanos"],
+    "date": "15/02/2019",
+    "description": "Impedimento de averiguação de torturas em presídios no Ceará.",
+    "source": "https://apublica.org/2019/02/ministerio-de-damares-e-acusado-por-orgao-de-combate-a-tortura-de-impedir-inspecao-em-presidios-do-ceara/",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério da Agricultura", "Ministério do Meio Ambiente"],
+    "date": "12/02/2019",
+    "description": "Incentivo ao plantio ilegal de soja na Amazônia.",
+    "source": "https://www1.folha.uol.com.br/ambiente/2019/02/ministros-de-bolsonaro-visitaram-plantio-ilegal-em-area-embargada-pelo-ibama-em-mt.shtml",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Ministério das Relações Exteriores"],
+    "date": "04/02/2019",
+    "description": "Exclusão de curso sobre América Latina no curso de formação de diplomatas.",
+    "source": "https://www.in.gov.br/materia/-/asset_publisher/Kujrw0TZC2Mb/content/id/61808751/do2-2019-02-04-portaria-de-1-de-fevereiro-de-2019-61808546",
+    "date_is_estimated": false,
+    "additional_infos": "O ministro Ernesto Araújo argumenta que a medida busca distanciar 'amarras ideológicas eventualmente adquiridas em sua formação anterior'."
+  },
+  {
+    "tags": ["ICMBio"],
+    "date": "31/01/2019",
+    "description": "Exoneração de chefe do parque de Fernando de Noronha.",
+    "source": "https://g1.globo.com/pe/pernambuco/blog/viver-noronha/post/2019/01/31/felipe-mendonca-e-dispensado-da-chefia-do-instituto-chico-mendes-em-noronha.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "A medida foi tomada após uma reunião do ICMBio com empresários da ilha e o ministro Ricardo Salles."
+  },
+  {
+    "tags": ["Censura", "Transparência"],
+    "date": "30/01/2019",
+    "description": "Exclusão de conteúdos de 'esquerda' de TV pública.",
+    "source": "https://ponte.org/alunos-denunciam-censura-no-instituto-nacional-de-educacao-de-surdos/",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Transparência"],
+    "date": "23/01/2019",
+    "description": "Ampliação do rol de agentes permitidos a classificar dados públicos como 'ultrassecretos'.",
+    "source": "https://www.in.gov.br/materia/-/asset_publisher/Kujrw0TZC2Mb/content/id/60344275",
+    "date_is_estimated": false,
+    "additional_infos": "A medida inclui que além do presidente e vice-presidente, ministros, comandantes das Forças Armadas, chefes de missões diplomáticas, servidores comissionados e alguns outros agentes."
+  },
+  {
+    "tags": ["Ministério da Educação"],
+    "date": "14/01/2019",
+    "description": "Exoneração da presidente do INEP.",
+    "source": "https://educacao.uol.com.br/noticias/2019/01/14/governo-bolsonaro-exonera-maria-ines-fini-presidente-do-inep-enem.htm",
+    "date_is_estimated": false,
+    "additional_infos": "As mudanças ocorreram depois de Bolsonaro ter criticado o conteúdo do Enem de 2018, afirmando ser um ‘absurdo’ a abordagem de expressões associadas aos LGBTs ."
+  },
+  {
+    "tags": ["Antidemocracia"],
+    "date": "08/01/2019",
+    "description": "Uso de logo 'GOVERNO BOLSONARO' por TV estatal.",
+    "source": "https://oglobo.globo.com/brasil/tv-estatal-exibe-nome-do-presidente-em-cerimonia-para-especialista-pratica-contraria-constituicao-23354128",
+    "date_is_estimated": false,
+    "additional_infos": "Prática é inconstitucional."
+  },
+  {
+    "tags": ["Incra"],
+    "date": "08/01/2019",
+    "description": "A suspensão da reforma agrária.",
+    "source": "https://reporterbrasil.org.br/2019/01/governo-bolsonaro-suspende-reforma-agraria-por-tempo-indeterminado/?fbclid=IwAR1kr9OPhGw_lzMskVi7YWObw7iQggF6d7pyb7RCNby4xtd_RVXpn7EYoNc",
+    "date_is_estimated": false,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Corrupção"],
+    "date": "09/06/2017",
+    "description": "Os depósitos em dinheiro vivo na conta pessoal de Flávio Bolsonaro.",
+    "source": "https://g1.globo.com/jornal-nacional/noticia/2019/01/18/jn-tem-acesso-a-relatorio-do-coaf-sobre-movimentacoes-de-flavio-bolsonaro.ghtml",
+    "date_is_estimated": false,
+    "additional_infos": "O então deputado estadual recebeu 48 depósitos em espécie, sempre no mesmo valor (R$ 2 mil), durante 5 dias."
+  },
+  {
+    "tags": ["Corrupção"],
+    "date": "01/03/2015",
+    "description": "A suposta lavagem de dinheiro na franquia de Flávio Bolsonaro.",
+    "source": "https://g1.globo.com/jornal-nacional/noticia/2020/08/20/extratos-revelam-depositos-sucessivos-em-especie-e-com-mesmo-valor-em-conta-de-franquia-de-flavio-bolsonaro.ghtml",
+    "date_is_estimated": true,
+    "additional_infos": "Extratos revelam depósitos sucessivos em espécie e com mesmo valor na franquia de uma loja de chocolates do filho do presidente."
+  },
+  {
+    "tags": ["Corrupção"],
+    "date": "01/01/2011",
+    "description": "Os depósitos de Queiroz na conta de Michelle Bolsonaro.",
+    "source": "https://g1.globo.com/jornal-nacional/noticia/2020/08/07/queiroz-e-a-mulher-depositaram-r-89-mil-em-cheques-na-conta-de-michelle-bolsonaro.ghtml",
+    "date_is_estimated": true,
+    "additional_infos": ""
+  },
+  {
+    "tags": ["Corrupção"],
+    "date": "01/01/2007",
+    "description": "O caso da rachadinhas.",
+    "source": "https://www.bbc.com/portuguese/brasil-54913007",
+    "date_is_estimated": true,
+    "additional_infos": "Flávio Bolsonaro é acusado de ter cometido os delitos de organização criminosa, peculato, lavagem de dinheiro (milhões de reais) e apropriação indébita, ao longo de uma década."
+  }
+]

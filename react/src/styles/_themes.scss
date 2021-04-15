@@ -1,0 +1,64 @@
+@import '_colors';
+
+$background-color: 'background-color';
+$background-secondary-color: 'background-secondary-color';
+$background-image-color: 'background-image-color';
+$background-input-color: 'background-input-color';
+$custom-link-color: 'custom-link-color';
+$text-color: 'text-color';
+$text-secondary-color: 'text-secondary-color';
+$title-color: 'title-color';
+$border: 'border';
+$border-left: 'border-left';
+$border-left-footer: 'border-left-footer';
+$quote-color: 'quote-color';
+
+
+$themes: (
+  light: (
+      background-color: $background--light--color,
+      background-secondary-color: $background--light--secondary--color,
+      background-image-color: $background--light--image--color,
+      background-input-color: $background--light--input--color,
+      custom-link-color: $link--light--color,
+      text-color: $text--light--color,
+      text-secondary-color: $text--light--secondary--color,
+      title-color: $title--light--color,
+      border: 1px solid $border--light--color,
+      border-left: 10px solid $text--light--secondary--color,
+      border-left-footer: 2px solid $link--light--color,
+      quote-color: $quote--light--color
+  ),
+  dark: (
+      background-color: $background--dark--color,
+      background-secondary-color: $background--dark--secondary--color,
+      background-image-color: $background--dark--image--color,
+      background-input-color: $background--dark--secondary--color,
+      custom-link-color: $link--dark--color,
+      text-color: $text--dark--color,
+      text-secondary-color: $text--dark--secondary--color,
+      title-color: $title--dark--color,
+      border: 1px solid $border--dark--color,
+      border-left: 10px solid $text--dark--secondary--color,
+      border-left-footer: 2px solid $link--dark--color,
+      quote-color: $quote--dark--color
+  ),
+);
+
+@mixin themed() {
+  @each $theme, $map in $themes {
+    .theme--#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function t($key) {
+  @return map-get($theme-map, $key);
+}

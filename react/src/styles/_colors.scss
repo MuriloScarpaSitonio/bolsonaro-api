@@ -1,0 +1,27 @@
+$background--light--color: white;
+$background--light--secondary--color: whitesmoke;
+$background--light--image--color: rgb(255, 255, 250);
+$background--light--input--color: $background--light--color;
+$link--light--color: #666262;
+$text--light--color: rgb(44, 43, 43);
+$text--light--secondary--color: #dee2e6;
+$title--light--color: rgb(41, 41, 41);
+$border--light--color: rgb(224, 224, 224);
+$quote--light--color: #e7e6e4;
+
+
+$background--dark--color: rgb(54, 54, 54);
+$background--dark--secondary--color: #575757;
+$background--dark--image--color: rgb(63, 63, 63);
+$background--dark--input--color: $background--dark--secondary--color;
+$link--dark--color: #bbb8b8;
+$text--dark--color: rgb(211, 211, 211);
+$text--dark--secondary--color: rgb(151, 151, 151);
+$title--dark--color: white;
+$border--dark--color: rgb(112, 112, 112);
+$quote--dark--color: #686868;
+
+
+$error--color: #dc3545;
+$error--shadow--color: rgba(220, 53, 69, 0.25);
+$valid--color: #17a864

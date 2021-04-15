@@ -1,0 +1,26 @@
+FROM node:12.18.3-alpine3.9 as builder
+
+WORKDIR /app/react
+
+# install dependencies and avoid `node-gyp rebuild` errors
+COPY ./package.json .
+RUN apk add --no-cache --virtual .gyp \
+    python \
+    make \
+    g++ \
+    && npm install \
+    && apk del .gyp
+
+COPY . .
+
+RUN npm run build
+
+
+FROM node:12.18.3-alpine3.9 
+
+WORKDIR /app/react
+
+# install serve - deployment static server suggested by official create-react-app
+RUN npm install -g serve
+
+COPY --from=builder /app/react/build ./build

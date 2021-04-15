@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Ditadura",
+    "slug": "ditadura",
+    "childrens": [{ "name": "Exército", "slug": "exercito" }]
+  },
+  { "name": "LGBT", "slug": "lgbt", "childrens": [] },
+  {
+    "name": "Direitos Humanos",
+    "slug": "direitos-humanos",
+    "childrens": [{ "name": "Tortura", "slug": "tortura" }]
+  },
+  {
+    "name": "Polícia",
+    "slug": "policia",
+    "childrens": [{ "name": "Criminalidade", "slug": "criminalidade" }]
+  },
+  { "name": "ONG", "slug": "ong", "childrens": [] },
+  {
+    "name": "Esquerda",
+    "slug": "esquerda",
+    "childrens": [
+      { "name": "Dilma", "slug": "dilma" },
+      { "name": "Comunismo", "slug": "comunismo" },
+      { "name": "Cuba", "slug": "cuba" },
+      { "name": "PT", "slug": "pt" }
+    ]
+  },
+  { "name": "Fake news", "slug": "fake-news", "childrens": [] },
+  {
+    "name": "Mulher",
+    "slug": "mulher",
+    "childrens": [{ "name": "Estupro", "slug": "estupro" }]
+  },
+  {
+    "name": "Racismo",
+    "slug": "racismo",
+    "childrens": [{ "name": "Refugiados", "slug": "refugiados" }]
+  },
+  { "name": "Armas", "slug": "armas", "childrens": [] },
+  { "name": "Religião", "slug": "religiao", "childrens": [] },
+  { "name": "Falta de decoro", "slug": "falta-de-decoro", "childrens": [] },
+  {
+    "name": "Coronavírus",
+    "slug": "coranavirus",
+    "childrens": [{ "name": "Hidroxicloroquina", "slug": "hidroxicloroquina" }]
+  },
+  {
+    "name": "Meio ambiente",
+    "slug": "meio-ambiente",
+    "childrens": [{ "name": "Amazônia", "slug": "amazonia" }]
+  },
+  { "name": "Corrupção", "slug": "corrupcao", "childrens": [] },
+  { "name": "Trabalho infantil", "slug": "trabalho-infantil", "childrens": [] },
+  { "name": "Trabalho escravo", "slug": "trabalho-escravo", "childrens": [] },
+  { "name": "Índios", "slug": "indios", "childrens": [] },
+  { "name": "Censura", "slug": "censura", "childrens": [] }
+]

@@ -1,0 +1,12 @@
+*.log
+*.pot
+*.pyc
+__pycache__/
+**/static/*
+htmlcov/
+/coverage
+.coverage*
+celerybeat-schedule
+db.sqlite3
+pytest.ini
+venv/

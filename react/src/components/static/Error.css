@@ -1,0 +1,7 @@
+.error__wrapper {
+    text-align: center;
+}
+
+.error__wrapper .error__strong {
+    font-weight: bolder;
+}

@@ -1,0 +1,87 @@
+[
+  {
+    "name": "Ministério da Ciência, Tecnologia e Inovações",
+    "slug": "ministerio-da-ciencia-tecnologia-e-inovacoes",
+    "childrens": []
+  },
+  {
+    "name": "Ministério da Saúde",
+    "slug": "ministerio-da-saude",
+    "childrens": [{ "name": "Anvisa", "slug": "anvisa" }]
+  },
+  { "name": "Coronavírus", "slug": "coronavirus", "childrens": [] },
+  { "name": "STF", "slug": "stf", "childrens": [] },
+  {
+    "name": "Ministério do Meio Ambiente",
+    "slug": "ministerio-do-meio-ambiente",
+    "childrens": [
+      { "name": "Ibama", "slug": "ibama" },
+      { "name": "ICMBio", "slug": "icmbio" }
+    ]
+  },
+  {
+    "name": "Ministério da Economia",
+    "slug": "ministerio-da-economia",
+    "childrens": []
+  },
+  {
+    "name": "Ministério do Turismo",
+    "slug": "ministerio-do-turismo",
+    "childrens": [
+      { "name": "Ministério da Cultura", "slug": "ministerio-da-cultura" }
+    ]
+  },
+  { "name": "Corrupção", "slug": "corrupcao", "childrens": [] },
+  { "name": "Antidemocracia", "slug": "antidemocracia", "childrens": [] },
+  {
+    "name": "Ministério da Educação",
+    "slug": "ministerio-da-educacao",
+    "childrens": []
+  },
+  {
+    "name": "Ministério da Agricultura",
+    "slug": "ministerio-da-agricultura",
+    "childrens": [{ "name": "Incra", "slug": "incra" }]
+  },
+  {
+    "name": "Ministério da Mulher, Família e Direitos Humanos",
+    "slug": "ministerio-da-mulher-familia-e-direitos-humanos",
+    "childrens": [{ "name": "Tortura", "slug": "tortura" }]
+  },
+  { "name": "Transparência", "slug": "transparencia", "childrens": [] },
+  { "name": "Censura", "slug": "censura", "childrens": [] },
+  {
+    "name": "Ministério das Relações Exteriores",
+    "slug": "ministerio-das-relacoes-exteriores",
+    "childrens": []
+  },
+  {
+    "name": "Ministério da Defesa",
+    "slug": "ministerio-da-defesa",
+    "childrens": []
+  },
+  {
+    "name": "Ministério da Justiça e Segurança Pública",
+    "slug": "ministerio-da-justica-e-seguranca-publica",
+    "childrens": [{ "name": "Funai", "slug": "funai" }]
+  },
+  {
+    "name": "Ministério da Cidadania",
+    "slug": "ministerio-da-cidadania",
+    "childrens": []
+  },
+  { "name": "Falta de decoro", "slug": "falta-de-decoro", "childrens": [] },
+  { "name": "Desinformação", "slug": "desinformacao", "childrens": [] },
+  { "name": "Anticiência", "slug": "anticiencia", "childrens": [] },
+  { "name": "LGBT", "slug": "lgbt", "childrens": [] },
+  {
+    "name": "Ministério Público Federal",
+    "slug": "ministerio-publico-federal",
+    "childrens": [
+      {
+        "name": "Procuradoria Geral da República",
+        "slug": "procuradoria-geral-da-republica"
+      }
+    ]
+  }
+]

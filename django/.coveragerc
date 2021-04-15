@@ -1,0 +1,16 @@
+[run]
+omit =
+  *apps.py,
+  *migrations/*,
+  *settings*,
+  *tests/*,
+  *urls.py,
+  *wsgi*,
+  *asgi*,
+  *schemas.py, #should we test it?
+  *inspectors.py, #should we test it?
+  venv/*,
+  manage.py
+
+[report]
+fail_under = 97

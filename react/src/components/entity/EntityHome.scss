@@ -1,0 +1,151 @@
+@import '../../styles/_fonts';
+@import '../../styles/_themes';
+
+
+.entity__main-wrapper {
+  line-height: 50px;
+  font-family: $font-family-primary;
+}
+
+.entity__main-wrapper .quotes,
+.entity__main-wrapper .actions {
+  position: relative;
+  text-align: center;
+  font-size: 2.4em;
+  line-height: 1.5em;
+  font-style: italic;
+  z-index: 0;
+
+  @include themed() {
+    color: t($text-color)
+  }
+}
+
+.entity__main-wrapper .quotes:before {
+  content: "\201C";
+  position: absolute;
+  top: 0.25em;
+  left: -0.15em;
+  font-size: 6em;
+  z-index: -1;
+
+  @include themed() {
+    color: t($quote-color)
+  }
+}
+
+.entity__main-wrapper .entity__source {
+  font-size: 18px;
+  line-height: 25px;
+  -webkit-transform: translateY(0);
+  transform: trans
+  lateY(0);
+  opacity: 1;
+
+  @include themed() {
+    color: t($text-color)
+  }
+}
+
+.entity__main-wrapper:hover .entity__source {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.entity__main-wrapper .entity__additional-infos {
+  font-size: 15px;
+  line-height: 25px;
+  -webkit-transform: translateY(-50px);
+  transform: translateY(-50px);
+  opacity: 0;
+
+  @include themed() {
+    color: t($text-color)
+  }
+}
+
+.entity__main-wrapper:hover .entity__additional-infos {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.link {
+  text-decoration: underline;
+
+  @include themed() {
+    color: t($custom-link-color)
+  }
+}
+
+.link:hover {
+  text-decoration: none;
+  cursor: pointer;
+
+  @include themed() {
+    color: t($custom-link-color)
+  }
+}
+
+#reload-icon {
+  @include themed() {
+    color: t($text-color)
+  }
+}
+
+#reload-icon:hover {
+  @include themed() {
+    color: t($custom-link-color)
+  }
+}
+
+
+
+.img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 340px;
+  height: 340px;
+  border-radius: 180px;
+
+  @include themed() {
+    background-color: t($background-image-color)
+  }
+}
+
+.img__fake-news {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -100px;
+  margin-bottom: -60px;
+  display: block;
+  width: 200px;
+  height: 200px;
+  border-radius: 180px;
+  opacity: 0.8;
+}
+
+
+.tag {
+  display: inline-block;
+  border-radius: 3px;
+  padding: 0.3em 0.5em;
+  margin: 0.2em;
+  font-size: 0.85em;
+  transition: 0s;
+
+  @include themed() {
+    color: t($text-color);
+    border: t($border)
+  }
+}
+
+.tag:hover {
+  cursor: pointer;
+
+  @include themed() {
+    background-color: t($background-secondary-color)
+  }
+}
