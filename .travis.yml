@@ -20,4 +20,4 @@ jobs:
       script:
         - make django-test
       on:
-        branch: main
+        branch: master
