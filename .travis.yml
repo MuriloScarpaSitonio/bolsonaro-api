@@ -21,3 +21,6 @@ jobs:
         - make django-test
       on:
         branch: master
+
+after_success:
+  - coveralls
