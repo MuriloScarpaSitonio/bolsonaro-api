@@ -1,4 +1,5 @@
 [run]
+source = ./
 omit =
   *apps.py,
   *migrations/*,
