@@ -23,4 +23,4 @@ jobs:
         branch: master
 
 after_success:
-  - coveralls
+  - COVERALLS_REPO_TOKEN=l8Wh2Fb4gLkAx5rdl8tzFxCC9cgdrJDdF coveralls
