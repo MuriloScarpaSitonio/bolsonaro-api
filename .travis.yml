@@ -7,17 +7,17 @@ install:
 
 jobs:
   include:
-    - stage: Django code convention
-      script:
-        - make django-code-convention
-    - stage: Django typing checker
-      script:
-        - make django-typing-checker
-    - stage: Django security checker
-      script:
-        - make django-security-checker
+    #- stage: Django code convention
+    #  script:
+    #    - make django-code-convention
+    #- stage: Django typing checker
+    #  script:
+    #    - make django-typing-checker
+    #- stage: Django security checker
+    #  script:
+    #    - make django-security-checker
     - stage: Django test
       script:
-        - make django-test
+        - make django-travis-test
       after_success:
         - coveralls

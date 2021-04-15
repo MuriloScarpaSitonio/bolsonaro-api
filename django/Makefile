@@ -73,6 +73,10 @@ test:
 	pytest $(PYTEST_CONFIGS)
 
 
+travis-test:
+	coverage run --source=. -m pytest tests/
+	
+
 code-convention:
 	pylint_runner
 	black . --check --exclude=migrations
