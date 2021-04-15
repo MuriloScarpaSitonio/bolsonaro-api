@@ -18,6 +18,6 @@ jobs:
     #    - make django-security-checker
     - stage: Django test
       script:
-        - make django-travis-test
+        - make django-test
       after_success:
-        - coveralls
+        - coveralls --verbose

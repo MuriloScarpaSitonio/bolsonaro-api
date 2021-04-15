@@ -13,10 +13,6 @@ django-test:
 	$(MAKE) -C $(DJANGO_DIR) test
 
 
-django-travis-test:
-	$(MAKE) -C $(DJANGO_DIR) travis-test
-
-
 django-code-convention:
 	$(MAKE) -C $(DJANGO_DIR) code-convention
 
