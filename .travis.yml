@@ -18,6 +18,6 @@ jobs:
     #    - make django-security-checker
     - stage: Django test
       script:
-        - make django-test
+        - pytest --nomigrations --cov-report=term-missing  --cov-report=xml --cov-report=annotate --cov=. --disable-warnings
       after_success:
         - coveralls --verbose
