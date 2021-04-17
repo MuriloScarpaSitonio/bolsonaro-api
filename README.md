@@ -5,17 +5,17 @@
 <h2 align="center">Bolsonaro API</h2>
 
 <p align="center">
-<a href="https://twitter.com/ApiBolsonaro"><img alt="Bolsonaro API twitter" src="https://img.shields.io/twitter/follow/ApiBolsonaro?style=social"></a>
+<a href="https://twitter.com/ApiBolsonaro" target="_blank" rel="noopener noreferrer"><img alt="Bolsonaro API twitter" src="https://img.shields.io/twitter/follow/ApiBolsonaro?style=social"></a>
 </p>
 
 <p align="center">
-<a href="https://travis-ci.com/github/MuriloScarpaSitonio/bolsonaro-api"><img alt="Build Status" src="https://travis-ci.com/MuriloScarpaSitonio/bolsonaro-api.svg?branch=master"></a>
-<a href="https://coveralls.io/github/MuriloScarpaSitonio/bolsonaro-api?branch=master"><img alt="Coverage Status" src="https://coveralls.io/repos/github/MuriloScarpaSitonio/bolsonaro-api/badge.svg?branch=master"></a>
-<a href="https://github.com/rossi-fi/pylint-badge"><img alt="Pylint Rating" src="https://mperlet.github.io/pybadge/badges/10.0.svg"></a>
-<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
-<a href="http://mypy-lang.org/"><img alt="Checked with mypy" src="http://www.mypy-lang.org/static/mypy_badge.svg"></a>
-<a href="https://github.com/PyCQA/bandit"><img alt="Checked with bandit" src="https://img.shields.io/badge/bandit-checked-informational"></a>
-<a href="https://django.doctor/"><img alt="Checked with bandit" src="https://img.shields.io/badge/django doctor-checked-informational"></a>
+<a href="https://travis-ci.com/github/MuriloScarpaSitonio/bolsonaro-api" target="_blank" rel="noopener noreferrer"><img alt="Build Status" src="https://travis-ci.com/MuriloScarpaSitonio/bolsonaro-api.svg?branch=master"></a>
+<a href="https://coveralls.io/github/MuriloScarpaSitonio/bolsonaro-api?branch=master" target="_blank" rel="noopener noreferrer"><img alt="Coverage Status" src="https://coveralls.io/repos/github/MuriloScarpaSitonio/bolsonaro-api/badge.svg?branch=master"></a>
+<a href="https://github.com/PyCQA/pylint" target="_blank" rel="noopener noreferrer"><img alt="Pylint Rating" src="https://mperlet.github.io/pybadge/badges/10.0.svg"></a>
+<a href="https://github.com/psf/black" target="_blank" rel="noopener noreferrer"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+<a href="http://mypy-lang.org/" target="_blank" rel="noopener noreferrer"><img alt="Checked with mypy" src="http://www.mypy-lang.org/static/mypy_badge.svg"></a>
+<a href="https://github.com/PyCQA/bandit" target="_blank" rel="noopener noreferrer"><img alt="Checked with bandit" src="https://img.shields.io/badge/bandit-checked-informational"></a>
+<a href="https://django.doctor/" target="_blank" rel="noopener noreferrer"><img alt="Checked with bandit" src="https://img.shields.io/badge/django doctor-checked-informational"></a>
 </p>
 
 API pública de declarações e ações do presidente Bolsonaro e seu governo. Desenvolvida com **Django**, **React**, **PostgreSQL**, **Celery**, **Redis** e **Docker**.
