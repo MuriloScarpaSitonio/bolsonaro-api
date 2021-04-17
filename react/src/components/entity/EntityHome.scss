@@ -1,3 +1,4 @@
+@import '../../styles/_colors';
 @import '../../styles/_fonts';
 @import '../../styles/_themes';
 
@@ -148,4 +149,14 @@
   @include themed() {
     background-color: t($background-secondary-color)
   }
+}
+
+.modal-body .tag {
+  @extend .tag;
+  border: 1px solid $border--light--color
+}
+
+.modal-body .tag:hover {
+  @extend .tag:hover;
+  background-color: $background--light--secondary--color
 }
