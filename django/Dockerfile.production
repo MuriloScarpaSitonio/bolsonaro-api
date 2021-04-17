@@ -9,7 +9,7 @@ COPY . .
 RUN pip install -r requirements/production.txt
 RUN apk del .tmp-build-deps
 
-COPY ./entrypoint.sh /app/django/entrypoint.sh
+COPY ./entrypoint.production.sh /app/django/entrypoint.production.sh
 
-RUN chmod +x /app/django/entrypoint.sh
-ENTRYPOINT ["/app/django/entrypoint.sh"]
+RUN chmod +x /app/django/entrypoint.production.sh
+ENTRYPOINT ["/app/django/entrypoint.production.sh"]
