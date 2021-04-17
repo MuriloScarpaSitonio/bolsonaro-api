@@ -25,7 +25,7 @@ API pública de declarações e ações do presidente Bolsonaro e seu governo. D
 Se você tem docker e docker-compose instalados, rode os seguintes comandos:
 ```
 $ docker-compose build
-$ docker-compose run django sh entrypoint.local.sh  # criação do banco local e inserção dos dados
+$ docker-compose run django sh entrypoint.local.sh  # criação do banco local (SQLite) e inserção dos dados
 $ docker-compose up
 ```
 Depois, visite http://127.0.0.1:3000/ para acessar o servidor de desenvolvimento do React e http://127.0.0.1:8000/api/v1/docs/ para ver a documentação e interagir com a API do django.
