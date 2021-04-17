@@ -2,7 +2,7 @@
 <a href="https://bolsonaro-api.herokuapp.com/"><img alt="Bolsonaro API" src="https://github.com/MuriloScarpaSitonio/bolsonaro-api/blob/master/react/src/images/bozoQuote.png"></a>
 </p>
 
-<h2 align="center">Bolsonaro API</h2>
+<h1 align="center">Bolsonaro API</h1>
 
 <p align="center">
 <a href="https://twitter.com/ApiBolsonaro" target="_blank" rel="noopener noreferrer"><img alt="Bolsonaro API twitter" src="https://img.shields.io/twitter/follow/ApiBolsonaro?style=social"></a>
