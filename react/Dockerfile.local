@@ -3,7 +3,7 @@ FROM node:12.18.3-alpine3.9
 WORKDIR /app/react
 
 #enable hot-reloading
-ENV CHOKIDAR_USEPOLLING true
+ENV CHOKIDAR_USEPOLLING=true
 
 COPY ./package.json .
 RUN npm install 

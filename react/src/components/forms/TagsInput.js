@@ -130,7 +130,7 @@ export default class TagsInput extends Component {
                         />
                     </div>
                 </div>
-                <div className={`input-tags__dropdown__wrapper ${!this.state.showDropdown && "hide"}`}>
+                <div className={`input-tags__dropdown__wrapper ${!this.state.showDropdown ? "hide" : ""}`}>
                     <div className="d-flex flex-wrap justify-content-center">
                         {this.getDropdownItems().map((item, i) => (
                             <div
