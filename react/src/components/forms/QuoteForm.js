@@ -1,4 +1,4 @@
-import React, { Component, createRef, useState } from "react"
+import { useRef, useState } from "react"
 
 import ReCAPTCHA from "react-google-recaptcha"
 import { Field, Formik } from "formik"
@@ -9,6 +9,7 @@ import Error from "../static/Error"
 import { Loader } from "../static/Loader"
 import quoteFormData from "./quoteFormData"
 import TagsInput from "./TagsInput"
+import { useQuery } from "../hooks/useQuery"
 import { BASE_API_URL, RECAPTCHA_SITE_KEY } from "../consts"
 import {
     convertDateStringToLocaleFormat,
@@ -36,91 +37,24 @@ const CustomSwitch = ({ name, setFieldValue, value }) => {
     )
 }
 
-
-export default class QuoteForm extends Component {
-    constructor(props) {
-        super(props)
-        //if the form has initialValues, it means a suggestion to change a Quote
-        this.isChangeForm = this.props.initialValues ? true : false
-        this.data = quoteFormData
-        this.state = {
-            error: null,
-            isLoaded: false,
-            submissionError: { value: false, text: "" },
-            submitted: false,
-            tags: null
-        }
-
-        if (this.isChangeForm) {
-            this.data.push({
-                id: "justification",
-                type: "text",
-                validationType: "string",
-                validations: [
-                    {
-                        type: "required",
-                        params: ["*A justificativa é obrigatória."]
-                    },
-                ]
-            })
-        }
-
-        this.validationSchema = yup.object().shape(this.data.reduce(createYupSchema, {}))
-
-        this._initialValues = this.isChangeForm ?
-            { ...this.props.initialValues, user_email: "", recaptcha: "", justification: "" }
-            : {
-                user_email: "",
-                description: "",
-                source: "",
-                tags: "",
-                date: "",
-                date_is_estimated: false,
-                additional_infos: "",
-                is_fake_news: false,
-                fake_news_source: "",
-                recaptcha: ""
-            }
-        this._reCaptchaRef = createRef()
-        this._fetchTagsWhitelist()
+const MyFormikForm = (props) => {
+    const [submissionError, setSubmissionError] = useState({value: false,text: ""})
+    const [submitted, setSubmitted] = useState(false)
+    let reCaptchaRef = useRef()
+    
+    const onClick = () => {
+        setSubmissionError({value: false,text: ""})
+        setSubmitted(false)
     }
 
-    _fetchTagsWhitelist() {
-        fetch(`${BASE_API_URL}/quotes/tags`)
-            .then(response => {
-                if (!response.ok) {
-                    response.json().then(
-                        data => {
-                            this.setState({
-                                isLoaded: true,
-                                error: { message: data.errorMessage }
-                            })
-                        }
-                    )
-                }
-                else {
-                    response.json().then(
-                        data => this.setState({ isLoaded: true, tags: data.map(tag => tag.name) }),
-                        error => this.setState({ isLoaded: true, error })
-                    )
-                }
-            })
-            .catch(error => this.setState({ isLoaded: true, error }))
-    }
-
-    onClick = () => this.setState({ submissionError: { value: false, text: "" }, submitted: false })
-
-    render() {
-        if (this.state.error) return <Error message={this.state.error.message} />
-        if (!this.state.isLoaded) return <Loader />
-        return (
-            <Formik
-                validationSchema={this.validationSchema}
-                initialValues={this._initialValues}
+    return (
+        <Formik
+                validationSchema={props.validationSchema}
+                initialValues={props.initialValues}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                     setSubmitting(true)
-                    if (formHasChanges(values, this._initialValues)) {
-                        fetch(this.isChangeForm ?
+                    if (formHasChanges(values, props.initialValues)) {
+                        fetch(props.isChangeForm ?
                             `${BASE_API_URL}/quotes/${values.id}/change` :
                             `${BASE_API_URL}/quotes/suggest`,
                             {
@@ -138,46 +72,37 @@ export default class QuoteForm extends Component {
                                     response.json().then(
                                         response => {
                                             setSubmitting(false)
-                                            this.setState({
-                                                submissionError: {
-                                                    value: true,
-                                                    text: `Requisição inválida! \n${JSON.stringify(response)}`
-                                                }
+                                            setSubmissionError({
+                                                value: true,
+                                                text: "Requisição inválida!\n" + JSON.stringify(response)
                                             })
-                                            this.setState({ submitted: true })
+                                            setSubmitted(true)
                                         }
                                     )
                                 }
                                 else {
                                     response.json().then(_ => {
                                         setSubmitting(false)
-                                        this.setState({ submitted: true })
+                                        setSubmitted(true)
                                         resetForm()
                                     })
                                         .catch(_ => {
                                             setSubmitting(false)
-                                            this.setState({
-                                                submissionError: {
-                                                    value: true,
-                                                    text: (
-                                                        `Tivemos um erro na hora de processar sua solicitação! 
-                                                    Por favor, feche esta caixa e tente enviar a sugestão novamente.`
-                                                    )
-                                                }
+                                            setSubmissionError({
+                                                value: true,
+                                                text: (
+                                                    `Tivemos um erro na hora de processar sua solicitação! 
+                                                Por favor, feche esta caixa e tente enviar a sugestão novamente.`
+                                                )
                                             })
-                                            this.setState({ submitted: true })
+                                            setSubmitted(true)
                                         })
                                 }
                             })
                     }
                     else {
                         setSubmitting(false)
-                        this.setState({
-                            submissionError: {
-                                value: true,
-                                text: "Sua sugestão precisa alterar pelo menos um campo!"
-                            }
-                        })
+                        setSubmissionError({value: true, text: "Sua sugestão precisa alterar pelo menos um campo!"})
                     }
                 }
                 }
@@ -194,18 +119,18 @@ export default class QuoteForm extends Component {
                 }) => {
                     const customHandleBlur = (e) => {
                         if(!!values.email && !!values.description && !values.recaptcha) {
-                            this._reCaptchaRef.current.execute()
+                            reCaptchaRef.current.execute()
                         }
                        handleBlur(e)
                     }
-                    if (this.state.submitted && !this.state.submissionError.value) {
+                    if (submitted && !submissionError.value) {
                         return (
                             <div className="d-flex justify-content-center mt-4">
                                 <div className="text-center">
                                     <h3>Obrigado por contribuir com o site!</h3>
                                     <h5>Enviaremos detalhes do processo no seu e-mail.</h5>
-                                    {!this.isChangeForm && (
-                                        <Button variant={getVariant()} onClick={this.onClick}>
+                                    {!props.isChangeForm && (
+                                        <Button variant={getVariant()} onClick={onClick}>
                                             Enviar nova sugestão
                                         </Button>
                                     )}
@@ -287,8 +212,8 @@ export default class QuoteForm extends Component {
                                 <Field
                                     name="tags"
                                     component={TagsInput}
-                                    whitelist={this.state.tags}
-                                    initialValues={this._initialValues.tags}
+                                    whitelist={props.tagsWhitelist}
+                                    initialValues={props.initialValues.tags}
                                     placeholder="Esquerda, Ditadura..."
                                 />
                                 <Form.Text className={
@@ -384,7 +309,7 @@ export default class QuoteForm extends Component {
                                     )}
                                 </Col>
                             </Form.Group>
-                            {this.isChangeForm && (
+                            {props.isChangeForm && (
                                 <Form.Group controlId="quote-justification">
                                     <Form.Label>Por que você está sugerindo esta mudança?*</Form.Label>
                                     <Form.Control
@@ -409,23 +334,23 @@ export default class QuoteForm extends Component {
                                 </Form.Group>
                             )}
                             <Form.Group as={Row} controlId="quote-submit">
-                                <Col md={this.isChangeForm ? 8 : 7}>
+                                <Col md={props.isChangeForm ? 8 : 7}>
                                     <ReCAPTCHA
-                                        ref={this._reCaptchaRef}
+                                        ref={reCaptchaRef}
                                         sitekey={RECAPTCHA_SITE_KEY}
                                         onChange={(value) => setFieldValue("recaptcha", value)}
                                         size="invisible"
                                     />
                                 </Col>
-                                <Col md={this.isChangeForm ? 4 : 5} className="align-self-center">
+                                <Col md={props.isChangeForm ? 4 : 5} className="align-self-center">
                                     <div className="d-flex justify-content-end">
                                         {isSubmitting ? <Loader bootstrapClassName="mt-1" /> : (
                                             <Button
-                                                variant={this.isChangeForm ? 'dark' : getVariant()}
+                                                variant={props.isChangeForm ? 'dark' : getVariant()}
                                                 type="submit"
-                                                size={this.isChangeForm ? "lg" : "md"}
+                                                size={props.isChangeForm ? "lg" : "md"}
                                                 onClick={(e) => {
-                                                    this._reCaptchaRef.current.execute()
+                                                    reCaptchaRef.current.execute()
                                                     handleSubmit(e)
                                                 }}
                                             >
@@ -435,11 +360,11 @@ export default class QuoteForm extends Component {
                                     </div>
                                 </Col>
                             </Form.Group>
-                            {this.state.submissionError.value &&
+                            {submissionError.value &&
                                 (
                                     <Modal
-                                        show={this.state.submissionError.value}
-                                        onHide={this.onClick}
+                                        show={submissionError.value}
+                                        onHide={onClick}
                                         className="submission-error"
                                         centered
                                     >
@@ -449,7 +374,7 @@ export default class QuoteForm extends Component {
                                             </Modal.Title>
                                         </Modal.Header>
                                         <Modal.Body>
-                                            {this.state.submissionError.text}
+                                            {submissionError.text}
                                         </Modal.Body>
                                     </Modal>
                                 )
@@ -457,7 +382,48 @@ export default class QuoteForm extends Component {
                         </Form>
                     )
                 }}
-            </Formik>
-        )
+            </Formik>)
+}
+
+export const QuoteForm = (props) => {
+    const [data, isLoaded,error] = useQuery('quotes/tags')
+    
+    let isChangeForm = props.initialValues ? true : false
+    if(isChangeForm) { //if the form has initialValues, it means a suggestion to change an Action
+        quoteFormData.push({
+            id: "justification",
+            type: "text",
+            validationType: "string",
+            validations: [
+                {
+                    type: "required",
+                    params: ["*A justificativa é obrigatória."]
+                },
+            ]
+        })
     }
+
+    let initialValues = isChangeForm ?
+        {...props.initialValues,user_email: "",recaptcha: "",justification: ""}
+        : {
+            user_email: "",
+            description: "",
+            source: "",
+            tags: "",
+            date: "",
+            date_is_estimated: false,
+            additional_infos: "",
+            is_fake_news: false,
+            fake_news_source: "",
+            recaptcha: ""
+        }
+
+    if (error) return <Error message={error.message} />
+    if (!isLoaded) return <Loader />
+    return <MyFormikForm
+        validationSchema={yup.object().shape(quoteFormData.reduce(createYupSchema,{}))}
+        initialValues={initialValues}
+        isChangeForm={isChangeForm}
+        tagsWhitelist={data.map(tag => tag.name)}
+    />
 }

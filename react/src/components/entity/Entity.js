@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 
 import { Button, Container, Modal } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 
 import Error from "../static/Error"
 import { Loader } from "../static/Loader"
-import ActionForm from "../forms/ActionForm"
-import QuoteForm from "../forms/QuoteForm"
+import { ActionForm } from "../forms/ActionForm"
+import { QuoteForm } from "../forms/QuoteForm"
 import MetaData from "../MetaData"
 import SocialShareButtons from "../common/SocialShareButtons"
-import { BASE_API_URL } from "../consts"
+import { useQuery } from "../hooks/useQuery"
 import { convertDateStringLocaleToRegularFormat, getVariant, getDateString, toSlug } from "../helpers"
 
 import "./Entity.scss"
@@ -21,13 +21,12 @@ function getAdjustedDateString(date, dateIsEstimated) {
     return quote_date
 }
 
-function getDynamicQuoteInfosHTML(entityProps, baseEndpoint) {
+function getDynamicQuoteInfosHTML(data, baseEndpoint) {
+    let entityAdjustedData = getEntityAdjustedData(data)
     let allQuoteInfosHTML = []
-    for (const [prop, propInfos] of Object.entries(entityProps)) {
-        let skippableProps = ["description", "isLoaded"]
-        if (skippableProps.includes(prop)) {
-            continue
-        }
+
+    for (const [prop, propInfos] of Object.entries(entityAdjustedData)) {
+        if (prop === "description") continue
         if (propInfos.value) {
             let quoteInfosHTML = []
             quoteInfosHTML.push(<dt key={prop}>{propInfos.header}</dt>)
@@ -77,32 +76,26 @@ function getDynamicQuoteInfosHTML(entityProps, baseEndpoint) {
 
 }
 
-function getInitialValues(entityProps) {
-    let initialValues = {
-        id: Number(entityProps.id),
-        description: entityProps.description,
-        source: entityProps.source.value,
-        tags: entityProps.tags.value,
-        date: convertDateStringLocaleToRegularFormat(entityProps.date.value),
-        date_is_estimated: entityProps.date.isEstimated,
-        additional_infos: entityProps.additionalInfos.value ? entityProps.additionalInfos.value : ""
+function getInitialValues(data) {
+    data.date = convertDateStringLocaleToRegularFormat(data.date)
+    data.additional_infos = data.additional_infos || ""
+
+    if (data.fake_news_source) {
+        data.is_fake_news = data.fake_news_source || false
+        data.fake_news_source = data.fake_news_source || ""
     }
-    if (entityProps.fakeNewsSource) {
-        initialValues.is_fake_news = entityProps.fakeNewsSource.value ? true : false
-        initialValues.fake_news_source = entityProps.fakeNewsSource.value ? entityProps.fakeNewsSource.value : ""
-    }
-    return initialValues
+    return data
 }
 
-function getEntityForm(entityProps) {
-    return entityProps.fakeNewsSource ?
-        <QuoteForm initialValues={getInitialValues(entityProps)} />
-        : <ActionForm initialValues={getInitialValues(entityProps)} />
+function getEntityForm(data) {
+    return data.fake_news_source ?
+        <QuoteForm initialValues={getInitialValues(data)} />
+        : <ActionForm initialValues={getInitialValues(data)} />
 
 
 }
 
-function ModalContainer({ entityProps }) {
+function ModalContainer({ data }) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -126,7 +119,7 @@ function ModalContainer({ entityProps }) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {getEntityForm(entityProps)}
+                    {getEntityForm(data)}
                 </Modal.Body>
             </Modal>
         </>
@@ -134,10 +127,9 @@ function ModalContainer({ entityProps }) {
 
 }
 
-function getEntityState(id, data) {
-    let entityState = {
-        isLoaded: true,
-        id: id,
+function getEntityAdjustedData(data) {
+    let entityAdjustedData = {
+        id: data.id,
         description: data.description,
         additionalInfos: {
             value: data.additional_infos,
@@ -160,13 +152,13 @@ function getEntityState(id, data) {
         }
     }
     if (data.fake_news_source !== undefined) {
-        entityState.fakeNewsSource = {
+        entityAdjustedData.fakeNewsSource = {
             value: data.fake_news_source,
             header: "Fake news?",
             linkText: "sim"
         }
     }
-    return entityState
+    return entityAdjustedData
 }
 
 function getShareText(description, baseEndpoint) {
@@ -177,51 +169,26 @@ function getShareText(description, baseEndpoint) {
 
 export default function Entity({ image, baseEndpoint }) {
     let { id } = useParams()
-    const [entityProps, setEntityProps] = useState({})
+    const [data, isLoaded, error] = useQuery(`${baseEndpoint}/${id}`)
 
-    useEffect(() => {
-        const fetchQuote = () => {
-            fetch(`${BASE_API_URL}/${baseEndpoint}/${id}`)
-                .then(response => {
-                    if (!response.ok) {
-                        response.json().then(
-                            data => setEntityProps(() => ({
-                                error: { message: data.errorMessage, badRequest: true }
-                            }))
-                        )
-                    }
-                    else {
-                        response.json().then(
-                            data => setEntityProps(() => getEntityState(id, data)),
-                            error => setEntityProps(() => ({ isLoaded: true, error }))
-                        )
-                    }
-                }
-                )
-                .catch(error => setEntityProps(() => ({ isLoaded: true, error })))
-        }
-        fetchQuote()
-    }, [id, baseEndpoint])
-
-    if(entityProps.error) return <Error message={entityProps.error.message}
-                                        badRequest={entityProps.error.badRequest} />
-    if (!entityProps.isLoaded) return <Loader />
+    if(error) return <Error message={error.message} badRequest={error.badRequest} />
+    if (!isLoaded) return <Loader />
     return (
             <>
-                <MetaData baseEndpoint={baseEndpoint} description={entityProps.description} />
+                <MetaData baseEndpoint={baseEndpoint} description={data.description} />
                 <div className="text-center mb-4">
                     <a href={`/${baseEndpoint}`}><img src={image} alt={baseEndpoint} className='img' />
                     </a>
                 </div>
                 <Container className="entity__wrapper">
                     <blockquote className={baseEndpoint}>
-                        <p>{entityProps.description}</p>
+                        <p>{data.description}</p>
                     </blockquote>
-                    <SocialShareButtons text={getShareText(entityProps.description, baseEndpoint)} />
+                    <SocialShareButtons text={getShareText(data.description, baseEndpoint)} />
                     <dl key="entity-props">
-                        {getDynamicQuoteInfosHTML(entityProps, baseEndpoint)}
+                        {getDynamicQuoteInfosHTML(data, baseEndpoint)}
                     </dl>
-                    <ModalContainer entityProps={entityProps} />
+                    <ModalContainer data={data} />
                 </Container>
             </>
         );
