@@ -4,8 +4,8 @@ import { Button, Col, Container, Modal, Row, Tab, Tabs } from "react-bootstrap"
 
 import { getVariant } from "../helpers"
 
-import ActionForm from "../forms/ActionForm"
-import QuoteForm from "../forms/QuoteForm"
+import { ActionForm } from "../forms/ActionForm"
+import { QuoteForm } from "../forms/QuoteForm"
 import { PIX_KEY } from "../consts"
 
 import "./Contribute.scss"

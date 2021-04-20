@@ -4,7 +4,7 @@ import { Accordion, Button, Container, useAccordionToggle } from "react-bootstra
 
 import Error from "../static/Error"
 import { Loader } from "../static/Loader"
-import QueryForm from "../forms/QueryForm"
+import { QueryForm } from "../forms/QueryForm"
 import { BASE_API_URL } from "../consts"
 import { getVariant, getDateString } from "../helpers"
 
