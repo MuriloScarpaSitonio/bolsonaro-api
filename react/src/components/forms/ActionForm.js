@@ -3,7 +3,7 @@ import { useRef, useState } from "react"
 import ReCAPTCHA from "react-google-recaptcha"
 import { Field, Formik } from "formik"
 import * as yup from "yup"
-import { Button, Col, Form, Modal, Row } from "react-bootstrap"
+import { Button, Col, Form, Modal, Row, Spinner } from "react-bootstrap"
 
 import actionFormData from "./actionFormData"
 import Error from "../static/Error"
@@ -54,20 +54,18 @@ const MyFormikForm = (props) => {
             initialValues={props.initialValues}
             onSubmit={(values, { setSubmitting, resetForm }) => {
                 setSubmitting(true)
-                if (formHasChanges(values, props.initialValues)) {
-                    fetch(props.isChangeForm ?
-                        `${BASE_API_URL}/actions/${values.id}/change` :
-                        `${BASE_API_URL}/actions/suggest`,
-                        {
-                            method: "POST",
-                            headers: {
-                                "Accept": "application/json",
-                                "Content-Type": "application/json",
-                                "X-CSRFToken": getCookie("csrftoken")
-                            },
-                            body: JSON.stringify({...values, date: convertDateStringToLocaleFormat(values.date)}),
-                        }
-                    )
+                if(formHasChanges(values, props.initialValues)) {
+                    let url = props.isChangeForm ? `${BASE_API_URL}/actions/${values.id}` : `${BASE_API_URL}/actions`
+                    let options = {
+                    method: props.isChangeForm ? 'PUT' : 'POST',
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": getCookie("csrftoken")
+                    },
+                    body: JSON.stringify({...values,date: convertDateStringToLocaleFormat(values.date)}),
+                }
+                    fetch(url, options)
                         .then(response => {
                             if (!response.ok) {
                                 response.json().then(
@@ -119,8 +117,11 @@ const MyFormikForm = (props) => {
                 isSubmitting
             }) => {
                 const customHandleBlur = (e) => {
-                    if(!!values.email && !!values.description && !values.recaptcha) {
-                        reCaptchaRef.current.execute()
+                    if(!props.isChangeForm) {
+                        if(values.tags && !values.recaptcha) reCaptchaRef.current.execute()
+                    }
+                    else {
+                        if (values.justification && !values.recaptcha) reCaptchaRef.current.execute()
                     }
                     handleBlur(e)
                 }
@@ -303,22 +304,28 @@ const MyFormikForm = (props) => {
                                 <ReCAPTCHA
                                     ref={reCaptchaRef}
                                     sitekey={RECAPTCHA_SITE_KEY}
-                                    onChange={(value) => setFieldValue("recaptcha", value)}
+                                    onChange={value => setFieldValue("recaptcha", value)}
                                     size="invisible"
                                 />
                             </Col>
                             <Col md={props.isChangeForm ? 4 : 5} className="align-self-center">
                                 <div className="d-flex justify-content-end">
-                                    {isSubmitting ? <Loader bootstrapClassName="mt-1" />  : (
-                                        <Button
-                                            variant={props.isChangeForm ? 'dark' : getVariant()}
-                                            type="submit"
-                                            size={props.isChangeForm ? "lg" : "md"}
-                                            onClick={() => reCaptchaRef.current.execute()}
-                                        >
-                                            Enviar para revisão
-                                        </Button>
-                                    )}
+                                    <Button
+                                        variant={props.isChangeForm ? 'dark' : getVariant()}
+                                        type="submit"
+                                        size='md'
+                                    >
+                                        {isSubmitting ?
+                                            <Spinner
+                                                as="span"
+                                                animation="border"
+                                                size='sm'
+                                                role="status"
+                                                aria-hidden="true"
+                                            /> :
+                                            'Enviar para revisão'
+                                        }
+                                    </Button>
                                 </div>
                             </Col>
                         </Form.Group>

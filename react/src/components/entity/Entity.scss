@@ -1,43 +1,6 @@
-@import '../../styles/_fonts';
 @import '../../styles/_themes';
+@import '../../styles/_fonts';
 
-
-
-
-.entity__wrapper > * {
-  margin: 1.5em 10px;
-}
-
-.entity__wrapper .quotes,
-.entity__wrapper .actions {
-  text-align: justify;
-  padding: 0.5em 10px;
-
-  @include themed() {
-    border-left: t($border-left);
-    background:  t($background-secondary-color)
-  }
-}
-
-.entity__wrapper .quotes:before {
-  content: "\201C";
-  font-size: 4em;
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
-
-  @include themed() {
-    color: t($text-secondary-color)
-  }
-}
-
-.entity__wrapper .quotes p,
-.entity__wrapper .actions p {
-  display: inline;
-  font-style: italic;
-  font-size: 1.2em;
-
-}
 
 dl > * {
   font-family: $font-family-primary;
@@ -49,4 +12,8 @@ dl > * {
 
 dl dd {
   margin-left: 2em;
+}
+
+.entities__list > * {
+  margin: 1.5em 10px;
 }

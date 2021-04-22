@@ -62,6 +62,7 @@ export const useAsyncQuery = (urls) => {
                 setError(error)
                 setIsLoaded(true)
             })
+// eslint-disable-next-line
         }, [])
     return [data, isLoaded, error]
   };

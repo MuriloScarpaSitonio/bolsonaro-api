@@ -55,7 +55,8 @@
 
 #custom-navbar__search-button {
   @include themed() {
-    margin-left: -190px;
+    margin-left: -189px;
+    border: none;
   }
 }
 
