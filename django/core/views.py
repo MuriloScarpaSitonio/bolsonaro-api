@@ -3,11 +3,12 @@ from random import randint
 
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.decorators import action
+from rest_framework.mixins import ListModelMixin, RetrieveModelMixin
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from rest_framework.utils.serializer_helpers import ReturnList
-from rest_framework.viewsets import ReadOnlyModelViewSet
+from rest_framework.viewsets import GenericViewSet
 
 from django.db.models import Max, QuerySet
 from helpers.inspectors import TagFieldInspector  # CustomPaginatorInspector
@@ -21,7 +22,7 @@ from .serializers import EntityCountSerializer, TagSerializer
 logger = logging.getLogger("db")
 
 
-class CustomPaginetdViewSet(ReadOnlyModelViewSet):
+class CustomPaginetdViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):
     @property
     def paginator(self):
         """Property responsável pela definição da paginação da view.
@@ -56,14 +57,14 @@ class EntityViewSet(CustomPaginetdViewSet):
 
     @swagger_auto_schema(responses={200: EntityCountSerializer})
     @action(methods=["GET"], detail=False)
-    def count(self, _: Request) -> Response:
+    def count(self, request: Request) -> Response:
         """Obtenha o número de entidades cadastradas."""  # swagger
         return Response(
             EntityCountSerializer({"total": self.model.objects.count()}).data
         )
 
     @action(methods=["GET"], detail=False)
-    def random(self, _: Request) -> Response:
+    def random(self, request: Request) -> Response:
         """Obtenha uma entidade randomicamente."""  # swagger
         max_id = self.model.objects.all().aggregate(max_id=Max("id"))["max_id"]
         while True:
@@ -76,8 +77,7 @@ class EntityViewSet(CustomPaginetdViewSet):
                 return Response(serializer.data)
 
     @swagger_auto_schema(auto_schema=None)
-    @action(methods=["POST"], detail=False)
-    def suggest(self, request: Request) -> Response:
+    def create(self, request: Request) -> Response:
         """
         Sugestão de novas entidades.
 
@@ -102,8 +102,7 @@ class EntityViewSet(CustomPaginetdViewSet):
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
 
     @swagger_auto_schema(auto_schema=None)
-    @action(methods=["POST"], detail=True)
-    def change(self, request: Request, pk: int) -> Response:
+    def update(self, request: Request, **kwargs) -> Response:
         """
         Sugestão de alteração em entidades.
 
@@ -111,7 +110,7 @@ class EntityViewSet(CustomPaginetdViewSet):
         """
         logger.info("Sugestão recebida! E-mail: %s", request.data.get("user_email"))
 
-        request.data["original_" + self.model.__name__.lower()] = pk
+        request.data["original_" + self.model.__name__.lower()] = kwargs["pk"]
         serializer = self.suggestion_change_serializer_class(
             data=request.data, context={"request": request}
         )
@@ -144,6 +143,6 @@ class EntityTagsView(CustomPaginetdViewSet):
         """Obtenha as tags da entidade."""  # swagger
         return super().list(request, *args, **kwargs)
 
-    def main(self, _: Request) -> Response:
+    def main(self, request: Request) -> Response:
         queryset = self.model.objects.filter(parent=None)
         return Response(self.tags_serializer_class(queryset, many=True).data)

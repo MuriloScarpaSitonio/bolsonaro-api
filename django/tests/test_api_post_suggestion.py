@@ -15,10 +15,9 @@ pytestmark = pytest.mark.django_db
 def test_suggest_without_captcha(api_client, base_urls, entities_suggest_data):
     # GIVEN
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
-        url = base_url + "/suggest"
 
         # WHEN
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.post(base_url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_400_BAD_REQUEST
@@ -32,9 +31,8 @@ def test_suggest_with_wrong_captcha(api_client, base_urls, entities_suggest_data
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        url = base_url + "/suggest"
         entity_suggest_data["recaptcha"] = "test"
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.post(base_url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_400_BAD_REQUEST
@@ -52,9 +50,8 @@ def test_suggest(api_client, base_urls, entities_suggest_data):
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        url = base_url + "/suggest"
         entity_suggest_data["recaptcha"] = "test"
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.post(base_url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_200_OK
@@ -84,11 +81,10 @@ def test_suggest_without_non_required_field(
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        url = base_url + "/suggest"
         entity_suggest_data["recaptcha"] = "test"
         for field in fields:
             del entity_suggest_data[field]
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.post(base_url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_200_OK
@@ -117,10 +113,9 @@ def test_suggest_without_non_required_field_without_recaptcha(
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        url = base_url + "/suggest"
         for field in fields:
             del entity_suggest_data[field]
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.post(base_url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_400_BAD_REQUEST
@@ -142,9 +137,8 @@ def test_suggest_without_fields(
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        url = base_url + "/suggest"
         del entity_suggest_data[field]
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.post(base_url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_400_BAD_REQUEST
@@ -161,10 +155,9 @@ def test_suggest_with_non_existing_tag(api_client, base_urls, entities_suggest_d
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        url = base_url + "/suggest"
         entity_suggest_data["tags"].append("Eu não existo")
         entity_suggest_data["recaptcha"] = "test"
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.post(base_url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_400_BAD_REQUEST
@@ -187,9 +180,8 @@ def test_suggest_with_non_existing_tag_without_recaptcha(
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        url = base_url + "/suggest"
         entity_suggest_data["tags"].append("Eu não existo")
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.post(base_url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_400_BAD_REQUEST
@@ -208,10 +200,9 @@ def test_suggest_with_multiple_non_existing_tag(
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        url = base_url + "/suggest"
         entity_suggest_data["tags"].extend(["Eu não existo", "Eu também não", "Nem eu"])
         entity_suggest_data["recaptcha"] = "test"
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.post(base_url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_400_BAD_REQUEST
@@ -234,9 +225,8 @@ def test_suggest_with_multiple_non_existing_tag_without_recaptcha(
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        url = base_url + "/suggest"
         entity_suggest_data["tags"].extend(["Eu não existo", "Eu também não", "Nem eu"])
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.post(base_url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_400_BAD_REQUEST
@@ -250,9 +240,8 @@ def test_suggest_with_wrong_date_format(api_client, base_urls, entities_suggest_
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        url = base_url + "/suggest"
         entity_suggest_data["date"] = "11/20/2020"
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.post(base_url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_400_BAD_REQUEST
@@ -276,10 +265,9 @@ def test_suggest_change_without_original_id(
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        url = base_url + "change/"
         entity_suggest_data["justification"] = "test"
         entity_suggest_data["recaptcha"] = "test"
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.put(base_url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_405_METHOD_NOT_ALLOWED
@@ -291,13 +279,13 @@ def test_suggest_change_without_changes(api_client, base_urls, entities_suggest_
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        id_ = api_client.get(
+        pk = api_client.get(
             base_url + "?description=" + entity_suggest_data["description"]
         ).data[0]["id"]
-        url = base_url + f"/{id_}/change"
+        url = base_url + f"/{pk}"
         entity_suggest_data["justification"] = "test"
         entity_suggest_data["recaptcha"] = "test"
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.put(url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_400_BAD_REQUEST
@@ -315,14 +303,14 @@ def test_suggest_change(api_client, base_urls, entities_suggest_data):
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        id_ = api_client.get(
+        pk = api_client.get(
             base_url + "?description=" + entity_suggest_data["description"]
         ).data[0]["id"]
-        url = base_url + f"/{id_}/change"
+        url = base_url + f"/{pk}"
         entity_suggest_data["justification"] = "test"
         entity_suggest_data["recaptcha"] = "test"
         entity_suggest_data["tags"] = ["Falta de decoro"]
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.put(url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_200_OK
@@ -340,11 +328,11 @@ def test_suggest_change_non_existing(api_client, base_urls, entities_suggest_dat
 
         # WHEN
         model_name = base_url.split(f"/{API_BASE_URL}")[1].strip("/")[:-1]
-        url = base_url + "/0/change"
+        url = base_url + "/0"
         entity_suggest_data["justification"] = "test"
         entity_suggest_data["recaptcha"] = "test"
         entity_suggest_data["tags"] = ["Fake news"]
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.put(url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_400_BAD_REQUEST
@@ -365,14 +353,14 @@ def test_suggest_change_with_wrong_captcha(
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        id_ = api_client.get(
+        pk = api_client.get(
             base_url + "?description=" + entity_suggest_data["description"]
         ).data[0]["id"]
-        url = base_url + f"/{id_}/change"
+        url = base_url + f"/{pk}"
         entity_suggest_data["justification"] = "test"
         entity_suggest_data["recaptcha"] = "test"
         entity_suggest_data["tags"] = ["Fake news"]
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.put(url, data=entity_suggest_data)
 
         # THEN
         assert response.status_code == HTTP_400_BAD_REQUEST
@@ -389,13 +377,13 @@ def test_suggest_change_without_captcha(api_client, base_urls, entities_suggest_
     for base_url, entity_suggest_data in zip(base_urls, entities_suggest_data):
 
         # WHEN
-        id_ = api_client.get(
+        pk = api_client.get(
             base_url + "?description=" + entity_suggest_data["description"]
         ).data[0]["id"]
-        url = base_url + f"/{id_}/change"
+        url = base_url + f"/{pk}"
         entity_suggest_data["justification"] = "test"
         entity_suggest_data["tags"] = ["Fake news"]
-        response = api_client.post(url, data=entity_suggest_data)
+        response = api_client.put(url, data=entity_suggest_data)
 
         assert response.status_code == HTTP_400_BAD_REQUEST
         assert list(response.data.keys()) == ["recaptcha"]
@@ -412,11 +400,10 @@ def test_suggest_quote_without_fake_news_infos(
     # GIVEN
 
     # WHEN
-    url = quote_base_url + "/suggest"
     quote_suggest_data["recaptcha"] = "test"
     del quote_suggest_data["is_fake_news"]
     del quote_suggest_data["fake_news_source"]
-    response = api_client.post(url, data=quote_suggest_data)
+    response = api_client.post(quote_base_url, data=quote_suggest_data)
 
     # THEN
     assert response.status_code == HTTP_200_OK
@@ -436,10 +423,9 @@ def test_suggest_quote_without_is_fake_news_with_fake_news_source(
     # GIVEN
 
     # WHEN
-    url = quote_base_url + "/suggest"
     quote_suggest_data["recaptcha"] = "test"
     del quote_suggest_data["is_fake_news"]
-    response = api_client.post(url, data=quote_suggest_data)
+    response = api_client.post(quote_base_url, data=quote_suggest_data)
 
     # THEN
     assert response.status_code == HTTP_400_BAD_REQUEST
@@ -460,10 +446,9 @@ def test_suggest_quote_without_without_fake_news_source_with_is_fake_news(
     # GIVEN
 
     # WHEN
-    url = quote_base_url + "/suggest"
     quote_suggest_data["recaptcha"] = "test"
     del quote_suggest_data["fake_news_source"]
-    response = api_client.post(url, data=quote_suggest_data)
+    response = api_client.post(quote_base_url, data=quote_suggest_data)
 
     # THEN
     assert response.status_code == HTTP_400_BAD_REQUEST
@@ -480,10 +465,9 @@ def test_suggest_quote_without_fake_news_infos_without_recaptcha(
     # GIVEN
 
     # WHEN
-    url = quote_base_url + "/suggest"
     del quote_suggest_data["is_fake_news"]
     del quote_suggest_data["fake_news_source"]
-    response = api_client.post(url, data=quote_suggest_data)
+    response = api_client.post(quote_base_url, data=quote_suggest_data)
 
     # THEN
     assert response.status_code == HTTP_400_BAD_REQUEST

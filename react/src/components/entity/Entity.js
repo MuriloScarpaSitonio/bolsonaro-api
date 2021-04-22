@@ -88,7 +88,7 @@ function getInitialValues(data) {
 }
 
 function getEntityForm(data) {
-    return data.fake_news_source ?
+    return 'fake_news_source' in data ?
         <QuoteForm initialValues={getInitialValues(data)} />
         : <ActionForm initialValues={getInitialValues(data)} />
 
@@ -180,7 +180,7 @@ export default function Entity({ image, baseEndpoint }) {
                     <a href={`/${baseEndpoint}`}><img src={image} alt={baseEndpoint} className='img' />
                     </a>
                 </div>
-                <Container className="entity__wrapper">
+                <Container className="entities__list">
                     <blockquote className={baseEndpoint}>
                         <p>{data.description}</p>
                     </blockquote>
