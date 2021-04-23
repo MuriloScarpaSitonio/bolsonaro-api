@@ -33,14 +33,14 @@ Depois, visite http://127.0.0.1:3000/ para acessar o servidor de desenvolvimento
 Na ausência de docker, você pode usar os comandos do Makefile:
 
 ```
-make django
-make react
+$ make django  # dentro de um ambiente virtual! Se você usa pyenv, pode criá-lo com `make create-venv`
+$ make react
 ```
 
 ## Contribuições
 - Visite [/contribute](https://bolsonaro-api.herokuapp.com/contribute) e contribua com alguma das três ações citadas!
-- React;
-   - Testes, pipeline, code review e quaisquer ajuds no frontend são MUITO bem-vindas!
+- React:
+   - Testes, pipeline, code review e quaisquer ajudas no frontend são MUITO bem-vindas!
 - Django:
    - Antes de enviar um PR, certifique-se de que o comando `make django-pipeline` não retorna nenhum erro.
 - Entre em contato para enviar contribuições nos outros serviços de `docker-compose.production.yml`.
