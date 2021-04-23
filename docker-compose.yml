@@ -8,10 +8,8 @@ services:
       dockerfile: Dockerfile.local
     volumes:
       - ./django:/app/django
-    ports: 
+    ports:
       - 8000:8000
-    env_file:
-      - ./django/.env
 
   react:
     container_name: react
@@ -21,10 +19,7 @@ services:
     volumes:
       - ./react:/app/react
       - /app/react/node_modules
-    ports: 
+    ports:
       - 3000:3000
-    env_file:
-      - ./react/.env
     depends_on:
       - django
-    
