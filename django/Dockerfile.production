@@ -1,15 +1,41 @@
-FROM python:3.9-alpine
+###########
+# BUILDER #
+###########
 
-RUN apk add --update --no-cache postgresql-client jpeg-dev
-RUN apk add --update --no-cache --virtual .tmp-build-deps \ 
-    gcc libc-dev linux-headers postgresql-dev musl-dev zlib zlib-dev
+# do not use alpine: https://pythonspeed.com/articles/alpine-docker-python/
+FROM python:3.9-buster as builder
+
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
 
 WORKDIR /app/django
-COPY . .
-RUN pip install -r requirements/production.txt
-RUN apk del .tmp-build-deps
+
+COPY ./requirements ./requirements
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /app/django/wheels -r requirements/production.txt
+
+
+#########
+# FINAL #
+#########
+
+
+FROM python:3.9-buster
+
+# installing netcat (nc) since we are using that to listen to postgres server in entrypoint.sh
+RUN apt-get update && apt-get install -y --no-install-recommends netcat build-essential gcc && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+
+COPY --from=builder /app/django/wheels /wheels
+COPY --from=builder /app/django/requirements .
+RUN pip install --no-cache /wheels/*
+
+WORKDIR /app/django
 
 COPY ./entrypoint.production.sh /app/django/entrypoint.production.sh
+COPY . .
 
 RUN chmod +x /app/django/entrypoint.production.sh
 ENTRYPOINT ["/app/django/entrypoint.production.sh"]

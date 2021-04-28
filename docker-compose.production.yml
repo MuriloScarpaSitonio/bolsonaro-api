@@ -28,7 +28,7 @@ services:
     container_name: react
     build:
       context: ./react
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.production
     volumes:
       - react_static_volume:/app/react/build/static
     expose:
@@ -51,26 +51,28 @@ services:
     depends_on:
       - react
 
-  redis:
-    image: redis:alpine
-    container_name: redis
-    ports:
-      - 6379:6379
+  #redis:
+  #  image: redis:6.0.12-alpine
+  #  container_name: redis
+  #  ports:
+  #    - 6379:6379
 
-  celery:
-    container_name: celery
-    restart: always
-    build: ./django
-    entrypoint: []
-    env_file:
-      - ./django/.env
-    command: celery --app=bolsonaro_api worker --loglevel=INFO --beat
-    volumes:
-      - django_static_volume:/app/django/static
-    depends_on:
-      - redis
-      - django
-      - postgres
+  #celery:
+  #  container_name: celery
+  #  restart: always
+  #  build:
+  #    context: ./django
+  #    dockerfile: Dockerfile.production
+  #  entrypoint: []
+  #  env_file:
+  #    - ./django/.env
+  #  command: celery --app=bolsonaro_api worker --loglevel=INFO --beat
+  #  volumes:
+  #     - django_static_volume:/app/django/static
+  #   depends_on:
+  #     - redis
+  #     - django
+  #     - postgres
 
 volumes:
   postgres_data:

@@ -32,5 +32,7 @@ urlpatterns = [
     path("", include("core.urls")),
     path(API_BASE_URL, include("quotes.urls")),
     path(API_BASE_URL, include("actions.urls")),
-    re_path(".*/", TemplateView.as_view(template_name="index.html"), name="not_found"),
+    re_path(
+        ".*/", TemplateView.as_view(template_name="admin/404.html"), name="not_found"
+    ),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
