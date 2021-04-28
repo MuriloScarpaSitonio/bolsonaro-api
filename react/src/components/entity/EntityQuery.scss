@@ -2,15 +2,11 @@
 @import '../../styles/_fonts';
 
 
-.entities__list {
+.entities .quotes,
+.entities .actions {
   font-family: $font-family-primary;
   font-style: italic;
-}
-
-.entities__list .quotes,
-.entities__list .actions {
   text-align: left;
-  margin: 1.5em 10px;
   padding: 0.5em 10px;
 
   @include themed() {
@@ -19,7 +15,7 @@
   }
 }
 
-.entities__list .quotes:before {
+.entities .quotes:before {
   content: "\201C";
   font-size: 4em;
   line-height: 0.1em;
@@ -31,8 +27,8 @@
   }
 }
 
-.entities__list .quotes footer,
-.entities__list .actions footer {
+.entities .quotes footer,
+.entities .actions footer {
   margin: 0;
   padding: 0;
 
@@ -41,8 +37,8 @@
   }
 }
 
-.entities__list .quotes p,
-.entities__list .actions p {
+.entities .quotes p,
+.entities .actions p {
   display: inline;
   font-size: 1.2em;
 }
