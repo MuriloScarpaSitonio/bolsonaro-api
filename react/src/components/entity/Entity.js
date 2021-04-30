@@ -49,7 +49,7 @@ function getDynamicQuoteInfosHTML(data, baseEndpoint) {
                                 <a className="link" href={`/${baseEndpoint}/query?tags=${toSlug(tag)}`}
                                     target="_blank"
                                     rel="noopener noreferrer">
-                                    {tag}
+                                    <div className="tag">{tag}</div>
                                 </a>
                             </dd>)
                     }
@@ -103,7 +103,7 @@ function ModalContainer({ data }) {
 
     return (
         <>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center" style={{fontFamily: 'inherit'}}>
                 <Button variant={getVariant()} onClick={handleShow} size="lg">
                     Sugerir alterações
                 </Button>
@@ -180,7 +180,7 @@ export default function Entity({ image, baseEndpoint }) {
                     <a href={`/${baseEndpoint}`}><img src={image} alt={baseEndpoint} className='img' />
                     </a>
                 </div>
-                <Container className="entities__list">
+                <Container className="entities">
                     <blockquote className={baseEndpoint}>
                         <p>{data.description}</p>
                     </blockquote>

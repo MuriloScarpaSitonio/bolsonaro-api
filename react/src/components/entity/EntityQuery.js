@@ -41,7 +41,7 @@ const Entities = ({ data, baseEndpoint }) => {
             </div>
         )
     }
-    return <div className="entities__list">{entitiesHTML}</div>
+    return <div className="entities">{entitiesHTML}</div>
 
 }
 
