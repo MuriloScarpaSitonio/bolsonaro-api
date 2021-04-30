@@ -15,6 +15,7 @@ class Command(BaseCommand):
     """
 
     def handle(self, *args, **options):
+        print("Creating quotes and its tags...")
         dir_path = os.path.join(__location__, "../../..", "data")
 
         with open(
@@ -45,3 +46,5 @@ class Command(BaseCommand):
                 )
                 quote_obj.tags.add(*quote_tags)  # taggit needs a pk
                 quote_obj.save()
+
+        print("Quotes and tags created!")

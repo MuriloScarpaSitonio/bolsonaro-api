@@ -1,14 +1,13 @@
-FROM python:3.9-alpine
+FROM python:3.9-buster
 
 ENV PYTHONUNBUFFERED=1
 
-RUN apk add --update --no-cache --virtual .tmp-build-deps gcc libc-dev linux-headers
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential gcc
+
+WORKDIR /app/django
 
 COPY ./requirements ./requirements
 RUN pip install -r requirements/local.txt
-RUN apk del .tmp-build-deps
-
-WORKDIR /app/django
 
 COPY ./entrypoint.local.sh /app/django/entrypoint.local.sh
 

@@ -88,11 +88,14 @@ WSGI_APPLICATION = "bolsonaro_api.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": secret("DATABASE_ENGINE", default="django.db.backends.sqlite3"),
+        "PORT": secret("DATABASE_PORT", cast=int, default=5432),
+        "USER": secret("DATABASE_USER", default="user"),
+        "NAME": secret("DATABASE_NAME", default=BASE_DIR / "db.sqlite3"),
+        "PASSWORD": secret("DATABASE_PASSWORD", default="password"),
+        "HOST": secret("DATABASE_HOST", default="localhost"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

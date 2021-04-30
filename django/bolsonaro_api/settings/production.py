@@ -1,21 +1,8 @@
-from decouple import config as secret
-
 from .base import *  # pylint:disable=wildcard-import,unused-wildcard-import
 
 DEBUG = secret("DJANGO_DEBUG", cast=bool, default=False)
 
 INSTALLED_APPS += ["django_db_logger"]
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "PORT": secret("DATABASE_PORT", cast=int, default=5432),
-        "USER": secret("DATABASE_USER", default="user"),
-        "NAME": secret("DATABASE_NAME", default="postgres"),
-        "PASSWORD": secret("DATABASE_PASSWORD", default="password"),
-        "HOST": secret("DATABASE_HOST", default="postgres"),
-    }
-}
 
 LOGGING["handlers"]["db_log"] = {  # type: ignore
     "class": "django_db_logger.db_log_handler.DatabaseLogHandler",
@@ -50,7 +37,12 @@ SECURE_HSTS_SECONDS = secret("SECURE_HSTS_SECONDS", cast=int, default=1)
 # If True, the SecurityMiddleware redirects all non-HTTPS requests to HTTPS
 # (except for those URLs matching a regular expression listed in SECURE_REDIRECT_EXEMPT).
 # https://docs.djangoproject.com/en/3.1/ref/settings/#secure-ssl-redirect
-SECURE_SSL_REDIRECT = True
+# setting to false because nginx will be responsbile for that
+SECURE_SSL_REDIRECT = False
+
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 
 # Whether to use a secure cookie for the session cookie. If this is set to True, the cookie
 # will be marked as “secure”, which means browsers may ensure that the cookie is only
@@ -67,6 +59,7 @@ SESSION_COOKIE_SECURE = True
 # served exclusively via SSL.
 # https://docs.djangoproject.com/en/3.1/ref/settings/#secure-hsts-include-subdomains
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
 # If True, the SecurityMiddleware adds the preload directive to the HTTP Strict Transport
 # Security header. It has no effect unless SECURE_HSTS_SECONDS is set to a non-zero value.
 # Without this, your site cannot be submitted to the browser preload list.
