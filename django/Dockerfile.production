@@ -5,10 +5,9 @@
 # do not use alpine: https://pythonspeed.com/articles/alpine-docker-python/
 FROM python:3.9-buster as builder
 
-ENV PYTHONUNBUFFERED=1
-ENV PYTHONDONTWRITEBYTECODE=1
+ENV HOME=/app/django
 
-WORKDIR /app/django
+WORKDIR $HOME
 
 COPY ./requirements ./requirements
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /app/django/wheels -r requirements/production.txt
@@ -21,6 +20,12 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /app/django/wheels -r require
 
 FROM python:3.9-buster
 
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+ENV HOME=/app/django
+ENV USER=djangouser
+
 # installing netcat (nc) since we are using that to listen to postgres server in entrypoint.sh
 RUN apt-get update && apt-get install -y --no-install-recommends netcat build-essential gcc && \
     apt-get autoremove -y && \
@@ -28,14 +33,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends netcat build-es
     rm -rf /var/lib/apt/lists/*
 
 
-COPY --from=builder /app/django/wheels /wheels
-COPY --from=builder /app/django/requirements .
+COPY --from=builder $HOME/wheels /wheels
+COPY --from=builder $HOME/requirements .
 RUN pip install --no-cache /wheels/*
 
-WORKDIR /app/django
+RUN groupadd -r $USER && \
+    useradd -r -g $USER -d $HOME -s /sbin/nologin -c "Docker image user" $USER
 
-COPY ./entrypoint.production.sh /app/django/entrypoint.production.sh
+WORKDIR $HOME
+
 COPY . .
 
-RUN chmod +x /app/django/entrypoint.production.sh
+RUN chown -R $USER:$USER $HOME
+USER $USER
+
+RUN chmod +x $HOME/entrypoint.production.sh
 ENTRYPOINT ["/app/django/entrypoint.production.sh"]

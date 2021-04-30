@@ -70,7 +70,7 @@ db-populate: db-up .db-populate-actions .db-populate-quotes
 
 
 test:
-	pytest $(PYTEST_CONFIGS)
+	pytest -n`grep -c ^processor /proc/cpuinfo` $(PYTEST_CONFIGS)
 
 
 code-convention:

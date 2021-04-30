@@ -15,6 +15,7 @@ class Command(BaseCommand):
     """
 
     def handle(self, *args, **options):
+        print("Creating actions and its tags...")
         dir_path = os.path.join(__location__, "../../..", "data")
 
         with open(
@@ -45,3 +46,5 @@ class Command(BaseCommand):
                 )
                 action_obj.tags.add(*action_tags)  # taggit needs a pk
                 action_obj.save()
+
+        print("Actions and tags created!")
