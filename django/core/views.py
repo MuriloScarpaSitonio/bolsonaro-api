@@ -11,7 +11,10 @@ from rest_framework.utils.serializer_helpers import ReturnList
 from rest_framework.viewsets import GenericViewSet
 
 from django.db.models import Max, QuerySet
-from helpers.inspectors import TagFieldInspector  # CustomPaginatorInspector
+from helpers.inspectors import (
+    TagsFieldInspector,
+    TagsFilterInspector,
+)  # CustomPaginatorInspector
 from helpers.schemas import CustomAutoSchema
 from helpers.sendgrid_helper import send_suggestion_received_email
 
@@ -46,7 +49,8 @@ class EntityViewSet(CustomPaginetdViewSet):
 
     @swagger_auto_schema(
         # paginator_inspectors=[CustomPaginatorInspector],
-        field_inspectors=[TagFieldInspector],
+        field_inspectors=[TagsFieldInspector],
+        filter_inspectors=[TagsFilterInspector],
     )
     def list(self, request: Request, *args, **kwargs) -> Response:
         """
