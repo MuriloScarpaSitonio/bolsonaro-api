@@ -1,21 +1,21 @@
-import django_filters as filters
+import django_filters
 
 from django.db.models import Q
 
 from .exceptions import BolsonaroAPIException
 
 
-class EntityFilterSet(filters.FilterSet):
+class EntityFilterSet(django_filters.FilterSet):
     """Classe responsável pela geração dos filtros das entidades"""
 
-    description = filters.CharFilter(lookup_expr="icontains")
-    start_date = filters.DateFilter(field_name="date", lookup_expr="gte")
-    end_date = filters.DateFilter(field_name="date", lookup_expr="lte")
-    tags = filters.CharFilter(method="tags__in")
+    description = django_filters.CharFilter(lookup_expr="icontains")
+    start_date = django_filters.DateFilter(field_name="date", lookup_expr="gte")
+    end_date = django_filters.DateFilter(field_name="date", lookup_expr="lte")
+    tags = django_filters.CharFilter(method="tags_custom_filter")
 
-    def tags__in(self, queryset, _, *args, **kwargs):  # pylint: disable=unused-argument
-        if args:
-            tags = args[0].split(",")
+    def tags_custom_filter(self, queryset, _, value):
+        if value:
+            tags = [tag.strip() for tag in value.split(",")]
             tags_qs = queryset.model.tags.through.tag_model().objects.filter(
                 slug__in=tags
             )
@@ -31,7 +31,4 @@ class EntityFilterSet(filters.FilterSet):
                     }
                 )
 
-            queryset = queryset.filter(
-                Q(tags__slug__in=tags) | Q(tags__parent__slug__in=tags)
-            )
-        return queryset
+        return queryset.filter(Q(tags__slug__in=tags) | Q(tags__parent__slug__in=tags))

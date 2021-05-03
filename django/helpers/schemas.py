@@ -1,5 +1,5 @@
 from drf_yasg.inspectors import SwaggerAutoSchema
-from drf_yasg.openapi import FORMAT_DATE, FORMAT_SLUG, IN_QUERY, TYPE_INTEGER, Parameter
+from drf_yasg.openapi import FORMAT_DATE, IN_QUERY, Parameter, TYPE_INTEGER
 
 
 class CustomAutoSchema(SwaggerAutoSchema):
@@ -24,11 +24,7 @@ class CustomAutoSchema(SwaggerAutoSchema):
                     "Filtre as entidades até uma data específica (formato dd/mm/yyyy)."
                 )
                 param.format = FORMAT_DATE
-            if param.name == "tags":
-                param.description = (
-                    "Filtre as entidades por múltiplas tags (separadas por vírgula)."
-                )
-                param.format = FORMAT_SLUG
+
         return result
 
     def should_page(self):

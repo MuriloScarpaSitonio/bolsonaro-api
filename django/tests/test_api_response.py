@@ -347,3 +347,34 @@ def test_should_not_get_tag_if_no_existing_slug(api_client, base_urls):
         # THEN
         assert response.status_code == HTTP_404_NOT_FOUND
         assert response.json() == {"detail": "Não encontrado."}
+
+
+def test_should_filter_by_tags_if_slugs_with_space(api_client, base_urls):
+    # GIVEN
+    for base_url in base_urls:
+
+        # WHEN
+        url = base_url + "?tags=censura,     falta-de-decoro"
+        response = api_client.get(url)
+
+        # THEN
+        assert response.status_code == HTTP_200_OK
+        assert all(
+            "Censura" in entity["tags"] or "Falta de decoro" in entity["tags"]
+            for entity in response.data
+        )
+
+
+def test_should_get_entities_with_children_tags(api_client, action_base_url):
+    # GIVEN
+
+    # WHEN
+    url = action_base_url + "?tags=ministerio-da-saude"
+    response = api_client.get(url)
+
+    # THEN
+    assert response.status_code == HTTP_200_OK
+    assert all(
+        "Anvisa" in action["tags"] or "Ministério da Saúde" in action["tags"]
+        for action in response.data
+    )
