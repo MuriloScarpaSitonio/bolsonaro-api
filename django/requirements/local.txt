@@ -1,5 +1,6 @@
 -r base.txt
 
+awsebcli==3.19.4 
 bandit==1.7.0
 black==20.8b1
 coveralls==3.0.1
