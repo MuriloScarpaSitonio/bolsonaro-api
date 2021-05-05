@@ -1,3 +1,5 @@
+import os
+
 from .base import *  # pylint:disable=wildcard-import,unused-wildcard-import
 
 DEBUG = secret("DJANGO_DEBUG", cast=bool, default=False)
@@ -18,6 +20,28 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 DRF_RECAPTCHA_SECRET_KEY = secret(
     "RECAPTCHA_SECRET_KEY", default="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
 )
+
+DATABASES = {
+    "default": {
+        "ENGINE": secret(
+            "DATABASE_ENGINE", default="django.db.backends.postgresql_psycopg2"
+        ),
+        "PORT": secret(
+            "DATABASE_PORT", cast=int, default=os.environ.get("RDS_PORT", 5432)
+        ),
+        "USER": secret("DATABASE_USER", default=os.environ.get("RDS_USERNAME", "user")),
+        "NAME": secret(
+            "DATABASE_NAME",
+            default=os.environ.get("RDS_DB_NAME", BASE_DIR / "db.sqlite3"),
+        ),
+        "PASSWORD": secret(
+            "DATABASE_PASSWORD", default=os.environ.get("RDS_PASSWORD", "password")
+        ),
+        "HOST": secret(
+            "DATABASE_HOST", default=os.environ.get("RDS_HOSTNAME", "localhost")
+        ),
+    }
+}
 
 # For sites that should only be accessed over HTTPS, you can instruct modern browsers
 # to refuse to connect to your domain name via an insecure connection (for a given period of time)

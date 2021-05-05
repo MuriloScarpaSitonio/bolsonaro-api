@@ -86,17 +86,6 @@ WSGI_APPLICATION = "bolsonaro_api.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": secret("DATABASE_ENGINE", default="django.db.backends.sqlite3"),
-        "PORT": secret("DATABASE_PORT", cast=int, default=5432),
-        "USER": secret("DATABASE_USER", default="user"),
-        "NAME": secret("DATABASE_NAME", default=BASE_DIR / "db.sqlite3"),
-        "PASSWORD": secret("DATABASE_PASSWORD", default="password"),
-        "HOST": secret("DATABASE_HOST", default="localhost"),
-    }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -176,8 +165,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
 }
-DRF_RECAPTCHA_SECRET_KEY = secret("RECAPTCHA_SECRET_KEY", default="")
-# https://developers.google.com/recaptcha/docs/faq#id-like-to-run-automated-tests-with-recaptcha.-what-should-i-do
+
 
 TWITTER_API_KEY = secret("TWITTER_API_KEY", default="")
 TWITTER_API_SECRET_KEY = secret("TWITTER_API_SECRET_KEY", default="")
