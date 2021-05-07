@@ -1,6 +1,12 @@
+import os
 from pathlib import Path
 
 from decouple import Csv, config as secret
+
+if "RDS_DB_NAME" in os.environ:
+    from scripts.set_env_vars import set_env_vars
+
+    set_env_vars()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
