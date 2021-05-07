@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from decouple import config as secret
+from decouple import Csv, config as secret
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -16,7 +16,7 @@ SECRET_KEY = secret(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = secret("DJANGO_DEBUG", cast=bool, default=True)
 
-ALLOWED_HOSTS = ["bolsonaro-api.herokuapp.com", "127.0.0.1"]
+ALLOWED_HOSTS = secret("ALLOWED_HOSTS", default="127.0.0.1", cast=Csv())
 
 
 # Application definition

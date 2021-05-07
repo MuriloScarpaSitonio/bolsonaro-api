@@ -13,7 +13,7 @@ fi
 python manage.py collectstatic --noinput --settings=bolsonaro_api.settings.production
 python manage.py migrate --noinput
 
-if [ "$POPULATE_DB" = "True" ]
+if [ "$DOCKER_POPULATE_DB" = "True" ]
 then
     echo "Populating database..."
 
