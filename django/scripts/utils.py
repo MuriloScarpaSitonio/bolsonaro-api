@@ -2,7 +2,7 @@ from typing import Iterator, Tuple
 
 
 def yield_env_vars_from_file(file_path: str) -> Iterator[Tuple[str, str]]:
-    with open(".env", encoding="UTF-8") as file_:
+    with open(file_path, encoding="UTF-8") as file_:
         for line in file_:
             line = line.strip()
             if not line or line.startswith("#") or "=" not in line:

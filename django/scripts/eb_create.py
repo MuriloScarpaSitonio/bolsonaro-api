@@ -7,10 +7,9 @@ from scripts.utils import yield_env_vars_from_file
 
 DATABASE_USER = secret("DATABASE_USER", default="postgres")
 DATABASE_PASSWORD = secret("DATABASE_PASSWORD", default="password")
-FILE_NAME = ".env"
 
 
-def main() -> None:
+def main(file_path: str) -> None:
     command = [
         "eb",
         "create",
@@ -28,7 +27,7 @@ def main() -> None:
         print("ERROR!! .env file is missing!")
         return
 
-    for k, v in yield_env_vars_from_file(file_path=FILE_NAME):
+    for k, v in yield_env_vars_from_file(file_path=file_path):
         if k in ("DATABASE_USER", "DATABASE_PASSWORD"):
             continue
 
@@ -49,4 +48,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    FILE_PATH = ".env"
+    main(file_path=FILE_PATH)
