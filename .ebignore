@@ -19,6 +19,7 @@ coverage.xml
 .venv
 env/
 venv/
+linux-venv/
 venv.bak/
 
 # mypy
@@ -51,5 +52,11 @@ dmypy.json
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 
+# react
 node_modules/
 build/
+
+# django
+db.sqlite3
+static/*
+!static/templates
