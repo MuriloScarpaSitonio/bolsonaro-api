@@ -3,9 +3,7 @@ version: "3.7"
 services:
   django:
     container_name: django
-    build:
-      context: ./django
-      dockerfile: Dockerfile.production
+    image: muriloscarpasitonio/bolsonaro-api:django
     volumes:
       - django_static_volume:/app/django/static
     expose:
@@ -26,9 +24,7 @@ services:
 
   react:
     container_name: react
-    build:
-      context: ./react
-      dockerfile: Dockerfile.production
+    image: muriloscarpasitonio/bolsonaro-api:react
     volumes:
       - react_static_volume:/app/react/build/static
     expose:
@@ -42,7 +38,7 @@ services:
   nginx:
     container_name: nginx
     restart: always
-    build: ./nginx
+    image: muriloscarpasitonio/bolsonaro-api:nginx
     volumes:
       - django_static_volume:/app/django/django_files/static
       - react_static_volume:/app/react/react_files/static
@@ -50,29 +46,6 @@ services:
       - 80:80
     depends_on:
       - react
-
-#  redis:
-#    image: redis:6.0.12-alpine
-#    container_name: redis
-#    ports:
-#      - 6379:6379
-
-#  celery:
-#    container_name: celery
-#    restart: always
-#    build:
-#      context: ./django
-#      dockerfile: Dockerfile.production
-#    entrypoint: []
-#    env_file:
-#      - ./django/.env
-#    command: celery --app=bolsonaro_api worker --loglevel=INFO --beat
-#    volumes:
-#      - django_static_volume:/app/django/static
-#    depends_on:
-#      - redis
-#      - django
-#      - postgres
 
 volumes:
   postgres_data:

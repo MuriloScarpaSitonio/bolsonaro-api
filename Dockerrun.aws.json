@@ -1,0 +1,90 @@
+{
+  "containerDefinitions": [
+    {
+      "command": [
+        "gunicorn",
+        "bolsonaro_api.wsgi:application",
+        "--bind",
+        "0.0.0.0:8000"
+      ],
+      "essential": true,
+      "image": "muriloscarpasitonio/bolsonaro-api:django",
+      "mountPoints": [
+        {
+          "containerPath": "/app/django/static",
+          "sourceVolume": "Django_Static_Volume"
+        }
+      ],
+      "name": "django",
+      "memory": 200
+    },
+    {
+      "essential": true,
+      "image": "muriloscarpasitonio/bolsonaro-api:nginx",
+      "mountPoints": [
+        {
+          "containerPath": "/app/django/django_files/static",
+          "sourceVolume": "Django_Static_Volume"
+        },
+        {
+          "containerPath": "/app/react/react_files/static",
+          "sourceVolume": "React_Static_Volume"
+        }
+      ],
+      "name": "nginx",
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80
+        }
+      ],
+      "memory": 200
+    },
+    {
+      "essential": true,
+      "image": "postgres:13-alpine",
+      "mountPoints": [
+        {
+          "containerPath": "/var/lib/postgresql/data/",
+          "sourceVolume": "Postgres_Data"
+        }
+      ],
+      "name": "postgres",
+      "memory": 200
+    },
+    {
+      "command": ["serve", "-s", "build", "-l", "3000"],
+      "essential": true,
+      "image": "muriloscarpasitonio/bolsonaro-api:react",
+      "mountPoints": [
+        {
+          "containerPath": "/app/react/build/static",
+          "sourceVolume": "React_Static_Volume"
+        }
+      ],
+      "name": "react",
+      "memory": 200
+    }
+  ],
+  "family": "",
+  "volumes": [
+    {
+      "host": {
+        "sourcePath": "django_static_volume"
+      },
+      "name": "Django_Static_Volume"
+    },
+    {
+      "host": {
+        "sourcePath": "postgres_data"
+      },
+      "name": "Postgres_Data"
+    },
+    {
+      "host": {
+        "sourcePath": "react_static_volume"
+      },
+      "name": "React_Static_Volume"
+    }
+  ]
+}
