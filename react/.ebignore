@@ -1,6 +1,6 @@
 # dependencies
-react/node_modules
-react/.pnp
+node_modules/
+.pnp/
 .pnp.js
 
 # production

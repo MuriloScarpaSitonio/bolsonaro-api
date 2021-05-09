@@ -136,8 +136,6 @@ dmypy.json
 # git update-index --assume-unchanged .idea/mat_core.iml
 .idea/
 
-
-venv/
 static/*
 !static/templates
 

@@ -13,7 +13,16 @@ def main(eb_env_name: str, env_files_path: Iterable[str]) -> None:
         eb_env_name (str): Environment's name;
         env_files_path (Iterable[str]): Paths to env files.
     """
-    eb_create_command = ["eb", "create", "--scale=1", "--envvars"]
+    eb_create_command = [
+        "eb",
+        "create",
+        eb_env_name,
+        "--scale=1",
+        "--cname=bolsonaro-api",
+        "--elb-type=application",
+        "--verbose",
+        "--envvars",
+    ]
     aws_rds_command = ["--database.engine=postgres", "--database.instance=db.t2.micro"]
     aws_eb_env_vars = []
 
@@ -46,7 +55,7 @@ def main(eb_env_name: str, env_files_path: Iterable[str]) -> None:
                 print(f"{failure} requires a value")
 
     if len(aws_rds_command) == 4:
-        eb_create_command.insert(3, " ".join(aws_rds_command))
+        eb_create_command.insert(4, " ".join(aws_rds_command))
     else:
         print("ERROR!! DATABASE_USER or DATABASE_PASSWORD RDS env vars are missing!")
         return
@@ -62,5 +71,11 @@ if __name__ == "__main__":
     pwd = os.environ.get("PWD")
     if not pwd:
         sys.exit("PWD env var is not available, please make sure to set it.")
-    FILES_PATH = [f"{pwd}/django/.env", f"{pwd}/react/.env", f"{pwd}/postgres/.env"]
-    main(eb_env_name="bolsonaro-api-env", env_files_path=FILES_PATH)
+    main(
+        eb_env_name="bolsonaro-api-env",
+        env_files_path=[
+            f"{pwd}/django/.env",
+            f"{pwd}/react/.env",
+            f"{pwd}/postgres/.env",
+        ],
+    )
