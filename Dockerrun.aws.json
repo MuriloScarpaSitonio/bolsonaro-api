@@ -21,7 +21,7 @@
     },
     {
       "essential": true,
-      "image": "muriloscarpasitonio/bolsonaro-api:nginx",
+      "image": "muriloscarpasitonio/bolsonaro-api:nginx-aws",
       "memory": 1024,
       "mountPoints": [
         {

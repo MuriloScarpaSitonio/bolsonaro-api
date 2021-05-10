@@ -33,7 +33,7 @@ services:
     mem_limit: 1g
     container_name: nginx
     restart: always
-    image: muriloscarpasitonio/bolsonaro-api:nginx
+    image: muriloscarpasitonio/bolsonaro-api:nginx-aws
     volumes:
       - django_static_volume:/app/django/django_files/static
       - react_static_volume:/app/react/react_files/static
@@ -41,6 +41,7 @@ services:
       - 80:80
     depends_on:
       - react
+      - django
 
 volumes:
   postgres_data:

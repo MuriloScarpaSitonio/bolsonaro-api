@@ -50,6 +50,7 @@ services:
       - 80:80
     depends_on:
       - react
+      - django
 
 #  redis:
 #    image: redis:6.0.12-alpine
