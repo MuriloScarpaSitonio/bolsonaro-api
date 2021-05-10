@@ -9,8 +9,8 @@
         "0.0.0.0:8000"
       ],
       "essential": true,
-      "image": "muriloscarpasitonio/bolsonaro-api:django",
-      "memory": 200,
+      "image": "muriloscarpasitonio/bolsonaro-api:django-aws",
+      "memory": 1024,
       "mountPoints": [
         {
           "containerPath": "/app/django/static",
@@ -22,7 +22,7 @@
     {
       "essential": true,
       "image": "muriloscarpasitonio/bolsonaro-api:nginx",
-      "memory": 200,
+      "memory": 1024,
       "mountPoints": [
         {
           "containerPath": "/app/django/django_files/static",
@@ -45,7 +45,7 @@
       "command": ["serve", "-s", "build", "-l", "3000"],
       "essential": true,
       "image": "muriloscarpasitonio/bolsonaro-api:react",
-      "memory": 200,
+      "memory": 1024,
       "mountPoints": [
         {
           "containerPath": "/app/react/build/static",

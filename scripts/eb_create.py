@@ -28,7 +28,6 @@ def main(eb_env_name: str, env_files_path: Iterable[str]) -> None:
 
     for file_path in env_files_path:
         failures = []
-        aws_rds_envs_command = []
 
         if not os.path.exists(file_path):
             print(f"ERROR!! {file_path} file is missing!")
@@ -36,19 +35,16 @@ def main(eb_env_name: str, env_files_path: Iterable[str]) -> None:
 
         for k, v in yield_env_vars_from_file(file_path=file_path):
             if k == "DATABASE_USER":
-                aws_rds_envs_command.append(f"--database.username={v}")
+                aws_rds_command.append(f"--database.username={v}")
                 continue
             if k == "DATABASE_PASSWORD":
-                aws_rds_envs_command.append(f"--database.password={v}")
+                aws_rds_command.append(f"--database.password={v}")
                 continue
 
             if v:
                 aws_eb_env_vars.append(f"{k}={v}")
             else:
                 failures.append(k)
-
-        if aws_rds_envs_command:
-            aws_rds_command = [*aws_rds_envs_command, *aws_rds_command]
 
         if failures:
             for failure in failures:

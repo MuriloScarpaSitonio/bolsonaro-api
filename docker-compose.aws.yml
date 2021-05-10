@@ -2,9 +2,9 @@ version: "3.7"
 
 services:
   django:
-    mem_limit: 200m
+    mem_limit: 1g
     container_name: django
-    image: muriloscarpasitonio/bolsonaro-api:django
+    image: muriloscarpasitonio/bolsonaro-api:django-aws
     volumes:
       - django_static_volume:/app/django/static
     expose:
@@ -16,7 +16,7 @@ services:
       - postgres
 
   react:
-    mem_limit: 200m
+    mem_limit: 1g
     container_name: react
     image: muriloscarpasitonio/bolsonaro-api:react
     volumes:
@@ -30,7 +30,7 @@ services:
       - django
 
   nginx:
-    mem_limit: 200m
+    mem_limit: 1g
     container_name: nginx
     restart: always
     image: muriloscarpasitonio/bolsonaro-api:nginx
