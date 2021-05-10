@@ -12,8 +12,6 @@ services:
     env_file:
       - ./django/.env
     command: gunicorn bolsonaro_api.wsgi:application --bind 0.0.0.0:8000
-    depends_on:
-      - postgres
 
   react:
     mem_limit: 1g
@@ -26,7 +24,7 @@ services:
     env_file:
       - ./react/.env
     command: serve -s build -l 3000
-    depends_on:
+    volumes_from:
       - django
 
   nginx:
@@ -39,7 +37,7 @@ services:
       - react_static_volume:/app/react/react_files/static
     ports:
       - 80:80
-    depends_on:
+    volumes_from:
       - react
       - django
 
