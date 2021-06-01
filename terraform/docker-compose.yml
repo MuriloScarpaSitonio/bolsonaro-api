@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  terraform:
+    build:
+      context: .
+    volumes:
+      - .:/terraform
+    working_dir: /terraform
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
