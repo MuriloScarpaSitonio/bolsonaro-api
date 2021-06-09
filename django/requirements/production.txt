@@ -1,5 +1,5 @@
 -r base.txt
 
-django_db_logger==0.1.10
 gunicorn==20.0.4
 psycopg2==2.8.6
+watchtower==1.0.6

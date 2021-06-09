@@ -1,10 +1,10 @@
 .PHONY: clean create-venv setup-dev db-up code-convention test run pipeline backend
 
 PIP := pip install -r
-PROJECT_NAME := bolsonaro-api
+PROJECT_NAME := aws-lambda-bolsonaro-api
 PYTHON_VERSION := 3.8.2
 VENV_NAME := $(PROJECT_NAME)-$(PYTHON_VERSION)
-PYTEST_CONFIGS := --nomigrations --cov-report=term-missing  --cov-report=html --cov=. --disable-warnings
+PYTEST_CONFIGS := --cov-report=term-missing  --cov-report=html --cov=. --disable-warnings
 
 .pip:
 	pip install pip --upgrade
@@ -58,33 +58,17 @@ clean: .clean-build .clean-pyc .clean-test .clean-mypy ## remove all build, mypy
 create-venv: .create-venv setup-dev
 
 
-db-up:
-	python manage.py migrate
-
-
-.db-populate-actions:
-	python manage.py createactions
-
-
-.db-populate-quotes:
-	python manage.py createquotes
-
-
-db-populate: db-up .db-populate-actions .db-populate-quotes
-
-
 test:
 	pytest -n`grep -c ^processor /proc/cpuinfo` $(PYTEST_CONFIGS)
 
 
 code-convention:
 	pylint_runner
-	black . --check --exclude=migrations
+	black . --check
 
 
 security-checker:
 	bandit -r . --exclude=./tests,./venv
-# python manage.py check --deploy --fail-level=ERROR --settings=bolsonaro_api.settings.production
 
 
 typing-checker:
@@ -92,14 +76,3 @@ typing-checker:
 
 
 pipeline: test code-convention security-checker typing-checker
-
-
-run:
-	python manage.py runserver 0.0.0.0:8000
-
-
-collectstatic:
-	python manage.py collectstatic --noinput
-
-
-all: setup-dev db-populate collectstatic run

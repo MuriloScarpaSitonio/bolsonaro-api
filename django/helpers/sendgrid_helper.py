@@ -13,7 +13,7 @@ from django.utils.html import strip_tags
 from quotes.models import Quote
 from quotes.serializers import QuoteSuggestion, QuoteSuggestionChanges
 
-logger = logging.getLogger("db")
+logger = logging.getLogger("aws")
 
 
 def send_suggestion_accepted_email(

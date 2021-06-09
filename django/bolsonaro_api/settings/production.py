@@ -1,16 +1,31 @@
+from boto3.session import Session
+
 from .base import *  # pylint:disable=wildcard-import,unused-wildcard-import
 
 DEBUG = secret("DJANGO_DEBUG", cast=bool, default=False)
 
-INSTALLED_APPS += ["django_db_logger"]
+AWS_ACCESS_KEY_ID = secret("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = secret("AWS_SECRET_ACCESS_KEY")
+AWS_REGION_NAME = secret("AWS_REGION_NAME", default="sa-east-1")
 
-LOGGING["handlers"]["db_log"] = {  # type: ignore
-    "class": "django_db_logger.db_log_handler.DatabaseLogHandler",
+boto3_session = Session(
+    aws_access_key_id=AWS_ACCESS_KEY_ID,
+    aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+    region_name=AWS_REGION_NAME,
+)
+
+LOGGING["handlers"]["aws"] = {
+    "level": "DEBUG",
+    "class": "watchtower.CloudWatchLogHandler",
+    "boto3_session": boto3_session,
+    "log_group": secret("AWS_LOG_GROUP", default="DJANGO_BOLSONARO_API_LOG_GROUP"),
+    "stream_name": secret("AWS_LOG_STREAM", default="DJANGO_BOLSONARO_API_LOG_STREAM"),
     "formatter": "default",
 }
-LOGGING["loggers"]["db"] = {  # type: ignore
-    "handlers": ["db_log"],
-    "level": secret("DJANGO_LOG_LEVEL", default="INFO"),
+LOGGING["loggers"]["aws"] = {  # type: ignore
+    "handlers": ["aws"],
+    "level": secret("DJANGO_LOG_LEVEL", default="DEBUG"),
+    "propagate": False,
 }
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

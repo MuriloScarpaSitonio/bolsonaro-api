@@ -11,6 +11,13 @@ locals {
 
 
 
+# AWS Lambda is a serverless compute service that lets you run code without provisioning 
+# or managing servers, creating workload-aware cluster scaling logic, maintaining event 
+# integrations, or managing runtimes. With Lambda, you can run code for virtually any 
+# type of application or backend service - all with zero administration. 
+# Just upload your code as a ZIP file or container image, and Lambda automatically and 
+# precisely allocates compute execution power and runs your code based on the incoming 
+# request or event, for any scale of traffic.
 resource "aws_lambda_function" "this" {
 
   function_name    = local.function_name
@@ -18,19 +25,20 @@ resource "aws_lambda_function" "this" {
   runtime          = var.runtime
   s3_bucket        = aws_s3_bucket.this.id
   s3_key           = local.s3_key
-  source_code_hash = data.external.code.result.md5sum
+  source_code_hash = data.archive_file.lambda_package.output_base64sha256
   memory_size      = var.memory_size
   timeout          = var.timeout
+  handler          = var.handler
 
   environment {
     variables = merge(var.env_vars,
       {
-        log_level = "INFO"
+        LOG_LEVEL = "INFO"
       }
     )
   }
 
-  depends_on = [aws_iam_policy.this, aws_cloudwatch_log_group.this, aws_s3_bucket_object.code]
+  depends_on = [aws_iam_policy.this, aws_cloudwatch_log_group.this, aws_s3_bucket_object.lambda_zip]
 
   tags = {
     name = "${var.project_name}-lambda-function"
@@ -62,11 +70,27 @@ resource "aws_cloudwatch_log_group" "this" {
 ###################################### S3 ######################################
 
 
+# The null_resource resource implements the standard resource lifecycle but 
+# takes no further action. The triggers argument allows specifying an arbitrary 
+# set of values that, when changed, will cause the resource to be replaced.
+resource "null_resource" "install_requirements" {
+  triggers = {
+    requirements = filebase64sha256("${var.source_dir}/requirements.txt")
+    function     = filebase64sha256("${var.source_dir}/post_bolsonaro_api_tweet.py")
+  }
 
-data "external" "code" {
-  program = concat(["python3", "terraform/${path.module}/lambda_packer.py",
-  local.zip_file, "--requirements=${var.requirements}"], var.source_files)
-  working_dir = "../"
+  provisioner "local-exec" {
+    command = "terraform/${path.module}/install_requirements.sh ${var.source_dir}"
+  }
+}
+
+# Generates an archive from content, a file, or directory of files.
+data "archive_file" "lambda_function" {
+  type        = "zip"
+  source_dir  = var.source_dir
+  output_path = local.zip_file
+
+  depends_on = [null_resource.install_requirements]
 }
 
 resource "aws_s3_bucket" "this" {
@@ -78,16 +102,16 @@ resource "aws_s3_bucket" "this" {
   }
 }
 
-resource "aws_s3_bucket_object" "code" {
+resource "aws_s3_bucket_object" "lambda_zip" {
   bucket = aws_s3_bucket.this.id
   key    = local.s3_key
   source = local.zip_file
-  etag   = data.external.code.result.md5sum
+  etag   = data.archive_file.lambda_package.output_base64sha256
 
-  depends_on = [data.external.code]
+  depends_on = [data.archive_file.lambda_package]
 
   tags = {
-    name = "${var.project_name}-lambda-s3-code"
+    name = "${var.project_name}-s3-object-lambda-zip"
     env  = terraform.workspace
   }
 }

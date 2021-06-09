@@ -2,22 +2,62 @@ language: python
 python:
   - "3.8"
 
-install:
-  - make django-setup-dev
-
 jobs:
   include:
-    - stage: Django code convention
+
+#################################### DJANGO ####################################
+
+    - stage: django-code-convention
+      install:
+        - make django-setup-dev
       script:
         - make django-code-convention
-    - stage: Django typing checker
+        
+    - stage: django-typing-checker
+      install:
+        - make django-setup-dev
       script:
         - make django-typing-checker
-    - stage: Django security checker
+  
+    - stage: django-security-checker
+      install:
+        - make django-setup-dev
       script:
         - make django-security-checker
-    - stage: Django test
+  
+    - stage: django-test
+      install:
+        - make django-setup-dev
       script:
         - make django-test
+
+#################################### AWS LAMBDA ####################################
+
+    - stage: aws-lambda-code-convention
+      install:
+        - make aws-lambda-setup-dev
+      script:
+        - make aws-lambda-code-convention
+  
+    - stage: aws-lambda-typing-checker
+      install:
+        - make aws-lambda-setup-dev
+      script:
+        - make aws-lambda-typing-checker
+
+    - stage: aws-lambda-security-checker
+      install:
+        - make aws-lambda-setup-dev
+      script:
+        - make aws-lambda-security-checker
+        
+    - stage: aws-lambda-test
+      install:
+        - make aws-lambda-setup-dev
+      script:
+        - make aws-lambda-test
+
+#################################### COVERALLS ####################################
+
       after_success:
         - cd django && coveralls

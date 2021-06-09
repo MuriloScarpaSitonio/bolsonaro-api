@@ -22,7 +22,7 @@ from .filters import EntityFilterSet
 from .serializers import EntityCountSerializer, TagSerializer
 
 
-logger = logging.getLogger("db")
+logger = logging.getLogger("aws")
 
 
 class CustomPaginetdViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):

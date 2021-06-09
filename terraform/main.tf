@@ -140,8 +140,8 @@ module "lambda" {
 
   project_name  = var.project_name
   function_name = var.lambda_function_name
-  source_files  = ["aws_lambda"]
-  requirements  = "aws_lambda/requirements.txt"
+  source_dir    = "../../aws_lambda"
+  handler       = "aws_lambda.post_bolsonaro_api_tweet.lambda_handler"
   env_vars = {
     TWITTER_API_KEY          = var.lambda_twitter_api_key
     TWITTER_API_SECRET_KEY   = var.lambda_twitter_api_secret_key

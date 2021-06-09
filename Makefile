@@ -2,6 +2,7 @@
 
 DJANGO_DIR := django
 REACT_DIR := react
+AWS_LAMDA_DIR := aws_lambda
 
 db-populate: 
 	$(MAKE) -C $(DJANGO_DIR) db-populate
@@ -57,3 +58,26 @@ django:
 
 react:
 	$(MAKE) -C $(REACT_DIR) all
+
+
+aws-lambda-setup-dev:
+	$(MAKE) -C $(AWS_LAMDA_DIR) setup-dev
+
+
+aws-lambda-test:
+	$(MAKE) -C $(AWS_LAMDA_DIR) test
+
+
+aws-lambda-code-convention:
+	$(MAKE) -C $(AWS_LAMDA_DIR) code-convention
+
+
+aws-lambda-security-checker:
+	$(MAKE) -C $(AWS_LAMDA_DIR) security-checker
+
+
+aws-lambda-typing-checker:
+	$(MAKE) -C $(AWS_LAMDA_DIR) typing-checker
+
+
+aws-lambda-pipeline: aws-lambda-test aws-lambda-code-convention aws-lambda-security-checker aws-lambda-typing-checker

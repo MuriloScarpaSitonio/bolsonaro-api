@@ -20,13 +20,8 @@ variable "log_retention" {
   default     = 7
 }
 
-variable "source_files" {
-  description = "The lambda function source files"
-  type        = list(string)
-}
-
-variable "requirements" {
-  description = "The lambda function requirements file"
+variable "source_dir" {
+  description = "The lambda function source directory"
   type        = string
 }
 
@@ -40,6 +35,11 @@ variable "timeout" {
   description = "The lambda function timeout in seconds"
   type        = number
   default     = 15
+}
+
+variable "handler" {
+  description = "The lambda function entrypoint"
+  type        = string
 }
 
 variable "env_vars" {

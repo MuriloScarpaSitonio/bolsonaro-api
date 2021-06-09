@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from decouple import config as secret
+from decouple import Csv, config as secret
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -16,7 +16,7 @@ SECRET_KEY = secret(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = secret("DJANGO_DEBUG", cast=bool, default=True)
 
-ALLOWED_HOSTS = ["bolsonaro-api.herokuapp.com", "127.0.0.1"]
+ALLOWED_HOSTS = secret("ALLOWED_HOSTS", default="127.0.0.1", cast=Csv())    
 
 
 # Application definition
@@ -178,16 +178,5 @@ REST_FRAMEWORK = {
 }
 DRF_RECAPTCHA_SECRET_KEY = secret("RECAPTCHA_SECRET_KEY", default="")
 # https://developers.google.com/recaptcha/docs/faq#id-like-to-run-automated-tests-with-recaptcha.-what-should-i-do
-
-TWITTER_API_KEY = secret("TWITTER_API_KEY", default="")
-TWITTER_API_SECRET_KEY = secret("TWITTER_API_SECRET_KEY", default="")
-TWITTER_API_TOKEN = secret("TWITTER_API_TOKEN", default="")
-TWITTER_API_SECRET_TOKEN = secret("TWITTER_API_SECRET_TOKEN", default="")
-
-CELERY_BROKER_URL = secret("REDIS_URL", default="redis://localhost:6379")
-CELERY_RESULT_BACKEND = secret("REDIS_URL", default="redis://localhost:6379")
-CELERY_ACCEPT_CONTENT = ["application/json"]
-CELERY_RESULT_SERIALIZER = "json"
-CELERY_TASK_SERIALIZER = "json"
 
 SWAGGER_SETTINGS = {"USE_SESSION_AUTH": False}
