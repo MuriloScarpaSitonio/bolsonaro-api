@@ -16,7 +16,7 @@ SECRET_KEY = secret(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = secret("DJANGO_DEBUG", cast=bool, default=True)
 
-ALLOWED_HOSTS = secret("ALLOWED_HOSTS", default="127.0.0.1", cast=Csv())    
+ALLOWED_HOSTS = secret("ALLOWED_HOSTS", default="127.0.0.1", cast=Csv())
 
 
 # Application definition

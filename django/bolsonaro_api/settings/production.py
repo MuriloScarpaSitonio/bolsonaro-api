@@ -1,4 +1,4 @@
-from boto3.session import Session
+from boto3.session import Session  # pylint: disable=import-error
 
 from .base import *  # pylint:disable=wildcard-import,unused-wildcard-import
 
