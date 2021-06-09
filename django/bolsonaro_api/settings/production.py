@@ -14,7 +14,7 @@ boto3_session = Session(
     region_name=AWS_REGION_NAME,
 )
 
-LOGGING["handlers"]["aws"] = {
+LOGGING["handlers"]["aws"] = {  # type: ignore
     "level": "DEBUG",
     "class": "watchtower.CloudWatchLogHandler",
     "boto3_session": boto3_session,
