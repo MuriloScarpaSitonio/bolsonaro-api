@@ -22,29 +22,28 @@ class Command(BaseCommand):
             os.path.join(dir_path, "actions_tags.json"),
             encoding="utf-8",
         ) as tags_file:
-            tags = json.load(tags_file)
-            for tag in tags:
+            for tag in json.load(tags_file):
                 del tag["slug"]
                 childrens = tag.pop("childrens")
-                tag_obj = ActionTags.objects.create(**tag)
+                tag_obj, _ = ActionTags.objects.get_or_create(**tag)
                 for children in childrens:
                     del children["slug"]
-                    ActionTags.objects.create(**children, parent=tag_obj)
+                    ActionTags.objects.get_or_create(**children, parent=tag_obj)
 
         with open(
             os.path.join(dir_path, "actions.json"),
             encoding="utf-8",
         ) as actions_file:
-            actions = json.load(actions_file)
-            for action in actions:
+            for action in json.load(actions_file):
                 action_tags = action.pop("tags")
-                action_obj = Action.objects.create(
+                action_obj, created = Action.objects.get_or_create(
                     **{
                         **action,
                         "date": datetime.strptime(action.pop("date"), "%d/%m/%Y"),
                     }
                 )
-                action_obj.tags.add(*action_tags)  # taggit needs a pk
-                action_obj.save()
+                if created:
+                    action_obj.tags.add(*action_tags)  # taggit needs a pk
+                    action_obj.save()
 
         print("Actions and tags created!")

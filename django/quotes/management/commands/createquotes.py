@@ -19,32 +19,29 @@ class Command(BaseCommand):
         dir_path = os.path.join(__location__, "../../..", "data")
 
         with open(
-            os.path.join(dir_path, "quotes_tags.json"),
-            encoding="utf-8",
+            os.path.join(dir_path, "quotes_tags.json"), encoding="utf-8"
         ) as tags_file:
-            tags = json.load(tags_file)
-            for tag in tags:
+            for tag in json.load(tags_file):
                 del tag["slug"]
                 childrens = tag.pop("childrens")
-                tag_obj = QuoteTags.objects.create(**tag)
+                tag_obj, _ = QuoteTags.objects.get_or_create(**tag)
                 for children in childrens:
                     del children["slug"]
-                    QuoteTags.objects.create(**children, parent=tag_obj)
+                    QuoteTags.objects.get_or_create(**children, parent=tag_obj)
 
         with open(
-            os.path.join(dir_path, "quotes.json"),
-            encoding="utf-8",
+            os.path.join(dir_path, "quotes.json"), encoding="utf-8"
         ) as quotes_file:
-            quotes = json.load(quotes_file)
-            for quote in quotes:
+            for quote in json.load(quotes_file):
                 quote_tags = quote.pop("tags")
-                quote_obj = Quote.objects.create(
+                quote_obj, created = Quote.objects.get_or_create(
                     **{
                         **quote,
                         "date": datetime.strptime(quote.pop("date"), "%d/%m/%Y"),
                     }
                 )
-                quote_obj.tags.add(*quote_tags)  # taggit needs a pk
-                quote_obj.save()
+                if created:
+                    quote_obj.tags.add(*quote_tags)  # taggit needs a pk
+                    quote_obj.save()
 
         print("Quotes and tags created!")
