@@ -63,10 +63,5 @@ def post_bolsonaro_api_tweet(entity_name: str) -> None:
 
 
 def lambda_handler(event, context):  # pragma: no cover pylint: disable=unused-argument
-    parser = ArgumentParser(description="Post Bolsonaro tweet")
-    parser.add_argument(
-        "entity_name",
-        help="Which kind of tweet we are going to post",
-        choices=("actions", "quotes"),
-    )
-    post_bolsonaro_api_tweet(entity_name=vars(parser.parse_args())["entity_name"])
+    self.logger.info("Received event: %s", event)
+    post_bolsonaro_api_tweet(entity_name=event['entity_name'])

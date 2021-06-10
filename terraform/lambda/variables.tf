@@ -44,5 +44,5 @@ variable "handler" {
 
 variable "env_vars" {
   description = "Environment variables passed to the lambda function"
-  type        = map
+  type        = map(any)
 }

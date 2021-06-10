@@ -46,8 +46,24 @@ resource "aws_lambda_function" "this" {
   }
 }
 
+# Gives an external source (like a CloudWatch Event Rule, SNS, or S3) permission to access 
+# the Lambda function.
+resource "aws_lambda_permission" "allow_cloudwatch" {
 
-###################################### CLOUDWATCH LOGS ######################################
+  for_each = { for i, v in [
+    aws_cloudwatch_event_rule.run_at_8am,
+    aws_cloudwatch_event_rule.run_at_18pm
+  ] : i => v }
+
+  statement_id  = "AllowExecutionFromCloudWatchAt8am"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.this.function_name
+  principal     = "events.amazonaws.com"
+  source_arn    = each.value.arn
+}
+
+
+###################################### CLOUDWATCH ######################################
 
 
 
@@ -64,6 +80,46 @@ resource "aws_cloudwatch_log_group" "this" {
   }
 }
 
+# An event indicates a change in an environment such as an AWS environment, 
+# a SaaS partner service or application, or one of your applications or services.
+# You can also set up scheduled events that are generated on a periodic basis.
+resource "aws_cloudwatch_event_rule" "run_at_8am" {
+  name                = "${local.function_name}-everyday-at-8am"
+  description         = "Fires everyday at 8am"
+  schedule_expression = "cron(0 8 * * *)"
+
+  tags = {
+    name = "${local.function_name}-cloudwatch-rule-to-run-at-8am"
+    env  = terraform.workspace
+  }
+}
+
+resource "aws_cloudwatch_event_rule" "run_at_18pm" {
+  name                = "${local.function_name}-everyday-at-18pm"
+  description         = "Fires everyday at 18pm"
+  schedule_expression = "cron(0 18 * * *)"
+
+  tags = {
+    name = "${local.function_name}-cloudwatch-rule-to-run-at-18pm"
+    env  = terraform.workspace
+  }
+}
+
+# A target is a resource or endpoint that EventBridge sends an event to when the event matches 
+# the event pattern defined for a rule. The rule processes the event data and sends the pertinent 
+# information to the target. To deliver event data to a target, EventBridge needs permission to 
+# access the target resource. You can define up to five targets for each rule.
+resource "aws_cloudwatch_event_target" "run_lambda_function" {
+  for_each = { for i, v in [
+    { "rule" : aws_cloudwatch_event_rule.run_at_8am, "input" : "{\"entity_name\":\"quotes\"}" },
+    { "rule" : aws_cloudwatch_event_rule.run_at_18pm, "input" : "{\"entity_name\":\"actions\"}" }
+  ] : i => v }
+
+  rule  = each.value.rule.id
+  arn   = aws_lambda_function.this.arn
+  input = each.value.input
+}
+
 
 
 
@@ -75,8 +131,9 @@ resource "aws_cloudwatch_log_group" "this" {
 # set of values that, when changed, will cause the resource to be replaced.
 resource "null_resource" "install_requirements" {
   triggers = {
-    requirements = filebase64sha256("${var.source_dir}/requirements.txt")
-    function     = filebase64sha256("${var.source_dir}/post_bolsonaro_api_tweet.py")
+    requirements_base       = filebase64sha256("${var.source_dir}/requirements/base.txt")
+    requirements_production = filebase64sha256("${var.source_dir}/requirements/production.txt")
+    function                = filebase64sha256("${var.source_dir}/post_bolsonaro_api_tweet.py")
   }
 
   provisioner "local-exec" {
@@ -85,7 +142,7 @@ resource "null_resource" "install_requirements" {
 }
 
 # Generates an archive from content, a file, or directory of files.
-data "archive_file" "lambda_function" {
+data "archive_file" "lambda_package" {
   type        = "zip"
   source_dir  = var.source_dir
   output_path = local.zip_file

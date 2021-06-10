@@ -9,15 +9,15 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "bolsonaro-api-terraform-state"
-    key    = "production/terraform.tfstate"
-    region = "sa-east-1"
+    bucket     = "bolsonaro-api-terraform-state"
+    key        = "production/terraform.tfstate"
+    region     = "sa-east-1"
     //encrypt = true
   }
 }
 
 
-provider aws {
+provider "aws" {
   region = var.aws_region
 }
 
@@ -140,7 +140,7 @@ module "lambda" {
 
   project_name  = var.project_name
   function_name = var.lambda_function_name
-  source_dir    = "../../aws_lambda"
+  source_dir    = "../aws_lambda"
   handler       = "aws_lambda.post_bolsonaro_api_tweet.lambda_handler"
   env_vars = {
     TWITTER_API_KEY          = var.lambda_twitter_api_key
