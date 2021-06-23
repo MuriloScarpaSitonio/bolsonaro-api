@@ -1,3 +1,3 @@
 python manage.py migrate --noinput
-python manage.py createactions
-python manage.py createquotes
+python manage.py create_actions
+python manage.py create_quotes

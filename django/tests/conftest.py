@@ -6,6 +6,9 @@ import pytest
 from factory.django import DjangoModelFactory
 from rest_framework.test import APIClient
 
+from django.http import HttpRequest
+from django.core.handlers.wsgi import WSGIRequest
+
 from actions.models import Action, ActionSuggestion, ActionSuggestionChanges, ActionTags
 from core.consts import API_BASE_URL
 from quotes.models import Quote, QuoteSuggestion, QuoteSuggestionChanges, QuoteTags
@@ -369,3 +372,36 @@ def fields(action_fields, quote_fields):
 @pytest.fixture
 def tags(action_tag, quote_tag):
     return action_tag, quote_tag
+
+
+@pytest.fixture
+def wsgi_request():
+    return WSGIRequest(
+        {
+            "SERVER_NAME": "127.0.0.1",
+            "SERVER_PORT": 443,
+            "REQUEST_METHOD": "GET",
+            "wsgi.input": None,
+            "wsgi.url_scheme": "http",
+        }
+    )
+
+
+@pytest.fixture
+def generic_post_request():
+    request = HttpRequest()
+    request.method = "POST"
+    request.META = {"SERVER_NAME": "127.0.0.1", "SERVER_PORT": 443}
+    return request
+
+
+@pytest.fixture
+def accept_suggestion_request(generic_post_request):
+    generic_post_request.POST = {"accept-suggestion": True}
+    return generic_post_request
+
+
+@pytest.fixture
+def decline_suggestion_request(generic_post_request):
+    generic_post_request.POST = {"decline-suggestion": True}
+    return generic_post_request

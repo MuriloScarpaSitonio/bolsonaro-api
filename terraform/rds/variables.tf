@@ -38,6 +38,12 @@ variable "port" {
   type        = number
 }
 
+variable "password" { # SSM
+  description = "The database password for the master user"
+  type        = string
+  sensitive   = true
+}
+
 variable "parameter_group_family" {
   description = "The family of the DB parameter group."
   type        = string

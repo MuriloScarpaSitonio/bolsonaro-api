@@ -63,11 +63,11 @@ db-up:
 
 
 .db-populate-actions:
-	python manage.py createactions
+	python manage.py create_actions
 
 
 .db-populate-quotes:
-	python manage.py createquotes
+	python manage.py create_quotes
 
 
 db-populate: db-up .db-populate-actions .db-populate-quotes
@@ -84,7 +84,10 @@ code-convention:
 
 security-checker:
 	bandit -r . --exclude=./tests,./venv
-# python manage.py check --deploy --fail-level=ERROR --settings=bolsonaro_api.settings.production
+
+
+deploy-checker:
+	python manage.py check --deploy --fail-level=ERROR --settings=bolsonaro_api.settings.production
 
 
 typing-checker:

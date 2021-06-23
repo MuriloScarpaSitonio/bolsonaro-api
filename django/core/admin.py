@@ -6,11 +6,12 @@ from django.core.handlers.wsgi import WSGIRequest
 from django.db.models import QuerySet
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from helpers.sendgrid_helper import (
+
+from quotes.models import QuoteSuggestion, QuoteSuggestionChanges
+from .helpers.sendgrid_helper import (
     send_suggestion_accepted_email,
     send_suggestion_declined_email,
 )
-from quotes.models import QuoteSuggestion, QuoteSuggestionChanges
 
 
 class EntityListFilter(admin.SimpleListFilter):

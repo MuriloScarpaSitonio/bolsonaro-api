@@ -29,36 +29,34 @@ variable "django_environment" {
   }))
 }
 
-// variable "celery_environment" {
-//  description = "The environment variables to pass to the celery container."
-//  type = list(object({
-//    name  = string
-//    value = string
-//  }))
-//}
+#variable "react_environment" {
+#  description = "The environment variables to pass to the react container."
+#  type = list(object({
+#    name  = string
+#    value = string
+#  }))
+#}
 
-variable "react_environment" {
-  description = "The environment variables to pass to the react container."
-  type = list(object({
-    name  = string
-    value = string
-  }))
-}
+#variable "react_container_port" {
+#  description = "The port that the react container will expose."
+#  type        = number
+#  default     = 3000
+#}
 
-variable "react_container_port" {
-  description = "The port that the react container will expose."
-  type        = number
-  default     = 3000
-}
-
-variable "react_docker_image_url" {
-  description = "Image URL for the react docker image"
-  type        = string
-}
+#variable "react_docker_image_url" {
+#  description = "Image URL for the react docker image"
+#  type        = string
+#}
 
 variable "nginx_docker_image_url" {
   description = "Image URL for the nginx docker image"
   type        = string
+}
+
+variable "nginx_container_port" {
+  description = "The port that the react container will expose."
+  type        = number
+  default     = 80
 }
 
 variable "fargate_cpu" {
@@ -128,4 +126,14 @@ variable "max_capacity" {
   description = "Maximum number of task to run"
   type        = number
   default     = 4
+}
+
+variable "ecs_security_group_id" {
+  description = "Security group ID to ECS service. This is not created inside the module because it's shared with RDS"
+  type        = string
+}
+
+variable "alb_security_group_id" {
+  description = "Security group ID to ALB. This is not created inside the module because it's shared with ECS security group"
+  type        = string
 }

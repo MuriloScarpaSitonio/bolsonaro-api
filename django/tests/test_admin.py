@@ -7,7 +7,6 @@ from actions.admin import (
 )
 from actions.models import Action, ActionSuggestion, ActionSuggestionChanges
 from django.contrib.admin.sites import AdminSite
-from helpers.utils import get_generic_request, get_post_request
 from quotes.admin import (
     QuoteListFilter,
     QuoteSuggestionAdmin,
@@ -32,6 +31,7 @@ def test_decline_suggestion_admin(
     admin_model,
     model,
     url,
+    decline_suggestion_request,
 ):
     # GIVEN
     obj = action_suggestion if model == ActionSuggestion else quote_suggestion
@@ -40,10 +40,7 @@ def test_decline_suggestion_admin(
     response = mocker.patch("core.admin.HttpResponseRedirect")
 
     # WHEN
-    admin_view.response_change(
-        request=get_post_request(post_params={"decline-suggestion": True}),
-        obj=obj,
-    )
+    admin_view.response_change(request=decline_suggestion_request, obj=obj)
 
     # THEN
     assert not model.objects.exists()
@@ -75,6 +72,7 @@ def test_accept_suggestion_admin(
     model,
     original_model,
     url,
+    accept_suggestion_request,
 ):
     # GIVEN
     number_of_objs = original_model.objects.count()
@@ -84,10 +82,7 @@ def test_accept_suggestion_admin(
     response = mocker.patch("core.admin.HttpResponseRedirect")
 
     # WHEN
-    admin_view.response_change(
-        request=get_post_request(post_params={"accept-suggestion": True}),
-        obj=obj,
-    )
+    admin_view.response_change(request=accept_suggestion_request, obj=obj)
 
     # THEN
     assert not model.objects.exists()
@@ -108,6 +103,7 @@ def test_get_fieldsets_suggestion_change_admin(
     name,
     action_suggestion_change,
     quote_suggestion_change,
+    wsgi_request,
 ):
     # GIVEN
     obj = (
@@ -119,10 +115,7 @@ def test_get_fieldsets_suggestion_change_admin(
     admin_view = admin_model(model=model, admin_site=AdminSite())
 
     # WHEN
-    fieldsets = admin_view.get_fieldsets(
-        request=get_generic_request(),
-        obj=obj,
-    )
+    fieldsets = admin_view.get_fieldsets(request=wsgi_request, obj=obj)
 
     # THEN
     assert fieldsets == (
@@ -147,6 +140,7 @@ def test_get_readonly_fields_suggestion_change_admin(
     name,
     action_suggestion_change,
     quote_suggestion_change,
+    wsgi_request,
 ):
     # GIVEN
     obj = (
@@ -158,10 +152,7 @@ def test_get_readonly_fields_suggestion_change_admin(
     admin_view = admin_model(model=model, admin_site=AdminSite())
 
     # WHEN
-    readonly_fields = admin_view.get_readonly_fields(
-        request=get_generic_request(),
-        obj=obj,
-    )
+    readonly_fields = admin_view.get_readonly_fields(request=wsgi_request, obj=obj)
 
     # THEN
     assert readonly_fields == (
@@ -193,6 +184,7 @@ def test_decline_suggestion_change_admin(
     url,
     action_suggestion_change,
     quote_suggestion_change,
+    decline_suggestion_request,
 ):
     # GIVEN
     obj = (
@@ -205,10 +197,7 @@ def test_decline_suggestion_change_admin(
     response = mocker.patch("core.admin.HttpResponseRedirect")
 
     # WHEN
-    admin_view.response_change(
-        request=get_post_request(post_params={"decline-suggestion": True}),
-        obj=obj,
-    )
+    admin_view.response_change(request=decline_suggestion_request, obj=obj)
 
     # THEN
     assert not model.objects.exists()
@@ -239,6 +228,7 @@ def test_accept_suggestion_change_admin(
     action_suggestion_change,
     quote,
     quote_suggestion_change,
+    accept_suggestion_request,
 ):
     # GIVEN
     if model == ActionSuggestionChanges:
@@ -256,7 +246,7 @@ def test_accept_suggestion_change_admin(
 
     # WHEN
     admin_view.response_change(
-        request=get_post_request(post_params={"accept-suggestion": True}),
+        request=accept_suggestion_request,
         obj=obj,
     )
 
@@ -279,10 +269,11 @@ def test_get_lookups_filter_admin(
     filter_model,
     action_suggestion,
     quote_suggestion,
+    wsgi_request,
 ):
     obj = action_suggestion if model == ActionSuggestion else quote_suggestion
     filter_instance = filter_model(
-        request=get_generic_request(),
+        request=wsgi_request,
         params={},
         model=model,
         model_admin=admin_model(model=model, admin_site=AdminSite()),
@@ -319,8 +310,9 @@ def test_filter_queryset(
     mocker_path,
     action_suggestion,  # pylint: disable=unused-argument
     quote_suggestion,  # pylint: disable=unused-argument
+    wsgi_request,
 ):
-    request = get_generic_request()
+    request = wsgi_request
     filter_instance = filter_model(
         request=request,
         params={},

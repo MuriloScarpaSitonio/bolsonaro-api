@@ -11,12 +11,13 @@ from rest_framework.utils.serializer_helpers import ReturnList
 from rest_framework.viewsets import GenericViewSet
 
 from django.db.models import Max, QuerySet
-from helpers.inspectors import (
+
+from .helpers.inspectors import (
     TagsFieldInspector,
     TagsFilterInspector,
 )  # CustomPaginatorInspector
-from helpers.schemas import CustomAutoSchema
-from helpers.sendgrid_helper import send_suggestion_received_email
+from .helpers.schemas import CustomAutoSchema
+from .helpers.sendgrid_helper import send_suggestion_received_email
 
 from .filters import EntityFilterSet
 from .serializers import EntityCountSerializer, TagSerializer

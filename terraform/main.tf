@@ -1,18 +1,18 @@
 terraform {
-  required_version = ">= 0.13"
+  required_version = ">= 0.15"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = "~> 3.45"
     }
   }
 
   backend "s3" {
-    bucket     = "bolsonaro-api-terraform-state"
-    key        = "production/terraform.tfstate"
-    region     = "sa-east-1"
-    //encrypt = true
+    bucket  = "bolsonaro-api-tf-state"
+    key     = "${terraform.workspace}/terraform.tfstate"
+    region  = "sa-east-1"
+    encrypt = true
   }
 }
 
@@ -44,6 +44,14 @@ module "vpc" {
   ]
 }
 
+resource "random_password" "this" {
+  length      = 32
+  special     = true
+  min_special = 6
+  lower       = true
+  number      = true
+  upper       = true
+}
 
 module "rds" {
   source = "./rds"
@@ -54,9 +62,10 @@ module "rds" {
   engine            = var.rds_engine
   engine_version    = var.rds_engine_version
   instance_class    = var.rds_instance_class
-  name              = var.rds_name
-  username          = var.rds_username
+  name              = data.aws_ssm_parameter.rds_name.value
+  username          = data.aws_ssm_parameter.rds_username.value
   port              = var.rds_port
+  password          = random_password.this.result
 
   parameter_group_family = var.rds_parameter_group_family
 
@@ -65,7 +74,7 @@ module "rds" {
 
   subnet_ids = module.vpc.private_subnet_ids
 
-  ecs_security_group_id = module.ecs.security_group_id
+  ecs_security_group_id = aws_security_group.ecs.id
 }
 
 module "ecs" {
@@ -77,7 +86,7 @@ module "ecs" {
   django_environment = [
     {
       "name" : "DAJNGO_SECRET_KEY",
-      "value" : var.django_secret_key
+      "value" : data.aws_ssm_parameter.django_secret_key.value
     },
     {
       "name" : "EMAIL_HOST_USER",
@@ -85,45 +94,65 @@ module "ecs" {
     },
     {
       "name" : "RECAPTCHA_SECRET_KEY",
-      "value" : var.django_recaptcha_secret_key
+      "value" : data.aws_ssm_parameter.django_recaptcha_secret_key.value
     },
     {
       "name" : "SENDGRID_API_KEY",
-      "value" : var.django_sendgrid_api_key
+      "value" : data.aws_ssm_parameter.django_sendgrid_api_key.value
     },
     {
-      "name" : "DB_NAME",
-      "value" : module.rds.name
+      "name" : "DATABASE_ENGINE",
+      "value" : var.django_db_engine
     },
     {
-      "name" : "DB_USERNAME",
-      "value" : module.rds.username
+      "name" : "DATABASE_PORT",
+      "value" : var.rds_port
     },
     {
-      "name" : "DB_HOST",
+      "name" : "DATABASE_NAME",
+      "value" : data.aws_ssm_parameter.rds_name.value
+    },
+    {
+      "name" : "DATABASE_USER",
+      "value" : data.aws_ssm_parameter.rds_username.value
+    },
+    {
+      "name" : "DATABASE_HOST",
       "value" : module.rds.host
     },
     {
-      "name" : "DB_PASSWORD",
-      "value" : module.rds.password
+      "name" : "DATABASE_PASSWORD",
+      "value" : random_password.this.result
+    },
+    {
+      "name" : "AWS_ACCESS_KEY_ID",
+      "value" : var.AWS_ACCESS_KEY_ID
+    },
+    {
+      "name" : "AWS_SECRET_ACCESS_KEY",
+      "value" : var.AWS_SECRET_ACCESS_KEY
+    },
+    {
+      "name" : "AWS_REGION_NAME",
+      "value" : var.aws_region
     }
   ]
 
-  react_docker_image_url = var.react_docker_image_url
-  react_environment = [
-    {
-      "name" : "REACT_APP_RECAPTCHA_SITE_KEY",
-      "value" : var.react_recaptcha_site_key
-    },
-    {
-      "name" : "REACT_APP_PIX_KEY",
-      "value" : var.react_pix_key
-    },
-    {
-      "name" : "REACT_APP_BASE_API_URL",
-      "value" : var.react_base_api_url
-    }
-  ]
+  #react_docker_image_url = var.react_docker_image_url
+  #react_environment = [
+  #  {
+  #    "name" : "REACT_APP_RECAPTCHA_SITE_KEY",
+  #    "value" : var.react_recaptcha_site_key
+  #  },
+  #  {
+  #    "name" : "REACT_APP_PIX_KEY",
+  #    "value" : var.react_pix_key
+  #  },
+  #  {
+  #    "name" : "REACT_APP_BASE_API_URL",
+  #    "value" : var.react_base_api_url
+  #  }
+  #]
 
   nginx_docker_image_url = var.nginx_docker_image_url
 
@@ -132,7 +161,10 @@ module "ecs" {
   private_subnet_ids = module.vpc.private_subnet_ids
   public_subnet_ids  = module.vpc.public_subnet_ids
 
-  // depends_on = [module.rds.host]
+  ecs_security_group_id = aws_security_group.ecs.id
+  alb_security_group_id = aws_security_group.alb.id
+
+  depends_on = [module.rds]
 }
 
 module "lambda" {
@@ -143,9 +175,12 @@ module "lambda" {
   source_dir    = "../aws_lambda"
   handler       = "aws_lambda.post_bolsonaro_api_tweet.lambda_handler"
   env_vars = {
-    TWITTER_API_KEY          = var.lambda_twitter_api_key
-    TWITTER_API_SECRET_KEY   = var.lambda_twitter_api_secret_key
-    TWITTER_API_TOKEN        = var.lambda_twitter_api_token
-    TWITTER_API_SECRET_TOKEN = var.lambda_twitter_api_secret_token
+    BOLSONARO_API_BASE_URL   = "${module.ecs.alb_dns_name}/api/v1"
+    TWITTER_API_KEY          = data.aws_ssm_parameter.lambda_twitter_api_key.value
+    TWITTER_API_SECRET_KEY   = data.aws_ssm_parameter.lambda_twitter_api_secret_key.value
+    TWITTER_API_TOKEN        = data.aws_ssm_parameter.lambda_twitter_api_token.value
+    TWITTER_API_SECRET_TOKEN = data.aws_ssm_parameter.lambda_twitter_api_secret_token.value
   }
+
+  depends_on = [module.ecs]
 }

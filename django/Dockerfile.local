@@ -12,4 +12,4 @@ RUN pip install -r requirements/local.txt
 COPY ./entrypoint.local.sh /app/django/entrypoint.local.sh
 
 RUN chmod +x /app/django/entrypoint.local.sh
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+ENTRYPOINT ["/app/django/entrypoint.local.sh"]

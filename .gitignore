@@ -172,3 +172,5 @@ yarn-error.log*
 .terraform/
 .deploy/
 terraform.tfvars
+.terraform.*
+terraform.tfstate*

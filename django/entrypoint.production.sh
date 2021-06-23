@@ -1,26 +1,19 @@
 #!/bin/sh
-if [ "$DATABASE_NAME" = "postgres" ]
-then
-    echo "Waiting for postgres..."
-    
-    while ! nc -z $DATABASE_HOST $DATABASE_PORT; do
-      sleep 0.1
-    done
-    
-    echo "PostgreSQL started"
-fi
-
 python manage.py collectstatic --noinput --settings=bolsonaro_api.settings.production
 python manage.py migrate --noinput
+python manage.py create_actions
+python manage.py create_quotes
 
-if [ "$POPULATE_DB" = "True" ]
-then
-    echo "Populating database..."
+cat <<EOF | python manage.py shell
+from django.contrib.auth import get_user_model
 
-    python manage.py createactions
-    python manage.py createquotes
+User = get_user_model()
 
-    echo "Database successfully populated!"
-fi
+if not User.objects.filter(username='$ADMIN_USERNAME').exists():
+    User.objects.create_superuser(username='$ADMIN_USERNAME', 
+                                  email='$EMAIL_HOST_USER', 
+                                  password='$ADMIN_PASSWORD')
+    print("Superuser created!")
+EOF
 
 exec "$@"

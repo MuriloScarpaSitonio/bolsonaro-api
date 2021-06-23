@@ -12,7 +12,7 @@ services:
       - 8000
     env_file:
       - ./django/.env
-    command: gunicorn bolsonaro_api.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn bolsonaro_api.wsgi:application --workers=3 --bind=:8000 --max-requests=1000 --max-requests-jitter=50
     depends_on:
       - postgres
 
@@ -21,8 +21,10 @@ services:
     image: postgres:13-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    env_file:
-      - ./postgres/.env
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
 
   react:
     container_name: react
@@ -35,7 +37,7 @@ services:
       - 3000
     env_file:
       - ./react/.env
-    command: serve -s build -l 3000
+    command: serve --single build --listen=3000
     depends_on:
       - django
 

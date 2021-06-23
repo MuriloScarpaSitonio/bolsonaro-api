@@ -5,8 +5,9 @@ __pycache__/
 **/static/*
 htmlcov/
 /coverage
-.coverage*
-celerybeat-schedule
+.coverage
 db.sqlite3
-pytest.ini
 venv/
+.mypy_cache
+.pytest_cache
+.env

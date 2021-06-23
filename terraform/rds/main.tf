@@ -6,7 +6,7 @@ resource "aws_db_instance" "this" {
   identifier        = "${var.project_name}-rds-identifier"
   name              = var.name
   username          = var.username
-  password          = random_string.this.result
+  password          = var.password
   port              = var.port
 
   parameter_group_name   = aws_db_parameter_group.this.name
@@ -23,18 +23,6 @@ resource "aws_db_instance" "this" {
     env  = terraform.workspace
   }
 }
-
-
-
-resource "random_string" "this" {
-  length  = 16
-  special = true
-  lower   = true
-  number  = true
-  upper   = true
-}
-
-
 
 
 ###################################### PARAMETER GROUPS ######################################
