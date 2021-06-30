@@ -4,9 +4,20 @@ from .base import *  # pylint:disable=wildcard-import,unused-wildcard-import
 
 DEBUG = secret("DJANGO_DEBUG", cast=bool, default=False)
 
+INSTALLED_APPS += ["storages"]
+
 AWS_ACCESS_KEY_ID = secret("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = secret("AWS_SECRET_ACCESS_KEY")
 AWS_REGION_NAME = secret("AWS_REGION_NAME", default="sa-east-1")
+AWS_STORAGE_BUCKET_NAME = secret("AWS_STORAGE_BUCKET_NAME")
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+AWS_S3_OBJECT_PARAMETERS = {
+    "CacheControl": f"max-age={secret('AWS_S3_OBJECTS_CACHE_MAX_AGE', cast=int, default=86400)}",
+}
+AWS_STATIC_LOCATION = "static"
+
+STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_STATIC_LOCATION}/"
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 boto3_session = Session(
     aws_access_key_id=AWS_ACCESS_KEY_ID,
@@ -27,8 +38,6 @@ LOGGING["loggers"]["aws"] = {  # type: ignore
     "level": secret("DJANGO_LOG_LEVEL", default="DEBUG"),
     "propagate": False,
 }
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DRF_RECAPTCHA_SECRET_KEY = secret(
     "RECAPTCHA_SECRET_KEY", default="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"

@@ -3,7 +3,9 @@
 
 
 resource "aws_ecs_cluster" "this" {
-  name = "${var.project_name} ECS"
+  name = "${var.project_name}-ecs-cluster"
+
+  capacity_providers = ["FARGATE_SPOT", "FARGATE"]
 
   # It is considered best practice to define a default capacity provider strategy for each cluster.
   # With Fargate Spot you can run interruption tolerant Amazon ECS tasks at a discounted 
@@ -41,16 +43,16 @@ resource "aws_ecs_task_definition" "this" {
       "image" : var.django_docker_image_url,
       "networkMode" : "awsvpc",
       "essential" : true,
-      "cpu" : var.fargate_cpu,
-      "memory" : var.fargate_memory,
+      "cpu" : (3 * var.fargate_cpu) / 4,
+      "memory" : (3 * var.fargate_memory) / 4,
       "links" : [],
       "portMappings" : [{ "containerPort" : var.django_container_port }],
-      "mountPoints" : [
-        {
-          "containerPath" : "/app/django/static",
-          "sourceVolume" : "django_static_volume"
-        }
-      ],
+      #"mountPoints" : [
+      #  {
+      #    "containerPath" : "/app/django/static",
+      #    "sourceVolume" : "django_static_volume"
+      #  }
+      #],
       "healthCheck" : {
         "retries" : 3,
         "command" : ["CMD-SHELL", "python manage.py check"],
@@ -83,24 +85,24 @@ resource "aws_ecs_task_definition" "this" {
       "name" : "nginx",
       "image" : var.nginx_docker_image_url,
       "essential" : true,
-      "cpu" : var.fargate_cpu,
-      "memory" : var.fargate_memory / 2,
+      "cpu" : var.fargate_cpu / 4,
+      "memory" : var.fargate_memory / 4,
       "portMappings" : [
         {
           "containerPort" : var.nginx_container_port,
           "hostPort" : var.nginx_container_port
         }
       ],
-      "mountPoints" : [
-        {
-          "containerPath" : "/app/django/static",
-          "sourceVolume" : "django_static_volume"
-        },
-        #        {
-        #          "containerPath" : "/app/react/build/static",
-        #          "sourceVolume" : "react_static_volume"
-        #        }
-      ],
+      #"mountPoints" : [
+      #  {
+      #    "containerPath" : "/app/django/static",
+      #    "sourceVolume" : "django_static_volume"
+      #  },
+      #        {
+      #          "containerPath" : "/app/react/build/static",
+      #          "sourceVolume" : "react_static_volume"
+      #        }
+      #],
       #      "dependsOn": [{"containerName": "react", "condition": "COMPLETE"}],
     }
   ])

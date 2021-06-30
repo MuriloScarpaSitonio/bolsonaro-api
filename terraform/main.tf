@@ -9,16 +9,16 @@ terraform {
   }
 
   backend "s3" {
-    bucket  = "bolsonaro-api-tf-state"
-    key     = "${terraform.workspace}/terraform.tfstate"
-    region  = "sa-east-1"
-    encrypt = true
+    bucket     = "bolsonaro-api-tf-state"
+    key        = "default/terraform.tfstate"
+    region     = "sa-east-1"
+    encrypt    = true
   }
 }
 
 
 provider "aws" {
-  region = var.aws_region
+  region     = var.aws_region
 }
 
 
@@ -75,6 +75,12 @@ module "rds" {
   subnet_ids = module.vpc.private_subnet_ids
 
   ecs_security_group_id = aws_security_group.ecs.id
+}
+
+module "s3_cloudfront" {
+  source = "./s3-cloudfront"
+
+  project_name = var.project_name
 }
 
 module "ecs" {
@@ -135,6 +141,10 @@ module "ecs" {
     {
       "name" : "AWS_REGION_NAME",
       "value" : var.aws_region
+    },
+    {
+      "name" : "AWS_STORAGE_BUCKET_NAME",
+      "value" : module.s3_cloudfront.django_static_files_bucket_name
     }
   ]
 
@@ -164,23 +174,23 @@ module "ecs" {
   ecs_security_group_id = aws_security_group.ecs.id
   alb_security_group_id = aws_security_group.alb.id
 
-  depends_on = [module.rds]
+  depends_on = [module.rds, module.s3_cloudfront]
 }
 
-module "lambda" {
-  source = "./lambda"
+#module "lambda" {
+#  source = "./lambda"
 
-  project_name  = var.project_name
-  function_name = var.lambda_function_name
-  source_dir    = "../aws_lambda"
-  handler       = "aws_lambda.post_bolsonaro_api_tweet.lambda_handler"
-  env_vars = {
-    BOLSONARO_API_BASE_URL   = "${module.ecs.alb_dns_name}/api/v1"
-    TWITTER_API_KEY          = data.aws_ssm_parameter.lambda_twitter_api_key.value
-    TWITTER_API_SECRET_KEY   = data.aws_ssm_parameter.lambda_twitter_api_secret_key.value
-    TWITTER_API_TOKEN        = data.aws_ssm_parameter.lambda_twitter_api_token.value
-    TWITTER_API_SECRET_TOKEN = data.aws_ssm_parameter.lambda_twitter_api_secret_token.value
-  }
+#  project_name  = var.project_name
+#  function_name = var.lambda_function_name
+#  source_dir    = "../aws_lambda"
+#  handler       = "aws_lambda.post_bolsonaro_api_tweet.lambda_handler"
+#  env_vars = {
+#    BOLSONARO_API_BASE_URL   = "${module.ecs.alb_dns_name}/api/v1"
+#    TWITTER_API_KEY          = data.aws_ssm_parameter.lambda_twitter_api_key.value
+#    TWITTER_API_SECRET_KEY   = data.aws_ssm_parameter.lambda_twitter_api_secret_key.value
+#    TWITTER_API_TOKEN        = data.aws_ssm_parameter.lambda_twitter_api_token.value
+#    TWITTER_API_SECRET_TOKEN = data.aws_ssm_parameter.lambda_twitter_api_secret_token.value
+#  }
 
-  depends_on = [module.ecs]
-}
+#  depends_on = [module.ecs]
+#}

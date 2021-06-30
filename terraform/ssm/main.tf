@@ -37,7 +37,7 @@ resource "aws_ssm_parameter" "rds_username" {
 }
 
 resource "aws_ssm_parameter" "rds_name" {
-  name  = "${local.parameter_base_name}/rds-rname"
+  name  = "${local.parameter_base_name}/rds-name"
   type  = "String"
   value = var.rds_name
 

@@ -184,17 +184,3 @@ resource "aws_route_table_association" "private2" {
   subnet_id      = aws_subnet.private2.id
   route_table_id = aws_route_table.private.id
 }
-
-
-# Provides a resource to create a routing table entry (a route) in a VPC routing table.
-resource "aws_route" "nat_gateway" {
-  route_table_id         = aws_route_table.private.id
-  nat_gateway_id         = aws_nat_gateway.this.id
-  destination_cidr_block = var.routes_cidr_blocks[0]
-}
-
-resource "aws_route" "internet_gateway" {
-  route_table_id         = aws_route_table.public.id
-  gateway_id             = aws_internet_gateway.this.id
-  destination_cidr_block = var.routes_cidr_blocks[0]
-}

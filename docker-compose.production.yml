@@ -6,8 +6,6 @@ services:
     build:
       context: ./django
       dockerfile: Dockerfile.production
-    volumes:
-      - django_static_volume:/app/django/static
     expose:
       - 8000
     env_file:
@@ -46,14 +44,13 @@ services:
     restart: always
     build: ./nginx
     volumes:
-      - django_static_volume:/app/django/django_files/static
       - react_static_volume:/app/react/react_files/static
     ports:
       - 80:80
     depends_on:
       - react
+      - django
 
 volumes:
   postgres_data:
-  django_static_volume:
   react_static_volume:

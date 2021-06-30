@@ -43,9 +43,10 @@ resource "aws_db_parameter_group" "this" {
     apply_method = "immediate"
   }
 
+  # log_rotation_age parameter to anywhere from 1 minute to 1,440 minutes (24 hours)
   parameter { #Automatic log file rotation will occur after N minutes.
     name         = "log_rotation_age"
-    value        = 10080 #60*24*7
+    value        = 1440
     apply_method = "immediate"
   }
 

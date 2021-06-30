@@ -34,7 +34,7 @@ variable "vpc_public_cidr_blocks" {
 variable "vpc_private_cidr_blocks" {
   description = "Two private instance Classless Inter-Domain Routing block"
   type        = list(string)
-  default     = ["10.0.1.0/24", "10.0.2.0/24"] #["192.168.2.0/24", "192.168.3.0/24"]
+  default     = ["10.0.2.0/24", "10.0.3.0/24"] #["192.168.2.0/24", "192.168.3.0/24"]
 
   validation {
     # length(var.vpc_private_cidr_blocks) == 2 -> Error (?): An argument definition must end with a newline.
@@ -61,10 +61,13 @@ variable "django_db_engine" {
   default     = "django.db.backends.postgresql"
 }
 
+# PostgreSQL versions 13 and higher support the db.m6g, db.m5, db.r6g, db.r5, db.t3 instance classes. 
+# Previous generations of classes are supported only by PostgreSQL versions lower than 13 
+# and include db.m4, db.m3, db.r4, db.r3, and db.t2.
 variable "rds_engine_version" {
   description = "The RDS engine version to use"
   type        = string
-  default     = "13.2"
+  default     = "12.6"
 }
 
 variable "rds_instance_class" {
@@ -73,16 +76,16 @@ variable "rds_instance_class" {
   default     = "db.t2.micro"
 }
 
+variable "rds_parameter_group_family" {
+  description = "The family of the DB parameter group"
+  type        = string
+  default     = "postgres12"
+}
+
 variable "rds_port" {
   description = "The database port"
   type        = number
   default     = 5432
-}
-
-variable "rds_parameter_group_family" {
-  description = "The family of the DB parameter group"
-  type        = string
-  default     = "postgres13"
 }
 
 variable "django_docker_image_url" {
