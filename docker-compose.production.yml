@@ -24,33 +24,33 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=postgres
 
-  react:
-    container_name: react
-    build:
-      context: ./react
-      dockerfile: Dockerfile.production
-    volumes:
-      - react_static_volume:/app/react/build/static
-    expose:
-      - 3000
-    env_file:
-      - ./react/.env
-    command: serve --single build --listen=3000
-    depends_on:
-      - django
+  #react:
+  #  container_name: react
+  #  build:
+  #    context: ./react
+  #    dockerfile: Dockerfile.production
+  #  volumes:
+  #    - react_static_volume:/app/react/build/static
+  #  expose:
+  #    - 3000
+  #  env_file:
+  #    - ./react/.env
+  #  command: serve --single build --listen=3000
+  #  depends_on:
+  #    - django
 
   nginx:
     container_name: nginx
     restart: always
     build: ./nginx
-    volumes:
-      - react_static_volume:/app/react/react_files/static
+    #volumes:
+    #  - react_static_volume:/app/react/react_files/static
     ports:
       - 80:80
     depends_on:
-      - react
+    #  - react
       - django
 
 volumes:
   postgres_data:
-  react_static_volume:
+  #react_static_volume:
