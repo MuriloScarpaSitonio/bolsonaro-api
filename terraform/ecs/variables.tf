@@ -3,6 +3,11 @@ variable "project_name" {
   type        = string
 }
 
+variable "aws_region" {
+  description = "The current AWS region"
+  type        = string
+}
+
 variable "django_docker_image_url" {
   description = "Image URL for the django docker image"
   type        = string
@@ -74,7 +79,7 @@ variable "fargate_memory" {
 variable "desired_count" {
   description = "Number of docker containers to run"
   type        = number
-  default     = 2
+  default     = 4
 }
 
 
@@ -110,22 +115,22 @@ variable "vpc_id" {
   type        = string
 }
 
-# variable "health_check_path" {
-#   description = "Django health check path"
-#   type        = string
-#   default     = "/health"
-# }
+variable "nginx_alb_health_check_path" {
+  description = "ALB health check path at nginx"
+  type        = string
+  default     = "/health"
+}
 
 variable "min_capacity" {
   description = "Minimum number of task to run"
   type        = number
-  default     = 1
+  default     = 2
 }
 
 variable "max_capacity" {
   description = "Maximum number of task to run"
   type        = number
-  default     = 4
+  default     = 8
 }
 
 variable "ecs_security_group_id" {

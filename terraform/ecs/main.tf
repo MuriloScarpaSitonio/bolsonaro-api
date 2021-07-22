@@ -63,7 +63,15 @@ resource "aws_ecs_task_definition" "this" {
         "--workers=${var.django_gunicorn_number_of_workers}",
         "--bind=:${var.django_container_port}", "--max-requests=1000",
       "--max-requests-jitter=50"],
-      "environment" : var.django_environment
+      "environment" : var.django_environment,
+      "logConfiguration" : {
+        "logDriver" : "awslogs",
+        "options" : {
+          "awslogs-group" : aws_cloudwatch_log_group.django.name,
+          "awslogs-region" : var.aws_region,
+          "awslogs-stream-prefix" : aws_cloudwatch_log_stream.django.name
+        }
+      }
     },
     #    {
     #      "name" : "react",
@@ -93,6 +101,34 @@ resource "aws_ecs_task_definition" "this" {
           "hostPort" : var.nginx_container_port
         }
       ],
+      "dependsOn" : [
+        {
+          "containerName" : "django",
+          "condition" : "HEALTHY"
+        }
+      ],
+      "environment" : [
+        {
+          "name" : "NGINX_SERVER",
+          "value" : "127.0.0.1"
+        },
+        {
+          "name" : "NGINX_PORT",
+          "value" : var.nginx_container_port
+        },
+        {
+          "name" : "DJANGO_PORT",
+          "Value" : var.django_container_port
+        }
+      ]
+      "logConfiguration" : {
+        "logDriver" : "awslogs",
+        "options" : {
+          "awslogs-group" : aws_cloudwatch_log_group.nginx.name,
+          "awslogs-region" : var.aws_region,
+          "awslogs-stream-prefix" : aws_cloudwatch_log_stream.nginx.name
+        }
+      }
       #"mountPoints" : [
       #  {
       #    "containerPath" : "/app/django/static",
@@ -107,17 +143,12 @@ resource "aws_ecs_task_definition" "this" {
     }
   ])
 
-  volume {
-    host_path = "/app/django/static"
-    name      = "django_static_volume"
-  }
 }
 
 resource "aws_ecs_service" "this" {
   name            = "${var.project_name}-ecs-service"
   cluster         = aws_ecs_cluster.this.id
   task_definition = aws_ecs_task_definition.this.arn
-  iam_role        = aws_iam_role.service.arn
   desired_count   = var.desired_count
   depends_on      = [aws_alb_listener.this, aws_iam_role_policy.service]
 
@@ -130,7 +161,7 @@ resource "aws_ecs_service" "this" {
   load_balancer {
     target_group_arn = aws_alb_target_group.this.arn
     container_name   = "nginx"
-    container_port   = 80
+    container_port   = var.nginx_container_port
   }
 
   capacity_provider_strategy {

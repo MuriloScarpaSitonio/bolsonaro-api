@@ -62,3 +62,15 @@ variable "lambda_twitter_api_secret_token" {
   type        = string
   sensitive   = true
 }
+
+variable "django_admin_username" {
+  description = "Django admin username"
+  type        = string
+  sensitive   = true
+}
+
+variable "django_admin_password" {
+  description = "Django admin password"
+  type        = string
+  sensitive   = true
+}

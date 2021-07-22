@@ -37,3 +37,11 @@ data "aws_ssm_parameter" "lambda_twitter_api_token" {
 data "aws_ssm_parameter" "lambda_twitter_api_secret_token" {
   name = "${local.parameter_base_name}/lambda-twitter-api-secret-token"
 }
+
+data "aws_ssm_parameter" "django_admin_username" {
+  name = "${local.parameter_base_name}/django-admin-username"
+}
+
+data "aws_ssm_parameter" "django_admin_password" {
+  name = "${local.parameter_base_name}/django-admin-password"
+}

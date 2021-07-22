@@ -48,8 +48,11 @@ services:
     ports:
       - 80:80
     depends_on:
-    #  - react
+      #  - react
       - django
+    environment:
+      - NGINX_SERVER=django
+      - DJANGO_PORT=8000
 
 volumes:
   postgres_data:

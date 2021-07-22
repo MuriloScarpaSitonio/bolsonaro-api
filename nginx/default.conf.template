@@ -1,5 +1,5 @@
 upstream backend {
-    server django:8000;
+    server ${NGINX_SERVER}:${DJANGO_PORT};
 }
 
 #upstream frontend {
@@ -8,7 +8,7 @@ upstream backend {
 
 server {
 
-    listen 80;
+    listen ${NGINX_PORT};
 
     ###########
     # URL ROUTING #
@@ -21,6 +21,11 @@ server {
         proxy_set_header Host $host;
         proxy_redirect off;
     }
+
+    location /health {
+    access_log off;
+    return 200;
+  }
     
     # location /admin {
     #     proxy_pass http://backend;

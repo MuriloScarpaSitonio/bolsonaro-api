@@ -9,16 +9,16 @@ terraform {
   }
 
   backend "s3" {
-    bucket     = "bolsonaro-api-tf-state"
-    key        = "default/terraform.tfstate"
-    region     = "sa-east-1"
-    encrypt    = true
+    bucket  = "bolsonaro-api-tf-state"
+    key     = "default/terraform.tfstate"
+    region  = "sa-east-1"
+    encrypt = true
   }
 }
 
 
 provider "aws" {
-  region     = var.aws_region
+  region = var.aws_region
 }
 
 
@@ -145,7 +145,15 @@ module "ecs" {
     {
       "name" : "AWS_STORAGE_BUCKET_NAME",
       "value" : module.s3_cloudfront.django_static_files_bucket_name
-    }
+    },
+    {
+      "name" : "ADMIN_USERNAME",
+      "value" : data.aws_ssm_parameter.django_admin_username.value
+    },
+    {
+      "name" : "ADMIN_PASSWORD",
+      "value" : data.aws_ssm_parameter.django_admin_password.value
+    },
   ]
 
   #react_docker_image_url = var.react_docker_image_url
@@ -165,6 +173,8 @@ module "ecs" {
   #]
 
   nginx_docker_image_url = var.nginx_docker_image_url
+
+  aws_region = var.aws_region
 
   vpc_id = module.vpc.id
 

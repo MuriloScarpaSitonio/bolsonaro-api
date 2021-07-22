@@ -21,15 +21,16 @@ resource "aws_alb" "this" {
 # When a rule condition is met, traffic is forwarded to the corresponding target group. 
 # You can create different target groups for different types of requests.
 resource "aws_alb_target_group" "this" {
-  name     = "${var.project_name}-ALB-Target-Group"
-  port     = 80
-  protocol = "HTTP"
-  vpc_id   = var.vpc_id
+  name        = "${var.project_name}-ALB-Target-Group"
+  port        = var.nginx_container_port
+  protocol    = "HTTP"
+  vpc_id      = var.vpc_id
+  target_type = "ip"
 
-  # health_check {
-  #  path                = var.health_check_path
-  #  matcher             = "200"
-  # }
+  health_check {
+    path    = var.nginx_alb_health_check_path
+    matcher = "200"
+  }
 
   tags = {
     name = "${var.project_name}-alb-target-group"
@@ -42,7 +43,7 @@ resource "aws_alb_target_group" "this" {
 # load balancer routes requests to its registered targets.
 resource "aws_alb_listener" "this" {
   load_balancer_arn = aws_alb.this.id
-  port              = 80
+  port              = var.nginx_container_port
   protocol          = "HTTP"
   depends_on        = [aws_alb_target_group.this]
 

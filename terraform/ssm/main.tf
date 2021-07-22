@@ -123,3 +123,25 @@ resource "aws_ssm_parameter" "lambda_twitter_api_secret_token" {
     env  = terraform.workspace
   }
 }
+
+resource "aws_ssm_parameter" "django_admin_username" {
+  name  = "${local.parameter_base_name}/django-admin-username"
+  type  = "String"
+  value = var.django_admin_username
+
+  tags = {
+    name = "${var.project_name}-ssm-parameter-django-admin-username"
+    env  = terraform.workspace
+  }
+}
+
+resource "aws_ssm_parameter" "django_admin_password" {
+  name  = "${local.parameter_base_name}/django-admin-password"
+  type  = "String"
+  value = var.django_admin_password
+
+  tags = {
+    name = "${var.project_name}-ssm-parameter-django-admin-password"
+    env  = terraform.workspace
+  }
+}

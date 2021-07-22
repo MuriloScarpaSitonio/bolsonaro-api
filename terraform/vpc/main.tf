@@ -22,9 +22,10 @@ resource "aws_vpc" "this" {
 # Through subnetting, network traffic can travel a shorter distance without passing through 
 # unnecessary routers to reach its destination.
 resource "aws_subnet" "public1" {
-  vpc_id            = aws_vpc.this.id
-  cidr_block        = var.public_cidr_blocks[0]
-  availability_zone = var.availability_zones[0]
+  vpc_id                  = aws_vpc.this.id
+  cidr_block              = var.public_cidr_blocks[0]
+  availability_zone       = var.availability_zones[0]
+  map_public_ip_on_launch = true
 
   tags = {
     name = "${var.project_name}-subnet-public1"

@@ -115,6 +115,10 @@ resource "aws_iam_role" "task_execution" {
 }
 
 
+resource "aws_iam_role_policy_attachment" "ecs_task_execution_role" {
+  role       = aws_iam_role.task_execution.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
 
 
 ###################################### IAM ECS AUTOSCALING ROLE ######################################
